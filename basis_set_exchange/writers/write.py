@@ -58,6 +58,7 @@ from .fhiaims import write_fhiaims
 from .jaguar import write_jaguar
 from .crystal import write_crystal
 from .veloxchem import write_veloxchem
+from .ntchem import write_ntchem
 
 _writer_map = {
     'nwchem': {
@@ -262,7 +263,14 @@ _writer_map = {
         'comment': '!',
         'valid': {'gto', 'gto_spherical'},
         'function': write_veloxchem
-    }
+    },
+    'ntchem': {
+        'display': 'NTChem',
+        'extension': '.inp',
+        'comment': '!',
+        'valid': set(['gto', 'gto_cartesian', 'gto_spherical', 'scalar_ecp']),
+        'function': write_ntchem
+    },
 }
 
 
