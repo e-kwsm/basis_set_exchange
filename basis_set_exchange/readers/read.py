@@ -4,6 +4,7 @@ Read a basis set file in a given format
 
 import os
 import bz2
+import typing
 from ..skel import create_skel
 from ..validator import validate_data
 from ..compose import _whole_basis_types
@@ -59,7 +60,7 @@ _reader_map = {
 }
 
 
-def _fix_uncontracted(basis):
+def _fix_uncontracted(basis: typing.Mapping) -> typing.Mapping:
     '''
     Forces the contraction coefficient of uncontracted shells to 1.0
     '''
@@ -79,7 +80,10 @@ def _fix_uncontracted(basis):
     return basis
 
 
-def read_formatted_basis_str(basis_str, basis_fmt, validate=False, as_component=False):
+def read_formatted_basis_str(basis_str: str,
+                             basis_fmt: str,
+                             validate: bool = False,
+                             as_component: bool = False) -> typing.Dict[str, typing.Any]:
     basis_lines = [x.strip() for x in basis_str.splitlines()]
 
     element_data = _reader_map[basis_fmt]['reader'](basis_lines)
@@ -112,7 +116,11 @@ def read_formatted_basis_str(basis_str, basis_fmt, validate=False, as_component=
     return data
 
 
-def read_formatted_basis_file(file_path, basis_fmt=None, encoding='utf-8-sig', validate=False, as_component=False):
+def read_formatted_basis_file(file_path: str,
+                              basis_fmt: typing.Optional[str] = None,
+                              encoding: str = 'utf-8-sig',
+                              validate: bool = False,
+                              as_component: bool = False) -> typing.Dict[str, typing.Any]:
     # Note that the default is utf-8-sig, which handles the optional byte order mark
 
     if not os.path.isfile(file_path):
@@ -145,7 +153,7 @@ def read_formatted_basis_file(file_path, basis_fmt=None, encoding='utf-8-sig', v
     return read_formatted_basis_str(basis_str, basis_fmt, validate, as_component)
 
 
-def get_reader_formats():
+def get_reader_formats() -> typing.Dict[str, typing.Dict[str, str]]:
     '''
     Returns the basis set formats that can be read by this library.
 
