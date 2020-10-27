@@ -5,6 +5,7 @@ Functions related to validating JSON files (including against schema)
 import os
 import jsonschema
 import datetime
+import typing
 
 from . import fileio, misc
 
@@ -12,7 +13,7 @@ _my_dir = os.path.dirname(os.path.abspath(__file__))
 _default_schema_dir = os.path.join(_my_dir, 'schema')
 
 
-def _list_has_duplicates(lst):
+def _list_has_duplicates(lst: typing.Sequence) -> typing.List:
     '''Check if a list has only unique elements
        Returns a list of duplicated elements'''
 
@@ -23,12 +24,12 @@ def _list_has_duplicates(lst):
     return dupe
 
 
-def _validate_extra_references(bs_data):
+def _validate_extra_references(bs_data: typing.Mapping) -> None:
     '''Extra checks for references files'''
     pass
 
 
-def _validate_extra_metadata(bs_data):
+def _validate_extra_metadata(bs_data: typing.Mapping) -> None:
     '''Extra checks for metadata files'''
 
     # Check that family is lowercase
@@ -37,7 +38,7 @@ def _validate_extra_metadata(bs_data):
         raise RuntimeError("Family '{}' is not lowercase".format(fam))
 
 
-def _validate_electron_shells(shells, element_z):
+def _validate_electron_shells(shells: typing.Iterable, element_z: str) -> None:
     '''Validate a list of electron shells'''
 
     for idx, s in enumerate(shells):
@@ -100,7 +101,8 @@ def _validate_electron_shells(shells, element_z):
                         element_z, idx, ngen, nam))
 
 
-def _validate_ecp_potentials(potentials, ecp_electrons, element_z):
+def _validate_ecp_potentials(potentials: typing.Iterable[typing.Mapping], ecp_electrons: typing.Any,
+                             element_z: str) -> None:
     # Check for duplicate AM and 'fused' AM
     all_am = [x['angular_momentum'] for x in potentials]
     for am in all_am:
@@ -152,7 +154,7 @@ def _validate_ecp_potentials(potentials, ecp_electrons, element_z):
                             element_z, idx, pidx))
 
 
-def _validate_element(el_data, element_z):
+def _validate_element(el_data: typing.Mapping, element_z: str) -> None:
     if 'electron_shells' in el_data:
         _validate_electron_shells(el_data['electron_shells'], element_z)
 
@@ -162,7 +164,7 @@ def _validate_element(el_data, element_z):
         _validate_ecp_potentials(el_data['ecp_potentials'], el_data['ecp_electrons'], element_z)
 
 
-def _validate_extra_component(bs_data):
+def _validate_extra_component(bs_data: typing.Mapping) -> None:
     '''Extra checks for component basis files'''
 
     assert len(bs_data['elements']) > 0
@@ -171,13 +173,13 @@ def _validate_extra_component(bs_data):
         _validate_element(el_data, element_z)
 
 
-def _validate_extra_element(bs_data):
+def _validate_extra_element(bs_data: typing.Mapping) -> None:
     '''Extra checks for basis metadata files'''
 
     assert len(bs_data['elements']) > 0
 
 
-def _validate_extra_table(bs_data):
+def _validate_extra_table(bs_data: typing.Mapping) -> None:
     '''Extra checks for table basis files'''
 
     assert len(bs_data['elements']) > 0
@@ -186,7 +188,7 @@ def _validate_extra_table(bs_data):
     datetime.datetime.strptime(bs_data['revision_date'], "%Y-%m-%d")
 
 
-def _validate_extra_complete(bs_data):
+def _validate_extra_complete(bs_data: typing.Mapping) -> None:
     '''Extra checks for complete basis set data'''
 
     assert len(bs_data['elements']) > 0
@@ -199,7 +201,7 @@ def _validate_extra_complete(bs_data):
         _validate_element(el_data, element_z)
 
 
-def _validate_extra_minimal(bs_data):
+def _validate_extra_minimal(bs_data: typing.Mapping) -> None:
     '''Extra checks for minimal basis set data'''
 
     assert len(bs_data['elements']) > 0
@@ -219,7 +221,7 @@ _validate_map = {
 }
 
 
-def _get_schema(file_type):
+def _get_schema(file_type: str) -> typing.Tuple:
     '''Get a schema that can validate BSE JSON files or dictionaries
 
        The schema_type represents the type of BSE JSON file to be validated,
@@ -240,7 +242,7 @@ def _get_schema(file_type):
     return schema, resolver
 
 
-def validate_data(file_type, bs_data):
+def validate_data(file_type: str, bs_data: typing.Any) -> None:
     """
     Validates json basis set data against a schema
 
@@ -269,7 +271,7 @@ def validate_data(file_type, bs_data):
     _validate_map[file_type](bs_data)
 
 
-def validate_file(file_type, file_path):
+def validate_file(file_type: str, file_path: str) -> None:
     """
     Validates a file against a schema
 
@@ -294,7 +296,7 @@ def validate_file(file_type, file_path):
     validate_data(file_type, file_data)
 
 
-def validate_data_dir(data_dir):
+def validate_data_dir(data_dir: str) -> None:
     """
     Validates all files in a data_dir
     """
