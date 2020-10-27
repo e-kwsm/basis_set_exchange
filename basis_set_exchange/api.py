@@ -9,6 +9,7 @@ functionality of the library.
 
 import os
 import textwrap
+import typing
 
 from . import compose
 from . import writers
@@ -25,7 +26,7 @@ from ._version import get_versions
 __version__ = get_versions()['version']
 
 
-def version():
+def version() -> str:
     '''Obtain the version of the basis set exchange library (as a string)'''
     return __version__
 
@@ -39,7 +40,7 @@ _default_data_dir = os.path.join(_my_dir, 'data')
 _main_url = 'https://www.basissetexchange.org'
 
 
-def _get_basis_metadata(name, data_dir):
+def _get_basis_metadata(name: str, data_dir: str) -> typing.Any:
     '''Get metadata for a single basis set
 
     If the basis doesn't exist, an exception is raised
@@ -57,7 +58,7 @@ def _get_basis_metadata(name, data_dir):
     return metadata[tr_name]
 
 
-def _header_string(basis_dict):
+def _header_string(basis_dict: typing.Mapping) -> str:
     '''Creates a header with information about a basis set
 
     Information includes description, revision, etc, but not references
@@ -80,7 +81,7 @@ def _header_string(basis_dict):
     return header
 
 
-def fix_data_dir(data_dir):
+def fix_data_dir(data_dir: typing.Optional[str]) -> str:
     '''
     If data_dir is None, returns the default data_dir. Otherwise,
     returns the data_dir parameter unmodified
@@ -89,17 +90,17 @@ def fix_data_dir(data_dir):
     return _default_data_dir if data_dir is None else data_dir
 
 
-def get_basis(name,
-              elements=None,
-              version=None,
-              fmt=None,
-              uncontract_general=False,
-              uncontract_spdf=False,
-              uncontract_segmented=False,
-              make_general=False,
-              optimize_general=False,
-              data_dir=None,
-              header=True):
+def get_basis(name: str,
+              elements: typing.Union[None, str, typing.List] = None,
+              version: typing.Union[None, int, str] = None,
+              fmt: typing.Optional[str] = None,
+              uncontract_general: bool = False,
+              uncontract_spdf: bool = False,
+              uncontract_segmented: bool = False,
+              make_general: bool = False,
+              optimize_general: bool = False,
+              data_dir: typing.Optional[str] = None,
+              header: bool = True) -> typing.Union[str, typing.Mapping]:
     '''Obtain a basis set
 
     This is the main function for getting basis set information.
@@ -241,14 +242,14 @@ def get_basis(name,
         return basis_dict
 
     if header:
-        header_str = _header_string(basis_dict)
+        header_str = _header_string(basis_dict)  # type: typing.Optional[str]
     else:
         header_str = None
 
     return writers.write_formatted_basis_str(basis_dict, fmt, header_str)
 
 
-def lookup_basis_by_role(primary_basis, role, data_dir=None):
+def lookup_basis_by_role(primary_basis: str, role: str, data_dir: typing.Optional[str] = None) -> str:
     '''Lookup the name of an auxiliary basis set given a primary basis set and role
 
     Parameters
@@ -300,7 +301,7 @@ def lookup_basis_by_role(primary_basis, role, data_dir=None):
 
 
 @memo.BSEMemoize
-def get_metadata(data_dir=None):
+def get_metadata(data_dir: typing.Optional[str] = None) -> typing.Dict:
     '''Obtain the metadata for all basis sets
 
     The metadata includes information such as the display name of the basis set,
@@ -321,7 +322,7 @@ def get_metadata(data_dir=None):
 
 
 @memo.BSEMemoize
-def get_reference_data(data_dir=None):
+def get_reference_data(data_dir: typing.Optional[str] = None) -> typing.Any:
     '''Obtain information for all stored references
 
     This is a nested dictionary with all the data for all the references
@@ -336,7 +337,7 @@ def get_reference_data(data_dir=None):
     return fileio.read_references(reffile_path)
 
 
-def get_all_basis_names(data_dir=None):
+def get_all_basis_names(data_dir: typing.Optional[str] = None) -> typing.List[str]:
     '''Obtain a list of all basis set names
 
     The returned list is the internal representation of the basis set name.
@@ -355,7 +356,11 @@ def get_all_basis_names(data_dir=None):
     return sorted(names)
 
 
-def get_references(basis_name, elements=None, version=None, fmt=None, data_dir=None):
+def get_references(basis_name: str,
+                   elements: typing.Optional[typing.List] = None,
+                   version: typing.Optional[int] = None,
+                   fmt: typing.Optional[str] = None,
+                   data_dir: typing.Optional[str] = None) -> typing.Union[typing.List[typing.Dict], str]:
     '''Get the references/citations for a basis set
 
     Parameters
@@ -403,7 +408,7 @@ def get_references(basis_name, elements=None, version=None, fmt=None, data_dir=N
     return refconverters.convert_references(ref_data, fmt)
 
 
-def get_basis_family(basis_name, data_dir=None):
+def get_basis_family(basis_name: str, data_dir: typing.Optional[str] = None) -> str:
     '''Lookup a family by a basis set name
     '''
 
@@ -413,7 +418,7 @@ def get_basis_family(basis_name, data_dir=None):
 
 
 @memo.BSEMemoize
-def get_families(data_dir=None):
+def get_families(data_dir: typing.Optional[str] = None) -> typing.List[str]:
     '''Return a list of all basis set families'''
     data_dir = fix_data_dir(data_dir)
     metadata = get_metadata(data_dir)
@@ -425,7 +430,11 @@ def get_families(data_dir=None):
     return sorted(list(families))
 
 
-def filter_basis_sets(substr=None, family=None, role=None, elements=None, data_dir=None):
+def filter_basis_sets(substr: typing.Optional[str] = None,
+                      family: typing.Optional[str] = None,
+                      role: typing.Optional[str] = None,
+                      elements: typing.Union[int, str, typing.List[typing.Union[int, str]]] = None,
+                      data_dir: typing.Optional[str] = None) -> typing.Dict:
     '''Filter basis sets by some criteria
 
     All parameters are ANDed together and are not case sensitive.
@@ -487,7 +496,7 @@ def filter_basis_sets(substr=None, family=None, role=None, elements=None, data_d
 
 
 @memo.BSEMemoize
-def _family_notes_path(family, data_dir):
+def _family_notes_path(family: str, data_dir: typing.Optional[str]) -> str:
     '''Form a path to the notes for a family'''
 
     data_dir = fix_data_dir(data_dir)
@@ -502,7 +511,7 @@ def _family_notes_path(family, data_dir):
 
 
 @memo.BSEMemoize
-def _basis_notes_path(name, data_dir):
+def _basis_notes_path(name: str, data_dir: typing.Optional[str]) -> str:
     '''Form a path to the notes for a basis set'''
 
     data_dir = fix_data_dir(data_dir)
@@ -515,7 +524,7 @@ def _basis_notes_path(name, data_dir):
 
 
 @memo.BSEMemoize
-def get_family_notes(family, data_dir=None):
+def get_family_notes(family: str, data_dir: typing.Optional[str] = None) -> str:
     '''Return a string representing the notes about a basis set family
 
     If the notes are not found, an empty string is returned
@@ -532,10 +541,10 @@ def get_family_notes(family, data_dir=None):
 
 
 @memo.BSEMemoize
-def has_family_notes(family, data_dir=None):
+def has_family_notes(family: str, data_dir: typing.Optional[str] = None) -> bool:
     '''Check if notes exist for a given family
 
-    Returns True if they exist, false otherwise
+    Returns True if they exist, False otherwise
     '''
 
     file_path = _family_notes_path(family, data_dir)
@@ -543,7 +552,7 @@ def has_family_notes(family, data_dir=None):
 
 
 @memo.BSEMemoize
-def get_basis_notes(name, data_dir=None):
+def get_basis_notes(name: str, data_dir: typing.Optional[str] = None) -> str:
     '''Return a string representing the notes about a specific basis set
 
     If the notes are not found, an empty string is returned
@@ -560,17 +569,18 @@ def get_basis_notes(name, data_dir=None):
 
 
 @memo.BSEMemoize
-def has_basis_notes(family, data_dir=None):
+def has_basis_notes(family: str, data_dir: typing.Optional[str] = None) -> bool:
     '''Check if notes exist for a given basis set
 
-    Returns True if they exist, false otherwise
+    Returns True if they exist, False otherwise
     '''
 
     file_path = _basis_notes_path(family, data_dir)
     return os.path.isfile(file_path)
 
 
-def get_formats(function_types=None):
+def get_formats(
+        function_types: typing.Optional[typing.Any] = None) -> typing.Union[typing.Dict[str, str], typing.List[str]]:
     '''Return information about the basis set formats available
 
     The returned data is a map of format to display name. The format
@@ -589,7 +599,7 @@ def get_formats(function_types=None):
     return writers.get_writer_formats(function_types)
 
 
-def get_reference_formats():
+def get_reference_formats() -> typing.Dict[str, str]:
     '''Return information about the reference/citation formats available
 
     The returned data is a map of format to display name. The format
@@ -598,7 +608,7 @@ def get_reference_formats():
     return refconverters.get_reference_formats()
 
 
-def get_roles():
+def get_roles() -> typing.Dict[str, str]:
     '''Return information about the available basis set roles available
 
     The returned data is a map of role to display name. The format
@@ -619,6 +629,6 @@ def get_roles():
     # yapf: enable
 
 
-def get_data_dir():
+def get_data_dir() -> str:
     '''Get the default data directory of this installation'''
     return _default_data_dir
