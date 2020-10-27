@@ -3,9 +3,10 @@ Some helper functions related to handling of references/citations
 """
 
 import textwrap
+import typing
 
 
-def compact_references(basis_dict, ref_data):
+def compact_references(basis_dict: typing.Mapping, ref_data: typing.Mapping) -> typing.List[typing.Dict]:
     """
     Creates a mapping of elements to reference keys
 
@@ -22,7 +23,7 @@ def compact_references(basis_dict, ref_data):
         Dictionary containing all reference information
     """
 
-    element_refs = []
+    element_refs = []  # type: typing.List[typing.Dict]
 
     # Create a mapping of elements -> reference information
     # (sort by Z first, keeping in mind Z is a string)
@@ -52,7 +53,7 @@ def compact_references(basis_dict, ref_data):
     return element_refs
 
 
-def reference_text(key, ref):
+def reference_text(key: str, ref: typing.Mapping) -> str:
     '''Convert a single reference to plain text format
 
     Parameters
