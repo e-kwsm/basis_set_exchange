@@ -3,10 +3,11 @@ Functions for comparing basis sets and pieces of basis sets
 '''
 
 import operator
+import typing
 from ..sort import sort_shell
 
 
-def _reldiff(a, b):
+def _reldiff(a: typing.Any, b: typing.Any) -> float:
     """
     Computes the relative difference of two floating-point numbers
 
@@ -29,7 +30,8 @@ def _reldiff(a, b):
     return abs(a - b) / min(aa, ba)
 
 
-def _compare_keys(element1, element2, key, compare_func, *args):
+def _compare_keys(element1: typing.Mapping, element2: typing.Mapping, key: str,
+                  compare_func: typing.Callable[..., bool], *args) -> bool:
     """
     Compares a specific key between two elements of a basis set
 
@@ -60,7 +62,7 @@ def _compare_keys(element1, element2, key, compare_func, *args):
     return True
 
 
-def _compare_vector(arr1, arr2, rel_tol):
+def _compare_vector(arr1: typing.Sequence, arr2: typing.Sequence, rel_tol: float) -> bool:
     """
     Compares two vectors (python lists) for approximate equality.
 
@@ -90,7 +92,8 @@ def _compare_vector(arr1, arr2, rel_tol):
     return True
 
 
-def _compare_matrix(mat1, mat2, rel_tol):
+def _compare_matrix(mat1: typing.Sequence[typing.Sequence], mat2: typing.Sequence[typing.Sequence],
+                    rel_tol: float) -> bool:
     """
     Compares two matrices (nested python lists) for approximate equality.
 
@@ -111,7 +114,10 @@ def _compare_matrix(mat1, mat2, rel_tol):
     return True
 
 
-def compare_electron_shells(shell1, shell2, compare_meta=False, rel_tol=0.0):
+def compare_electron_shells(shell1: typing.MutableMapping,
+                            shell2: typing.MutableMapping,
+                            compare_meta: bool = False,
+                            rel_tol: float = 0.0) -> bool:
     '''
     Compare two electron shells for approximate equality
     (exponents/coefficients are within a tolerance)
@@ -144,7 +150,10 @@ def compare_electron_shells(shell1, shell2, compare_meta=False, rel_tol=0.0):
         return True
 
 
-def electron_shells_are_subset(subset, superset, compare_meta=False, rel_tol=0.0):
+def electron_shells_are_subset(subset: typing.Iterable[typing.MutableMapping],
+                               superset: typing.Iterable[typing.MutableMapping],
+                               compare_meta: bool = False,
+                               rel_tol: float = 0.0) -> bool:
     '''
     Determine if a list of electron shells is a subset of another
 
@@ -166,7 +175,10 @@ def electron_shells_are_subset(subset, superset, compare_meta=False, rel_tol=0.0
     return True
 
 
-def electron_shells_are_equal(shells1, shells2, compare_meta=False, rel_tol=0.0):
+def electron_shells_are_equal(shells1: typing.Collection[typing.MutableMapping],
+                              shells2: typing.Collection[typing.MutableMapping],
+                              compare_meta: bool = False,
+                              rel_tol: float = 0.0) -> bool:
     '''
     Determine if a list of electron shells is the same as another
 
@@ -185,7 +197,10 @@ def electron_shells_are_equal(shells1, shells2, compare_meta=False, rel_tol=0.0)
         shells2, shells1, compare_meta, rel_tol)
 
 
-def compare_ecp_pots(potential1, potential2, compare_meta=False, rel_tol=0.0):
+def compare_ecp_pots(potential1: typing.Mapping,
+                     potential2: typing.Mapping,
+                     compare_meta: bool = False,
+                     rel_tol: float = 0.0) -> bool:
     '''
     Compare two ecp potentials for approximate equality
     (exponents/coefficients are within a tolerance)
@@ -218,7 +233,10 @@ def compare_ecp_pots(potential1, potential2, compare_meta=False, rel_tol=0.0):
         return True
 
 
-def ecp_pots_are_subset(subset, superset, compare_meta=False, rel_tol=0.0):
+def ecp_pots_are_subset(subset: typing.Iterable[typing.Mapping],
+                        superset: typing.Iterable[typing.Mapping],
+                        compare_meta: bool = False,
+                        rel_tol: float = 0.0) -> bool:
     '''
     Determine if a list of ecp potentials is a subset of another
 
@@ -240,7 +258,10 @@ def ecp_pots_are_subset(subset, superset, compare_meta=False, rel_tol=0.0):
     return True
 
 
-def ecp_pots_are_equal(pots1, pots2, compare_meta=False, rel_tol=0.0):
+def ecp_pots_are_equal(pots1: typing.Iterable[typing.Mapping],
+                       pots2: typing.Iterable[typing.Mapping],
+                       compare_meta: bool = False,
+                       rel_tol: float = 0.0) -> bool:
     '''
     Determine if a list of electron shells is the same as another
 
@@ -255,12 +276,12 @@ def ecp_pots_are_equal(pots1, pots2, compare_meta=False, rel_tol=0.0):
     return ecp_pots_are_subset(pots1, pots2, compare_meta) and ecp_pots_are_subset(pots2, pots1, compare_meta)
 
 
-def compare_elements(element1,
-                     element2,
-                     compare_electron_shells_meta=False,
-                     compare_ecp_pots_meta=False,
-                     compare_meta=False,
-                     rel_tol=0.0):
+def compare_elements(element1: typing.Mapping,
+                     element2: typing.Mapping,
+                     compare_electron_shells_meta: bool = False,
+                     compare_ecp_pots_meta: bool = False,
+                     compare_meta: bool = False,
+                     rel_tol: float = 0.0) -> bool:
     '''
     Determine if the basis information for two elements is the same as another
 
@@ -299,13 +320,13 @@ def compare_elements(element1,
     return True
 
 
-def compare_basis(bs1,
-                  bs2,
-                  compare_electron_shells_meta=False,
-                  compare_ecp_pots_meta=False,
-                  compare_elements_meta=False,
-                  compare_meta=False,
-                  rel_tol=0.0):
+def compare_basis(bs1: typing.Mapping,
+                  bs2: typing.Mapping,
+                  compare_electron_shells_meta: bool = False,
+                  compare_ecp_pots_meta: bool = False,
+                  compare_elements_meta: bool = False,
+                  compare_meta: bool = False,
+                  rel_tol: float = 0.0) -> bool:
     '''
     Determine if two basis set dictionaries are the same
 
