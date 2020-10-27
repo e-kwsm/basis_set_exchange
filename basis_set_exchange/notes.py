@@ -2,10 +2,11 @@
 Functionality for handling basis set and family notes
 '''
 
+import typing
 from . import references
 
 
-def process_notes(notes, ref_data):
+def process_notes(notes: str, ref_data: typing.Mapping) -> str:
     '''Add reference information to the bottom of a notes file
 
     `:ref:` tags are removed and the actual reference data is appended
