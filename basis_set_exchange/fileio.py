@@ -6,6 +6,7 @@ basis set format
 import json
 import bz2
 import os
+import typing
 
 from .sort import sort_basis_dict, sort_references_dict
 
@@ -14,7 +15,7 @@ from .sort import sort_basis_dict, sort_references_dict
 _default_encoding = 'utf-8'
 
 
-def _read_plain_json(file_path, check_bse):
+def _read_plain_json(file_path: str, check_bse: bool) -> typing.Any:
     """
     Reads a JSON file
 
@@ -58,7 +59,7 @@ def _read_plain_json(file_path, check_bse):
     return js
 
 
-def _write_plain_json(file_path, js):
+def _write_plain_json(file_path: str, js: typing.Mapping) -> None:
     """
     Write information to a JSON file
 
@@ -83,7 +84,7 @@ def _write_plain_json(file_path, js):
             json.dump(js, f, indent=2, ensure_ascii=False)
 
 
-def read_json_basis(file_path):
+def read_json_basis(file_path: str) -> typing.Any:
     """
     Reads generic basis set information from a JSON file
 
@@ -101,7 +102,7 @@ def read_json_basis(file_path):
     return _read_plain_json(file_path, True)
 
 
-def read_schema(file_path):
+def read_schema(file_path: str) -> typing.Any:
     """
     Reads a JSON schema file
 
@@ -114,7 +115,7 @@ def read_schema(file_path):
     return _read_plain_json(file_path, False)
 
 
-def read_references(file_path):
+def read_references(file_path: str) -> typing.Any:
     """
     Read a JSON file containing info for all references
 
@@ -127,7 +128,7 @@ def read_references(file_path):
     return _read_plain_json(file_path, True)
 
 
-def read_metadata(file_path):
+def read_metadata(file_path: str) -> typing.Any:
     """
     Reads a file containing the metadata for all the basis sets
 
@@ -140,7 +141,7 @@ def read_metadata(file_path):
     return _read_plain_json(file_path, False)
 
 
-def write_json_basis(file_path, bs):
+def write_json_basis(file_path: str, bs: typing.Mapping) -> None:
     """
     Write basis set information to a JSON file
 
@@ -157,7 +158,7 @@ def write_json_basis(file_path, bs):
     _write_plain_json(file_path, sort_basis_dict(bs))
 
 
-def write_references(file_path, refs):
+def write_references(file_path: str, refs: typing.Mapping) -> None:
     """
     Write a dict containing info for all references to a JSON file
 
@@ -172,7 +173,7 @@ def write_references(file_path, refs):
     _write_plain_json(file_path, sort_references_dict(refs))
 
 
-def write_metadata(file_path, metadata):
+def write_metadata(file_path: str, metadata: typing.Mapping) -> None:
     """
     Reads a file containing the metadata for all the basis sets
 
@@ -187,7 +188,8 @@ def write_metadata(file_path, metadata):
     _write_plain_json(file_path, sort_basis_dict(bs))
 
 
-def get_all_filelist(data_dir):
+def get_all_filelist(
+        data_dir: str) -> typing.Tuple[typing.List[str], typing.List[str], typing.List[str], typing.List[str]]:
     """
     Returns a tuple containing the following (as lists)
 
@@ -226,7 +228,7 @@ def get_all_filelist(data_dir):
     return (all_meta, all_table, all_element, all_component)
 
 
-def read_notes_file(file_path):
+def read_notes_file(file_path: str) -> typing.Optional[str]:
     """
     Returns the contents of a notes file.
 
