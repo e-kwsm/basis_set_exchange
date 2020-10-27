@@ -2,8 +2,10 @@
 Some common formatting functions, etc
 '''
 
+import typing
 
-def format_columns(lines, prefix=''):
+
+def format_columns(lines: typing.List[str], prefix: str = '') -> typing.Union[str, typing.List[str]]:
     '''
     Create a simple column output
 
