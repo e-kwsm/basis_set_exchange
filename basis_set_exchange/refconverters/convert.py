@@ -4,6 +4,7 @@ Converts basis set data to a specified output format
 
 import textwrap
 import json
+import typing
 
 from .. import sort, misc
 from .common import get_library_citation
@@ -48,7 +49,7 @@ _converter_map = {
 }
 
 
-def convert_references(ref_data, fmt):
+def convert_references(ref_data: typing.Collection, fmt: str) -> str:
     '''
     Returns the basis set references as a string representing
     the data in the specified output format
@@ -123,7 +124,7 @@ def convert_references(ref_data, fmt):
     return ref_str
 
 
-def get_reference_formats():
+def get_reference_formats() -> typing.Dict[str, str]:
     '''Return information about the reference/citation formats available
 
     The returned data is a map of format to display name. The format
