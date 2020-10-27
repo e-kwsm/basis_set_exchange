@@ -2,11 +2,12 @@
 Functions for basis set conversion
 '''
 
+import typing
 from .readers import read_formatted_basis_file, read_formatted_basis_str
 from .writers import write_formatted_basis_file, write_formatted_basis_str
 
 
-def convert_formatted_basis_str(basis_in, in_fmt, out_fmt):
+def convert_formatted_basis_str(basis_in: str, in_fmt: str, out_fmt: str) -> str:
     '''Convert a formatted basis set to another format
 
     Parameters
@@ -28,7 +29,11 @@ def convert_formatted_basis_str(basis_in, in_fmt, out_fmt):
     return write_formatted_basis_str(basis_dict, out_fmt)
 
 
-def convert_formatted_basis_file(file_path_in, file_path_out, in_fmt=None, out_fmt=None, encoding='utf-8-sig'):
+def convert_formatted_basis_file(file_path_in: str,
+                                 file_path_out: str,
+                                 in_fmt: typing.Optional[str] = None,
+                                 out_fmt: typing.Optional[str] = None,
+                                 encoding: str = 'utf-8-sig') -> None:
     '''Convert a formatted basis set file to another format
 
     Parameters
