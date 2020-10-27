@@ -3,6 +3,7 @@ Converts basis set data to a specified output format
 '''
 
 import bz2
+import typing
 from .bsejson import write_json
 from .nwchem import write_nwchem
 from .g94 import write_g94, write_xtron, write_psi4
@@ -173,7 +174,7 @@ _writer_map = {
 }
 
 
-def write_formatted_basis_str(basis_dict, fmt, header=None):
+def write_formatted_basis_str(basis_dict: typing.Mapping, fmt: str, header: typing.Optional[str] = None) -> str:
     '''
     Returns the basis set data as a string representing
     the data in the specified output format
@@ -211,7 +212,10 @@ def write_formatted_basis_str(basis_dict, fmt, header=None):
     return ret_str
 
 
-def write_formatted_basis_file(basis_dict, outfile_path, basis_fmt=None, header=None):
+def write_formatted_basis_file(basis_dict: typing.Mapping,
+                               outfile_path: str,
+                               basis_fmt: str = None,
+                               header: typing.Optional[str] = None) -> None:
     if basis_fmt is None:
         for k, v in _writer_map.items():
             ext = v['extension']
@@ -237,7 +241,8 @@ def write_formatted_basis_file(basis_dict, outfile_path, basis_fmt=None, header=
             f.write(basis_str)
 
 
-def get_writer_formats(function_types=None):
+def get_writer_formats(
+        function_types: typing.Iterable[str] = None) -> typing.Union[typing.Dict[str, str], typing.List[str]]:
     '''Return information about the basis set formats available for writing
 
     The returned data is a map of format to display name. The format
@@ -251,8 +256,7 @@ def get_writer_formats(function_types=None):
     if function_types is None:
         return {k: v['display'] for k, v in _writer_map.items()}
 
-    ftypes = [x.lower() for x in function_types]
-    ftypes = set(ftypes)
+    ftypes = set(x.lower() for x in function_types)
     ret = []
 
     for fmt, v in _writer_map.items():
@@ -261,7 +265,7 @@ def get_writer_formats(function_types=None):
     return ret
 
 
-def get_format_extension(fmt):
+def get_format_extension(fmt: str) -> str:
     '''
     Returns the recommended extension for a given format
     '''
