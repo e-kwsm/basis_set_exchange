@@ -2,18 +2,19 @@
 Helpers for printing pieces of basis sets
 '''
 
+import typing
 from . import lut
 from .misc import expand_elements, contraction_string
 
 
-def _find_point(x):
+def _find_point(x: typing.Union[int, typing.Sequence[str]]) -> int:
     if isinstance(x, int):
         return 0
     else:
         return x.index('.')
 
 
-def _determine_leftpad(column, point_place):
+def _determine_leftpad(column: typing.List, point_place: int) -> typing.List[int]:
     '''Find how many spaces to put before a column of numbers
        so that all the decimal points line up
 
@@ -37,7 +38,7 @@ def _determine_leftpad(column, point_place):
     return [max((point_place - 1) - x, 0) for x in ndigits_left]
 
 
-def write_matrix(mat, point_place, convert_exp=False):
+def write_matrix(mat: typing.Iterable, point_place: typing.Sequence[int], convert_exp: bool = False) -> str:
 
     # Padding for the whole matrix
     pad = [_determine_leftpad(c, point_place[i]) for i, c in enumerate(mat)]
@@ -64,7 +65,7 @@ def write_matrix(mat, point_place, convert_exp=False):
     return lines
 
 
-def electron_shell_str(shell, shellidx=None):
+def electron_shell_str(shell: typing.Mapping, shellidx: typing.Any = None) -> str:
     '''Return a string representing the data for an electron shell
 
     If shellidx (index of the shell) is not None, it will also be printed
@@ -92,7 +93,7 @@ def electron_shell_str(shell, shellidx=None):
     return s
 
 
-def ecp_pot_str(pot):
+def ecp_pot_str(pot: typing.Mapping) -> str:
     '''Return a string representing the data for an ECP potential
     '''
 
@@ -110,7 +111,7 @@ def ecp_pot_str(pot):
     return s
 
 
-def element_data_str(z, eldata):
+def element_data_str(z: typing.Union[int, str], eldata: typing.Mapping) -> str:
     '''Return a string with all data for an element
 
     This includes shell and ECP potential data
@@ -143,7 +144,7 @@ def element_data_str(z, eldata):
     return s
 
 
-def component_basis_str(basis, elements=None):
+def component_basis_str(basis: typing.Mapping, elements: typing.List[typing.Union[int, str]] = None) -> str:
     '''Print a component basis set
 
     If elements is not None, only the specified elements will be printed
