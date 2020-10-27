@@ -3,11 +3,14 @@ Computing the difference between basis sets and files
 '''
 
 import copy
+import typing
 from .compare import compare_electron_shells
 from .. import fileio
 
 
-def subtract_electron_shells(s1, s2, rel_tol=0.0):
+def subtract_electron_shells(s1: typing.Iterable[typing.MutableMapping],
+                             s2: typing.Iterable[typing.MutableMapping],
+                             rel_tol: float = 0.0) -> typing.List:
     """
     Returns the difference between two lists of electron shells (s1 - s2)
 
@@ -25,7 +28,8 @@ def subtract_electron_shells(s1, s2, rel_tol=0.0):
     return diff_shells
 
 
-def diff_basis_dict(left_list, right_list):
+def diff_basis_dict(left_list: typing.List[typing.MutableMapping],
+                    right_list: typing.List[typing.MutableMapping]) -> typing.List[typing.Dict]:
     '''
     Compute the difference between two sets of basis set dictionaries
 
@@ -73,7 +77,7 @@ def diff_basis_dict(left_list, right_list):
     return ret
 
 
-def diff_json_files(left_files, right_files):
+def diff_json_files(left_files: typing.List[str], right_files: typing.List[str]) -> None:
     '''
     Compute the difference between two sets of basis set JSON files
 
