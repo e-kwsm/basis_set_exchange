@@ -3,6 +3,7 @@ Functions for creating skeletons of dictionaries/JSON files
 '''
 
 import copy
+import typing
 
 _skeletons = {
     "component": {
@@ -55,7 +56,7 @@ _skeletons = {
 }
 
 
-def create_skel(role):
+def create_skel(role: str) -> typing.Dict[str, typing.Any]:
     '''
     Create the skeleton of a dictionary or JSON file
 
