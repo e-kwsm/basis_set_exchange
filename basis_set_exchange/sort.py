@@ -4,6 +4,7 @@ Sorting of BSE related dictionaries and data
 
 import sys
 import copy
+import typing
 
 # Dictionaries for python 3.6 and above are insertion ordered
 # For other versions, use an OrderedDict
@@ -13,7 +14,7 @@ if _use_odict:
     from collections import OrderedDict
 
 
-def sort_basis_dict(bs):
+def sort_basis_dict(bs: typing.Mapping) -> typing.Mapping:
     """Sorts a basis set dictionary into a standard order
 
     This, for example, allows the written file to be more easily read by humans by,
@@ -59,7 +60,7 @@ def sort_basis_dict(bs):
     # Add integers for the elements (being optimistic that element 150 will be found someday)
     _keyorder.extend([str(x) for x in range(150)])
 
-    bs_sorted = sorted(bs.items(), key=lambda x: _keyorder.index(x[0]))
+    bs_sorted = sorted(bs.items(), key=lambda x: _keyorder.index(x[0]))  # type: typing.Union[list, typing.Dict]
     if _use_odict:
         bs_sorted = OrderedDict(bs_sorted)
     else:
@@ -78,7 +79,7 @@ def sort_basis_dict(bs):
     return bs_sorted
 
 
-def sort_shell(shell, use_copy=True):
+def sort_shell(shell: typing.MutableMapping, use_copy: bool = True) -> typing.MutableMapping:
     """
     Sort a basis set shell into a standard order
 
@@ -123,7 +124,7 @@ def sort_shell(shell, use_copy=True):
     return shell
 
 
-def sort_shells(shells, use_copy=True):
+def sort_shells(shells: typing.Iterable, use_copy: bool = True) -> typing.List:
     """
     Sort a list of basis set shells into a standard order
 
@@ -154,7 +155,7 @@ def sort_shells(shells, use_copy=True):
     # yapf: enable
 
 
-def sort_potentials(potentials, use_copy=True):
+def sort_potentials(potentials: typing.Iterable, use_copy: bool = True) -> typing.List:
     """
     Sort a list of ECP potentials into a standard order
 
@@ -175,7 +176,7 @@ def sort_potentials(potentials, use_copy=True):
     return potentials
 
 
-def sort_basis(basis, use_copy=True):
+def sort_basis(basis, use_copy: bool = True):
     """
     Sorts all the information in a basis set into a standard order
 
@@ -194,7 +195,7 @@ def sort_basis(basis, use_copy=True):
     return sort_basis_dict(basis)
 
 
-def sort_single_reference(ref_entry):
+def sort_single_reference(ref_entry: typing.Mapping) -> typing.Dict:
     """Sorts a dictionary containing data for a single reference into a standard order
     """
 
@@ -222,7 +223,7 @@ def sort_single_reference(ref_entry):
         return dict(sorted_entry)
 
 
-def sort_references_dict(refs):
+def sort_references_dict(refs: typing.Mapping) -> typing.Mapping:
     """Sorts a reference dictionary into a standard order
 
     The keys of the references are also sorted, and the keys for the data for each
@@ -230,7 +231,7 @@ def sort_references_dict(refs):
     """
 
     if _use_odict:
-        refs_sorted = OrderedDict()
+        refs_sorted = OrderedDict()  # type: typing.MutableMapping
     else:
         refs_sorted = dict()
 
