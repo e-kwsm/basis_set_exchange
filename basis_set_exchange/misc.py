@@ -3,29 +3,32 @@ Miscellaneous helper functions
 '''
 
 import re
+import typing
 from . import lut
 
-
-def _Z_from_str(s):
+def _Z_from_str(s: str) -> int:
     if s.isdecimal():
         return int(s)
     else:
         return lut.element_Z_from_sym(s)
 
 
-def transpose_matrix(mat):
+TODO = typing.Iterable
+
+
+def transpose_matrix(mat: TODO) -> typing.List:
     '''Transposes a matrix (list of lists) commonly done do coefficients'''
 
     return list(map(list, zip(*mat)))
 
 
-def max_am(shells):
+def max_am(shells: typing.Mapping) -> int:
     '''Determine the maximum angular momentum of a list of shells or potentials'''
     all_am = [max(x['angular_momentum']) for x in shells]
     return max(all_am)
 
 
-def contraction_string(element):
+def contraction_string(element: typing.Mapping) -> str:
     """
     Forms a string specifying the contractions for an element
 
@@ -67,7 +70,7 @@ def contraction_string(element):
     return "({}) -> [{}]".format(primstr, contstr)
 
 
-def compact_elements(elements):
+def compact_elements(elements: typing.Iterable) -> typing.Optional[str]:
     """
     Create a string (with ranges) given a list of element numbers
 
@@ -75,7 +78,7 @@ def compact_elements(elements):
    """
 
     if not elements:
-        return
+        return None
 
     # We have to convert to integers for this function
     elements = [int(el) for el in elements]
@@ -119,7 +122,8 @@ def compact_elements(elements):
     return ",".join(range_strs)
 
 
-def expand_elements(compact_el, as_str=False):
+def expand_elements(compact_el: typing.Union[int, str, typing.List[typing.Union[int, str]]],
+                    as_str: bool = False) -> typing.Union[typing.List[int], typing.List[str]]:
     """
     Create a list of integers given a string or list of compacted elements
 
@@ -191,9 +195,7 @@ def expand_elements(compact_el, as_str=False):
         if '-' not in el:
             el_list.append(_Z_from_str(el))
         else:
-            begin, end = el.split('-')
-            begin = _Z_from_str(begin)
-            end = _Z_from_str(end)
+            begin, end = map(_Z_from_str, el.split('-'))
             el_list.extend(list(range(begin, end + 1)))
 
     if as_str:
@@ -202,7 +204,7 @@ def expand_elements(compact_el, as_str=False):
         return el_list
 
 
-def transform_basis_name(name):
+def transform_basis_name(name: str) -> str:
     """
     Transforms the name of a basis set to an internal representation
 
@@ -216,7 +218,7 @@ def transform_basis_name(name):
     return name
 
 
-def basis_name_to_filename(name):
+def basis_name_to_filename(name: str) -> str:
     '''
     Given a basis set name, transform it into a valid filename
 
@@ -226,7 +228,7 @@ def basis_name_to_filename(name):
     return transform_basis_name(name)
 
 
-def basis_name_from_filename(filename):
+def basis_name_from_filename(filename: str) -> str:
     '''
     Given a basis set name that was part of a filename, determine the basis set name
 
