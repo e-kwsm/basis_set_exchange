@@ -4,6 +4,7 @@ Add a basis set to the library
 
 import os
 import datetime
+import typing
 from ..fileio import read_json_basis, write_json_basis
 from ..misc import expand_elements
 from ..validator import validate_data
@@ -12,8 +13,8 @@ from ..readers import read_formatted_basis_file
 from .metadata import create_metadata_file
 
 
-def add_from_components(component_files, data_dir, subdir, file_base, name, family, role, description, version,
-                        revision_description):
+def add_from_components(component_files: typing.Iterable[str], data_dir: str, subdir: str, file_base, name: str,
+                        family: str, role: str, description: str, version: str, revision_description: str) -> None:
     '''
     Add a basis set to this library that is a combination of component files
 
@@ -143,19 +144,19 @@ def add_from_components(component_files, data_dir, subdir, file_base, name, fami
     create_metadata_file(metadata_file, data_dir)
 
 
-def add_basis(bs_file,
-              data_dir,
-              subdir,
-              file_base,
-              name,
-              family,
-              role,
-              description,
-              version,
-              revision_description,
-              data_source,
-              refs=None,
-              file_fmt=None):
+def add_basis(bs_file: str,
+              data_dir: str,
+              subdir: str,
+              file_base: str,
+              name: str,
+              family: str,
+              role: str,
+              description: str,
+              version: str,
+              revision_description: str,
+              data_source: str,
+              refs: typing.Union[str, typing.List, typing.Dict] = None,
+              file_fmt: typing.Optional[str] = None) -> None:
     '''
     Add a basis set to this library
 
@@ -214,7 +215,7 @@ def add_basis(bs_file,
     # we can detect duplicates in the references (which would be an error)
     # (and also handle elements with no reference)
     orig_elements = bs_data['elements']
-    done_elements = []
+    done_elements = []  # type: typing.List[str]
 
     # If a string or list of strings, use that as a reference for all elements
     if isinstance(refs, str):
