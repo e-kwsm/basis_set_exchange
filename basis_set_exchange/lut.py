@@ -7,6 +7,8 @@ symbol, name, or number. It also has functions for converting
 angular momentum between integers (0, 1, 2) and letters (s, p, d).
 '''
 
+import typing
+
 # Contains the symbols, names, and Z numbers for all known elements
 # NOTE: Some Z number have multiple entries. This is to allow for querying
 #       based on older, systematic names/symbols (like uuh), however a query
@@ -82,12 +84,12 @@ _amchar_map_hik = 'spdfghiklmnoqrtuvwxyzabce'
 _amchar_map_hij = 'spdfghijklmnoqrtuvwxyzabce'
 
 
-def all_element_names():
+def all_element_names() -> typing.List[str]:
     '''Obtain a list of the names of all the elements'''
     return list(_element_name_map.keys())
 
 
-def element_data_from_Z(Z):
+def element_data_from_Z(Z: typing.Union[int, str]) -> typing.Tuple[str, int, str]:
     '''Obtain elemental data given a Z number
 
     An exception is thrown if the Z number is not found
@@ -102,7 +104,7 @@ def element_data_from_Z(Z):
     return _element_Z_map[Z]
 
 
-def element_data_from_sym(sym):
+def element_data_from_sym(sym: str) -> typing.Tuple[str, int, str]:
     '''Obtain elemental data given an elemental symbol
 
     The given symbol is not case sensitive
@@ -116,7 +118,7 @@ def element_data_from_sym(sym):
     return _element_sym_map[sym_lower]
 
 
-def element_data_from_name(name):
+def element_data_from_name(name: str) -> typing.Tuple[str, int, str]:
     '''Obtain elemental data given an elemental name
 
     The given name is not case sensitive
@@ -130,7 +132,7 @@ def element_data_from_name(name):
     return _element_name_map[name_lower]
 
 
-def element_name_from_Z(Z, normalize=False):
+def element_name_from_Z(Z: typing.Union[int, str], normalize: bool = False) -> str:
     '''Obtain an element's name from its Z number
 
     An exception is thrown if the Z number is not found
@@ -145,7 +147,7 @@ def element_name_from_Z(Z, normalize=False):
         return r
 
 
-def element_Z_from_name(name, as_str=False):
+def element_Z_from_name(name: str, as_str: bool = False) -> typing.Union[int, str]:
     '''Obtain an element's Z number given its name
 
     If as_str is True, then a string is returned (ie, '1' for Hydrogen)
@@ -153,13 +155,13 @@ def element_Z_from_name(name, as_str=False):
     An exception is thrown if the name is not found
     '''
 
-    Z = element_data_from_name(name)[1]
+    Z = element_data_from_name(name)[1]  # type: typing.Union[int, str]
     if as_str:
         Z = str(Z)
     return Z
 
 
-def element_sym_from_Z(Z, normalize=False):
+def element_sym_from_Z(Z: typing.Union[int, str], normalize: bool = False) -> str:
     '''Obtain an element's symbol from its Z number
 
     An exception is thrown if the Z number is not found
@@ -174,7 +176,7 @@ def element_sym_from_Z(Z, normalize=False):
         return r
 
 
-def element_Z_from_sym(sym, as_str=False):
+def element_Z_from_sym(sym: str, as_str: bool = False) -> typing.Union[str, int]:
     '''Obtain an element's Z-number given its symbol
 
     If as_str is True, then a string is returned (ie, '1' for Hydrogen)
@@ -182,13 +184,13 @@ def element_Z_from_sym(sym, as_str=False):
     An exception is thrown if the symbol is not found
     '''
 
-    Z = element_data_from_sym(sym)[1]
+    Z = element_data_from_sym(sym)[1]  # type: typing.Union[str, int]
     if as_str:
         Z = str(Z)
     return Z
 
 
-def amint_to_char(am, hij=False, use_L=False):
+def amint_to_char(am: typing.List[int], hij: bool = False, use_L: bool = False) -> str:
     '''Convert an angular momentum integer to a character
 
     The input is a list (to handle sp, spd, ... orbitals). The return
@@ -221,7 +223,7 @@ def amint_to_char(am, hij=False, use_L=False):
     return ''.join(amchar)
 
 
-def amchar_to_int(amchar, hij=False):
+def amchar_to_int(amchar: str, hij: bool = False) -> typing.List[int]:
     '''Convert an angular momentum integer to a character
 
     The return value is a list of integers (to handle sp, spd, ... orbitals)
@@ -250,7 +252,7 @@ def amchar_to_int(amchar, hij=False):
     return amint
 
 
-def electron_shells_start(nelectrons, max_am=20):
+def electron_shells_start(nelectrons: int, max_am: int = 20) -> typing.List[int]:
     '''Return the starting principle quantum numbers of electron shells
 
     For example, an ECP covering 10 electrons will covers 1s, 2s, 2p shells. The
