@@ -6,10 +6,13 @@ data, as well as some other small functions.
 """
 
 import copy
+import typing
 from . import lut, skel, misc
 
 
-def merge_element_data(dest, sources, use_copy=True):
+def merge_element_data(dest: typing.Optional[typing.MutableMapping],
+                       sources: typing.Collection,
+                       use_copy: bool = True) -> typing.MutableMapping:
     """
     Merges the basis set data for an element from multiple sources
     into dest.
@@ -23,7 +26,7 @@ def merge_element_data(dest, sources, use_copy=True):
     """
 
     if dest is not None:
-        ret = dest.copy()
+        ret = copy.copy(dest)
     else:
         ret = {}
 
@@ -50,7 +53,7 @@ def merge_element_data(dest, sources, use_copy=True):
     return ret
 
 
-def prune_shell(shell, use_copy=True):
+def prune_shell(shell: typing.MutableMapping, use_copy: bool = True) -> typing.Mapping:
     """
     Removes exact duplicates of primitives, and condenses duplicate exponents
     into general contractions
@@ -68,7 +71,7 @@ def prune_shell(shell, use_copy=True):
     coeff_t = list(map(list, zip(*shell['coefficients'])))
 
     # Group by exponents
-    ex_groups = []
+    ex_groups = []  # type: list
     for i in range(nprim):
         for ex in ex_groups:
             if float(exponents[i]) == float(ex[0]):
@@ -121,7 +124,7 @@ def prune_shell(shell, use_copy=True):
     return shell
 
 
-def prune_basis(basis, use_copy=True):
+def prune_basis(basis: typing.Mapping, use_copy: bool = True) -> typing.Mapping:
     """
     Removes primitives that have a zero coefficient, and
     removes duplicate primitives and shells
@@ -152,7 +155,7 @@ def prune_basis(basis, use_copy=True):
     return basis
 
 
-def uncontract_spdf(basis, max_am=0, use_copy=True):
+def uncontract_spdf(basis: typing.Mapping, max_am: int = 0, use_copy: bool = True) -> typing.Mapping:
     """
     Removes sp, spd, spdf, etc, contractions from a basis set
 
@@ -210,7 +213,7 @@ def uncontract_spdf(basis, max_am=0, use_copy=True):
     return basis
 
 
-def uncontract_general(basis, use_copy=True):
+def uncontract_general(basis: typing.Mapping, use_copy: bool = True) -> typing.Mapping:
     """
     Removes the general contractions from a basis set
 
@@ -251,7 +254,7 @@ def uncontract_general(basis, use_copy=True):
     return prune_basis(basis, False)
 
 
-def uncontract_segmented(basis, use_copy=True):
+def uncontract_segmented(basis: typing.Mapping, use_copy: bool = True) -> typing.Mapping:
     """
     Removes the segmented contractions from a basis set
 
@@ -294,7 +297,7 @@ def uncontract_segmented(basis, use_copy=True):
     return basis
 
 
-def make_general(basis, skip_spdf=False, use_copy=True):
+def make_general(basis: typing.Mapping, skip_spdf: bool = False, use_copy: bool = True) -> typing.Mapping:
     """
     Makes one large general contraction for each angular momentum
 
@@ -384,11 +387,11 @@ def make_general(basis, skip_spdf=False, use_copy=True):
     return basis
 
 
-def _is_single_column(col):
+def _is_single_column(col: typing.Iterable) -> bool:
     return sum(float(x) != 0.0 for x in col) == 1
 
 
-def optimize_general(basis, use_copy=True):
+def optimize_general(basis: typing.Mapping, use_copy: bool = True) -> typing.Mapping:
     """
     Optimizes the general contraction using the method of Hashimoto et al
 
@@ -454,7 +457,10 @@ def optimize_general(basis, use_copy=True):
     return basis
 
 
-def extend_dunning_aug(basis, level, use_copy=True, as_component=False):
+def extend_dunning_aug(basis: typing.MutableMapping,
+                       level: int,
+                       use_copy: bool = True,
+                       as_component: bool = False) -> typing.MutableMapping:
     '''
     Extends the augmenting functions of a dunning basis set (aug -> daug,taug,...)
 
@@ -532,11 +538,7 @@ def extend_dunning_aug(basis, level, use_copy=True, as_component=False):
             if alpha_coefs.count(0.0) != n_coefs - 1 or alpha_coefs.count(1.0) != 1:
                 raise RuntimeError("Smallest exponent is not completely uncontracted. Exponent: {}".format(alpha))
 
-            new_exponents = []
-            for i in range(1, level):
-                new_exponents.append(alpha * (beta**i))
-
-            new_exponents = ['{:.3e}'.format(x) for x in new_exponents]
+            new_exponents = ['{:.3e}'.format(alpha * (beta**i)) for i in range(1, level)]
 
             # add the new exponents as new uncontracted shells
             for ex in new_exponents:
@@ -558,7 +560,7 @@ def extend_dunning_aug(basis, level, use_copy=True, as_component=False):
     return basis
 
 
-def remove_primitive(electron_shell, idx_to_remove):
+def remove_primitive(electron_shell: typing.MutableMapping, idx_to_remove) -> None:
     '''Removes a primitive (by index) of a electron_shell
 
     The electron_shell passed in is modified
@@ -575,7 +577,7 @@ def remove_primitive(electron_shell, idx_to_remove):
     ]
 
 
-def _element_remove_diffuse(eldata, nremove):
+def _element_remove_diffuse(eldata: typing.Mapping, nremove: typing.Union[int, str]) -> None:
     if 'electron_shells' not in eldata:
         pass
 
@@ -607,7 +609,7 @@ def _element_remove_diffuse(eldata, nremove):
         remove_primitive(shell, diffuse_idx)
 
 
-def truhlar_calendarize(basis, month, use_copy=True):
+def truhlar_calendarize(basis: typing.Mapping, month: str, use_copy: bool = True) -> typing.Mapping:
     '''Create the truhlar "month" basis sets from the corresponding aug basis set
 
     In Papajak 2011, removal of diffuse function stopped before removal of s and p functions.
