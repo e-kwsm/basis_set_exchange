@@ -8,6 +8,7 @@ import zipfile
 import tarfile
 import io
 import datetime
+import typing
 from . import api, writers, refconverters, misc
 
 _readme_str = '''Basis set exchange: Basis set bundle
@@ -39,7 +40,7 @@ bse@molssi.org
 '''
 
 
-def _create_readme(fmt, reffmt):
+def _create_readme(fmt: str, reffmt: str) -> str:
     '''
     Creates the readme file for the bundle
 
@@ -58,7 +59,7 @@ def _create_readme(fmt, reffmt):
     return outstr
 
 
-def _basis_data_iter(fmt, reffmt, data_dir):
+def _basis_data_iter(fmt: str, reffmt: str, data_dir: str) -> typing.Iterator[typing.Tuple[str, typing.Dict, str]]:
     '''Iterate over all basis set names, and return a tuple of
        (name, data) where data is the basis set in the given format
     '''
@@ -76,7 +77,7 @@ def _basis_data_iter(fmt, reffmt, data_dir):
         yield (bs, data, notes)
 
 
-def _add_to_tbz(tfile, filename, data_str):
+def _add_to_tbz(tfile: tarfile.TarFile, filename: str, data_str: str) -> None:
     '''
     Adds string data to a tarfile
     '''
@@ -89,24 +90,24 @@ def _add_to_tbz(tfile, filename, data_str):
     tfile.addfile(tarinfo=ti, fileobj=io.BytesIO(encoded_data))
 
 
-def _add_to_zip(zfile, filename, data_str):
+def _add_to_zip(zfile: zipfile.ZipFile, filename: str, data_str: str) -> None:
     '''
     Adds string data to a zipfile
     '''
     zfile.writestr(filename, data_str)
 
 
-def _bundle_tbz(outfile, fmt, reffmt, data_dir):
+def _bundle_tbz(outfile: str, fmt: str, reffmt: str, data_dir: str) -> None:
     with tarfile.open(outfile, 'w:bz2') as tf:
         _bundle_generic(tf, _add_to_tbz, fmt, reffmt, data_dir)
 
 
-def _bundle_zip(outfile, fmt, reffmt, data_dir):
+def _bundle_zip(outfile: str, fmt: str, reffmt: str, data_dir: str) -> None:
     with zipfile.ZipFile(outfile, 'w', zipfile.ZIP_DEFLATED) as zf:
         _bundle_generic(zf, _add_to_zip, fmt, reffmt, data_dir)
 
 
-def _bundle_generic(bfile, addhelper, fmt, reffmt, data_dir):
+def _bundle_generic(bfile: typing.Any, addhelper: typing.Callable, fmt: str, reffmt: str, data_dir: str) -> None:
     '''
     Loop over all basis sets and add data to an archive
 
@@ -171,7 +172,11 @@ _bundle_types = {
 }
 
 
-def create_bundle(outfile, fmt, reffmt, archive_type=None, data_dir=None):
+def create_bundle(outfile: str,
+                  fmt: str,
+                  reffmt: str,
+                  archive_type: typing.Optional[str] = None,
+                  data_dir: typing.Optional[str] = None) -> None:
     '''
     Create a single archive file containing all basis
     sets in a given format
@@ -214,7 +219,7 @@ def create_bundle(outfile, fmt, reffmt, archive_type=None, data_dir=None):
     _bundle_types[archive_type]['handler'](outfile, fmt, reffmt, data_dir)
 
 
-def get_archive_types():
+def get_archive_types() -> typing.Dict[str, typing.Dict[str, str]]:
     '''
     Return information related to the types of archives available
     '''
