@@ -2,17 +2,20 @@
 
 import os
 import tempfile
+import typing
 from .. import api, fileio
 from ..misc import compact_elements
 
 try:
     import graphviz
     graphviz_avail = True
+    G = graphviz.Digraph
 except ImportError:
     graphviz_avail = False
+    G = typing.TypeVar("Digraph")
 
 
-def _make_graph(bsname, version=None, data_dir=None):
+def _make_graph(bsname: str, version: str = None, data_dir: str = None) -> G:
     '''
     Create a DOT graph file of the files included in a basis set
     '''
@@ -75,14 +78,18 @@ def _make_graph(bsname, version=None, data_dir=None):
     return gr
 
 
-def view_graph(bsname, version=None, data_dir=None):
+def view_graph(bsname: str, version: str = None, data_dir: str = None) -> None:
     gr = _make_graph(bsname, version, data_dir)
 
     outdir = tempfile.mkdtemp()
     gr.render(directory=outdir, format='png', view=True)
 
 
-def make_graph_file(bsname, outfile, render=False, version=None, data_dir=None):
+def make_graph_file(bsname: str,
+                    outfile: str,
+                    render: bool = False,
+                    version: typing.Optional[str] = None,
+                    data_dir: typing.Optional[str] = None) -> None:
     gr = _make_graph(bsname, version, data_dir)
 
     if render:
