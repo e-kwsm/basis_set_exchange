@@ -12,7 +12,7 @@ from .complete import (cli_case_insensitive_validator,
                        cli_write_fmt_completer, cli_read_fmt_completer, cli_reffmt_completer)
 
 
-def run_bse_cli():
+def run_bse_cli() -> int:
     ################################################################################################
     # NOTE: I am deliberately not using the 'choices' argument in add_argument. I could use it
     # for formats, etc, however I wouldn't want to use it for basis set names. Therefore, I handle
