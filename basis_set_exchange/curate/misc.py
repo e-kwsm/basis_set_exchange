@@ -2,11 +2,12 @@
 Miscellaneous curation functions
 '''
 
+import typing
 from .. import fileio
 from .. import misc
 
 
-def elements_in_files(filelist):
+def elements_in_files(filelist: typing.List[str]) -> typing.Dict:
     '''Get a list of what elements exist in JSON files
 
     This works on table, element, and component data files
@@ -32,7 +33,7 @@ def elements_in_files(filelist):
     return ret
 
 
-def component_file_refs(filelist):
+def component_file_refs(filelist: typing.List[str]) -> typing.Dict:
     '''Get a list of what elements/refrences exist in component JSON files
 
     Parameters
