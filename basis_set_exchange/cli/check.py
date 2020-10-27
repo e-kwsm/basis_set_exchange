@@ -2,12 +2,14 @@
 Validators for command line options
 '''
 
+from argparse import Namespace
 import os
 import copy
+import typing
 from .. import api, misc, curate
 
 
-def _cli_check_data_dir(data_dir):
+def _cli_check_data_dir(data_dir: typing.Optional[str]) -> typing.Optional[str]:
     '''Checks that the data dir exists and contains METADATA.json'''
 
     if data_dir is None:
@@ -23,7 +25,7 @@ def _cli_check_data_dir(data_dir):
     return data_dir
 
 
-def _cli_check_format(fmt):
+def _cli_check_format(fmt: typing.Optional[str]) -> typing.Optional[str]:
     '''Checks that a basis set format exists and if not, raises a helpful exception'''
 
     if fmt is None:
@@ -38,7 +40,7 @@ def _cli_check_format(fmt):
     return fmt
 
 
-def _cli_check_ref_format(fmt):
+def _cli_check_ref_format(fmt: typing.Optional[str]) -> typing.Optional[str]:
     '''Checks that a reference format exists and if not, raises a helpful exception'''
 
     if fmt is None:
@@ -53,7 +55,7 @@ def _cli_check_ref_format(fmt):
     return fmt
 
 
-def _cli_check_role(role):
+def _cli_check_role(role: typing.Optional[str]) -> typing.Optional[str]:
     '''Checks that a basis set role exists and if not, raises a helpful exception'''
 
     if role is None:
@@ -68,7 +70,7 @@ def _cli_check_role(role):
     return role
 
 
-def _cli_check_basis(name, data_dir):
+def _cli_check_basis(name: typing.Optional[str], data_dir: typing.Optional[str]) -> typing.Optional[str]:
     '''Checks that a basis set exists and if not, raises a helpful exception'''
 
     if name is None:
@@ -84,7 +86,7 @@ def _cli_check_basis(name, data_dir):
     return name
 
 
-def _cli_check_family(family, data_dir):
+def _cli_check_family(family: typing.Optional[str], data_dir: typing.Optional[str]) -> typing.Optional[str]:
     '''Checks that a basis set family exists and if not, raises a helpful exception'''
 
     if family is None:
@@ -99,7 +101,7 @@ def _cli_check_family(family, data_dir):
     return family
 
 
-def _cli_check_readfmt(readfmt):
+def _cli_check_readfmt(readfmt: typing.Optional[str]) -> typing.Optional[str]:
     '''Checks that a file type exists and if not, raises a helpful exception'''
 
     if readfmt is None:
@@ -114,7 +116,7 @@ def _cli_check_readfmt(readfmt):
     return readfmt
 
 
-def cli_check_normalize_args(args):
+def cli_check_normalize_args(args: Namespace) -> Namespace:
     '''Check and normalize arguments
        This function checks that basis set names, families, roles, etc, are
        valid (and raise an exception if they aren't)
