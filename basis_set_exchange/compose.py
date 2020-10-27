@@ -3,10 +3,11 @@ Functions related to composing basis sets from individual components
 """
 
 import os
+import typing
 from . import fileio, manip, memo
 
 
-def _whole_basis_types(basis):
+def _whole_basis_types(basis: typing.Mapping) -> typing.List:
     '''
     Get a list of all the types of features in this basis set.
 
@@ -26,7 +27,7 @@ def _whole_basis_types(basis):
     return sorted(list(all_types))
 
 
-def compose_elemental_basis(file_relpath, data_dir):
+def compose_elemental_basis(file_relpath: str, data_dir: str) -> typing.Any:
     """
     Creates an 'elemental' basis from an elemental json file
 
@@ -77,7 +78,7 @@ def compose_elemental_basis(file_relpath, data_dir):
 
 
 @memo.BSEMemoize
-def compose_table_basis(file_relpath, data_dir):
+def compose_table_basis(file_relpath: str, data_dir: str) -> typing.Dict:
     """
     Creates a 'table' basis from an table json file
 
