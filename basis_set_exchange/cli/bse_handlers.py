@@ -2,12 +2,13 @@
 Handlers for command line subcommands
 '''
 
+from argparse import Namespace
 from .. import api, bundle, readers, writers, refconverters, convert
 from ..misc import compact_elements
 from .common import format_columns
 
 
-def _bse_cli_list_basis_sets(args):
+def _bse_cli_list_basis_sets(args) -> str:
     '''Handles the list-basis-sets subcommand'''
     metadata = api.filter_basis_sets(args.substr, args.family, args.role, args.elements, args.data_dir)
 
@@ -19,13 +20,13 @@ def _bse_cli_list_basis_sets(args):
     return '\n'.join(liststr)
 
 
-def _bse_cli_list_families(args):
+def _bse_cli_list_families(args) -> str:
     '''Handles the list-families subcommand'''
     families = api.get_families(args.data_dir)
     return '\n'.join(families)
 
 
-def _bse_cli_list_writer_formats(args):
+def _bse_cli_list_writer_formats(args) -> str:
     '''Handles the list-writer-formats subcommand'''
     all_formats = writers.get_writer_formats()
 
@@ -37,7 +38,7 @@ def _bse_cli_list_writer_formats(args):
     return '\n'.join(sorted(liststr))
 
 
-def _bse_cli_list_reader_formats(args):
+def _bse_cli_list_reader_formats(args) -> str:
     all_formats = readers.get_reader_formats()
 
     if args.no_description:
@@ -48,7 +49,7 @@ def _bse_cli_list_reader_formats(args):
     return '\n'.join(liststr)
 
 
-def _bse_cli_list_formats(args):
+def _bse_cli_list_formats(args) -> str:
     all_formats = api.get_formats()
 
     if args.no_description:
@@ -59,7 +60,7 @@ def _bse_cli_list_formats(args):
     return '\n'.join(liststr)
 
 
-def _bse_cli_list_ref_formats(args):
+def _bse_cli_list_ref_formats(args) -> str:
     '''Handles the list-ref-formats subcommand'''
     all_refformats = refconverters.get_reference_formats()
 
@@ -71,7 +72,7 @@ def _bse_cli_list_ref_formats(args):
     return '\n'.join(liststr)
 
 
-def _bse_cli_list_roles(args):
+def _bse_cli_list_roles(args) -> str:
     '''Handles the list-roles subcommand'''
     all_roles = api.get_roles()
 
@@ -83,18 +84,18 @@ def _bse_cli_list_roles(args):
     return '\n'.join(liststr)
 
 
-def _bse_cli_get_data_dir(args):
+def _bse_cli_get_data_dir(args) -> str:
     '''Handles the get-data-dir subcommand'''
 
     return api.get_data_dir()
 
 
-def _bse_cli_lookup_by_role(args):
+def _bse_cli_lookup_by_role(args) -> str:
     '''Handles the lookup-by-role subcommand'''
     return api.lookup_basis_by_role(args.basis, args.role, args.data_dir)
 
 
-def _bse_cli_get_basis(args):
+def _bse_cli_get_basis(args) -> str:
     '''Handles the get-basis subcommand'''
 
     return api.get_basis(
@@ -111,13 +112,13 @@ def _bse_cli_get_basis(args):
         header=not args.noheader)
 
 
-def _bse_cli_get_refs(args):
+def _bse_cli_get_refs(args) -> str:
     '''Handles the get-refs subcommand'''
     return api.get_references(
         basis_name=args.basis, elements=args.elements, version=args.version, fmt=args.reffmt, data_dir=args.data_dir)
 
 
-def _bse_cli_get_info(args):
+def _bse_cli_get_info(args) -> str:
     '''Handles the get-info subcommand'''
 
     bs_meta = api.get_metadata(args.data_dir)[args.basis]
@@ -152,17 +153,17 @@ def _bse_cli_get_info(args):
     return '\n'.join(ret)
 
 
-def _bse_cli_get_notes(args):
+def _bse_cli_get_notes(args) -> str:
     '''Handles the get-notes subcommand'''
     return api.get_basis_notes(args.basis, args.data_dir)
 
 
-def _bse_cli_get_family(args):
+def _bse_cli_get_family(args) -> str:
     '''Handles the get-family subcommand'''
     return api.get_basis_family(args.basis, args.data_dir)
 
 
-def _bse_cli_get_versions(args):
+def _bse_cli_get_versions(args) -> str:
     '''Handles the get-versions subcommand'''
     name = args.basis.lower()
     metadata = api.get_metadata(args.data_dir)
@@ -181,12 +182,12 @@ def _bse_cli_get_versions(args):
     return '\n'.join(liststr)
 
 
-def _bse_cli_get_family_notes(args):
+def _bse_cli_get_family_notes(args) -> str:
     '''Handles the get-family-notes subcommand'''
     return api.get_family_notes(args.family, args.data_dir)
 
 
-def _bse_cli_convert_basis(args):
+def _bse_cli_convert_basis(args) -> str:
     '''Handles the convert-basis subcommand'''
 
     # We convert file -> file
@@ -194,13 +195,13 @@ def _bse_cli_convert_basis(args):
     return "Converted {} -> {}".format(args.input_file, args.output_file)
 
 
-def _bse_cli_create_bundle(args):
+def _bse_cli_create_bundle(args) -> str:
     '''Handles the create-bundle subcommand'''
     bundle.create_bundle(args.bundle_file, args.fmt, args.reffmt, args.archive_type, args.data_dir)
     return "Created " + args.bundle_file
 
 
-def bse_cli_handle_subcmd(args):
+def bse_cli_handle_subcmd(args: Namespace) -> str:
     handler_map = {
         'list-formats': _bse_cli_list_writer_formats,
         'list-writer-formats': _bse_cli_list_writer_formats,
