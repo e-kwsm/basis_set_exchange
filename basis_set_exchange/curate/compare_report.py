@@ -2,6 +2,7 @@
 Comparison of basis data against authoritative sources
 '''
 
+import typing
 from ..api import get_basis
 from ..misc import compact_elements
 from ..sort import sort_shells, sort_potentials
@@ -10,7 +11,7 @@ from ..readers import read_formatted_basis_file
 from .compare import _reldiff
 
 
-def _print_list(lst):
+def _print_list(lst: typing.Iterable) -> str:
     '''
     Prints a list from a comparison
     '''
@@ -22,7 +23,7 @@ def _print_list(lst):
         return ""
 
 
-def shells_difference(s1, s2):
+def shells_difference(s1: typing.Collection, s2: typing.Collection) -> float:
     """
     Computes and prints the differences between two lists of shells
 
@@ -79,7 +80,7 @@ def shells_difference(s1, s2):
     return max_rdiff
 
 
-def potentials_difference(p1, p2):
+def potentials_difference(p1: typing.Collection, p2: typing.Collection) -> float:
     """
     Computes and prints the differences between two lists of potentials
 
@@ -143,7 +144,7 @@ def potentials_difference(p1, p2):
     return max_rdiff
 
 
-def basis_comparison_report(bs1, bs2, uncontract_general=False):
+def basis_comparison_report(bs1: typing.Mapping, bs2: typing.Mapping, uncontract_general: bool = False) -> bool:
     '''
     Compares two basis set dictionaries and prints a report about their differences
     '''
@@ -222,12 +223,12 @@ def basis_comparison_report(bs1, bs2, uncontract_general=False):
     return (not not_in_bs1 and not not_in_bs2 and not some_diff and not big_diff)
 
 
-def compare_basis_against_file(basis_name,
-                               src_filepath,
-                               file_type=None,
-                               version=None,
-                               uncontract_general=False,
-                               data_dir=None):
+def compare_basis_against_file(basis_name: str,
+                               src_filepath: str,
+                               file_type: typing.Optional[str] = None,
+                               version: typing.Union[None, int, str] = None,
+                               uncontract_general: bool = False,
+                               data_dir: typing.Optional[str] = None) -> bool:
     '''Compare a basis set in the BSE against a reference file'''
 
     src_data = read_formatted_basis_file(src_filepath, file_type)
@@ -235,7 +236,11 @@ def compare_basis_against_file(basis_name,
     return basis_comparison_report(src_data, bse_data, uncontract_general=uncontract_general)
 
 
-def compare_basis_files(file_path_1, file_path_2, file_type_1=None, file_type_2=None, uncontract_general=False):
+def compare_basis_files(file_path_1: str,
+                        file_path_2: str,
+                        file_type_1: typing.Optional[str] = None,
+                        file_type_2: typing.Optional[str] = None,
+                        uncontract_general: bool = False) -> bool:
     '''Compare two files containing formatted basis sets'''
 
     bs1 = read_formatted_basis_file(file_path_1, file_type_1)
@@ -243,13 +248,13 @@ def compare_basis_files(file_path_1, file_path_2, file_type_1=None, file_type_2=
     return basis_comparison_report(bs1, bs2, uncontract_general)
 
 
-def compare_basis_sets(basis_name_1,
-                       basis_name_2,
-                       version_1=None,
-                       version_2=None,
-                       uncontract_general=False,
-                       data_dir_1=None,
-                       data_dir_2=None):
+def compare_basis_sets(basis_name_1: str,
+                       basis_name_2: str,
+                       version_1: typing.Union[None, int, str] = None,
+                       version_2: typing.Union[None, int, str] = None,
+                       uncontract_general: bool = False,
+                       data_dir_1: typing.Optional[str] = None,
+                       data_dir_2: typing.Optional[str] = None) -> bool:
     '''Compare two files containing formatted basis sets'''
 
     bs1 = get_basis(basis_name_1, version=version_1, data_dir=data_dir_1)
