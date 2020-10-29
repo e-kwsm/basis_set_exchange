@@ -2,17 +2,18 @@
 Handlers for command line subcommands
 '''
 
+from argparse import Namespace
 from .. import curate, printing, fileio
 from .common import format_columns
 
 
-def _bsecurate_cli_elements_in_files(args):
+def _bsecurate_cli_elements_in_files(args) -> str:
     '''Handles the elements-in-files subcommand'''
     data = curate.elements_in_files(args.files)
     return '\n'.join(format_columns(data.items()))
 
 
-def _bsecurate_cli_component_file_refs(args):
+def _bsecurate_cli_component_file_refs(args) -> str:
     '''Handles the component-file-refs subcommand'''
     data = curate.component_file_refs(args.files)
 
@@ -28,14 +29,14 @@ def _bsecurate_cli_component_file_refs(args):
     return s
 
 
-def _bsecurate_cli_print_component_file(args):
+def _bsecurate_cli_print_component_file(args) -> str:
     '''Handles the print-component-file subcommand'''
 
     data = fileio.read_json_basis(args.file)
     return printing.component_basis_str(data, elements=args.elements)
 
 
-def _bsecurate_cli_compare_basis_sets(args):
+def _bsecurate_cli_compare_basis_sets(args) -> str:
     '''Handles compare-basis-sets subcommand'''
     ret = curate.compare_basis_sets(args.basis1, args.basis2, args.version1, args.version2, args.uncontract_general,
           args.data_dir, args.data_dir)
@@ -45,7 +46,7 @@ def _bsecurate_cli_compare_basis_sets(args):
         return "DIFFERENCES FOUND. SEE ABOVE"
 
 
-def _bsecurate_cli_compare_basis_files(args):
+def _bsecurate_cli_compare_basis_files(args) -> str:
     '''Handles compare-basis-files subcommand'''
     ret = curate.compare_basis_files(args.file1, args.file2, args.readfmt1, args.readfmt2, args.uncontract_general)
 
@@ -55,28 +56,28 @@ def _bsecurate_cli_compare_basis_files(args):
         return "DIFFERENCES FOUND. SEE ABOVE"
 
 
-def _bsecurate_cli_make_diff(args):
+def _bsecurate_cli_make_diff(args) -> str:
     '''Handles the view-graph subcommand'''
 
     curate.diff_json_files(args.left, args.right)
     return ''
 
 
-def _bsecurate_cli_view_graph(args):
+def _bsecurate_cli_view_graph(args) -> str:
     '''Handles the view-graph subcommand'''
 
     curate.view_graph(args.basis, args.version, args.data_dir)
     return ''
 
 
-def _bsecurate_cli_make_graph_file(args):
+def _bsecurate_cli_make_graph_file(args) -> str:
     '''Handles the make-graph-file subcommand'''
 
     curate.make_graph_file(args.basis, args.outfile, args.render, args.version, args.data_dir)
     return ''
 
 
-def bsecurate_cli_handle_subcmd(args):
+def bsecurate_cli_handle_subcmd(args: Namespace) -> str:
     handler_map = {
         'elements-in-files': _bsecurate_cli_elements_in_files,
         'component-file-refs': _bsecurate_cli_component_file_refs,
