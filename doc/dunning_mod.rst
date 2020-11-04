@@ -5,9 +5,9 @@ Modifications to Dunning-style basis sets
 
 
 The Dunning-style aug-cc basis sets can be modified in two ways. The first is by
-extending the augmentation, as described by Woon & Dunning (https://dx.doi.org/10.1063/1.466439).
+extending the augmentation, as described by Woon & Dunning (https://doi.org/10.1063/1.466439).
 The second is by removing diffuse functions, forming the 'calendar' basis sets
-(Papajak & Truhlar, https://dx.doi.org/10.1021/ct1005533)
+(Papajak & Truhlar, https://doi.org/10.1021/ct1005533)
 
 
 Extending the augmentation
@@ -126,7 +126,7 @@ To form the earlier months, the procedure is as follows
   3. 'may' - remove the diffuse function from the next highest AM from non-H,He elements
   4. Continue until finished or you hit 'jan'
 
-In Papajak & Truhlar (2011, https://dx.doi.org/10.1021/ct1005533), truncation
+In Papajak & Truhlar (2011, https://doi.org/10.1021/ct1005533), truncation
 of the diffuse functions stops when only s & p diffuse functions remain. This
 month is also denoted 'maug' (minimally-augmented).
 
