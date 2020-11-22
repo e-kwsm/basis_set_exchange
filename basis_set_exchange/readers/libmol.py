@@ -61,7 +61,7 @@ ecp_block_cont_re = regex.compile(r'\s*(?:(?P<rexp>\d+)\s+(?P<expn>{0})\s+(?P<co
 _func_type = 'gto_spherical'
 
 
-def _read_shell(basis_lines, bs_data, iline):
+def _read_shell(basis_lines, bs_data, iline: int) -> int:
     '''Read in a shell from the input'''
     # Read the shell entry
     shell = helpers.parse_line_regex_dict(element_shell_re, basis_lines[iline],
@@ -155,7 +155,7 @@ def _read_shell(basis_lines, bs_data, iline):
     return iline
 
 
-def _read_ecp(basis_lines, bs_data, iline):
+def _read_ecp(basis_lines, bs_data, iline: int) -> int:
     '''Reads an ECP from the input'''
 
     # Read the ECP entry
@@ -172,7 +172,7 @@ def _read_ecp(basis_lines, bs_data, iline):
     # Data entries read in
     nread = 0
 
-    def parse_ecp(basis_lines, iline, lmax, so=False):
+    def parse_ecp(basis_lines, iline: int, lmax: int, so: bool = False):
         '''Reads in a block of ECP data'''
 
         if lmax == 0:
@@ -263,7 +263,7 @@ def _read_ecp(basis_lines, bs_data, iline):
     return iline
 
 
-def _parse_lines(basis_lines, bs_data):
+def _parse_lines(basis_lines, bs_data) -> None:
     '''Parses lines representing all the electron shells for a single element
 
     Resulting information is stored in bs_data

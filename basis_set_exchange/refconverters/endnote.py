@@ -33,7 +33,7 @@ Conversion of references to EndNote (.enw) format
 '''
 
 
-def write_endnote(key, ref):
+def write_endnote(key: str, ref) -> str:
     '''Convert a single reference to endnote format
     '''
     s = ''

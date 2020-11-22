@@ -34,6 +34,7 @@ Some helper functions for parsing basis set files
 
 import re
 import regex
+from typing import Optional, Union
 from ..misc import transpose_matrix
 
 floating_re_str = r'[-+]?\d*\.\d*(?:[dDeE][-+]?\d+)?'
@@ -47,7 +48,7 @@ basis_name_re_str = r'\d*[a-zA-Z][a-zA-Z0-9\-\+\*\(\)\[\]]*'
 basis_name_re = re.compile(basis_name_re_str)
 
 
-def _convert_str_int(s):
+def _convert_str_int(s: str) -> Union[str, int]:
     '''Optionally convert a string to an integer
 
     If string s represents an integer, returns an int. Otherwise, returns s unchanged
@@ -63,24 +64,24 @@ def _convert_str_int(s):
         return s
 
 
-def is_floating(s):
+def is_floating(s: str):
     '''Tests if a string is a floating point number'''
     return floating_only_re.match(s)
 
 
-def is_integer(s):
+def is_integer(s: str):
     '''Tests if a string is an integer'''
     return integer_only_re.match(s)
 
 
-def replace_d(s):
+def replace_d(s: str) -> str:
     '''Replaces fortran-style 'D' with 'E'''
     s = s.replace('D', 'E')
     s = s.replace('d', 'e')
     return s
 
 
-def potential_am_list(max_am):
+def potential_am_list(max_am: int):
     '''Creates a canonical list of AM for use with ECP potentials
 
     The list is [max_am, 0, 1, ..., max_am-1]
@@ -91,7 +92,7 @@ def potential_am_list(max_am):
     return am_list
 
 
-def chunk_list(lst, rows, cols):
+def chunk_list(lst, rows: int, cols: int):
     '''Turns a list into a matrix of the given dimensions'''
 
     n_elements = len(lst)
@@ -103,7 +104,7 @@ def chunk_list(lst, rows, cols):
     return mat
 
 
-def remove_expected_line(lines, expected='', position=0):
+def remove_expected_line(lines, expected: str = '', position: int = 0):
     '''Tests the first element of the list to see if it is an expected string, and removes it
 
     If line does not match, or lines is empty, an exception is raised
@@ -122,7 +123,7 @@ def remove_expected_line(lines, expected='', position=0):
     return new_lines
 
 
-def parse_line_regex(rex, line, description=None, convert_int=True):
+def parse_line_regex(rex, line: str, description: Optional[str] = None, convert_int: bool = True):
     if isinstance(rex, str):
         rex = re.compile(rex)
 
@@ -144,7 +145,7 @@ def parse_line_regex(rex, line, description=None, convert_int=True):
         return g
 
 
-def parse_line_regex_dict(rex, line, description=None, convert_int=True):
+def parse_line_regex_dict(rex, line: str, description: Optional[str] = None, convert_int: bool = True):
     if isinstance(rex, str):
         rex = regex.compile(rex)
 
@@ -165,12 +166,12 @@ def parse_line_regex_dict(rex, line, description=None, convert_int=True):
 
 def partition_lines(lines,
                     condition,
-                    before=0,
-                    min_after=None,
-                    min_blocks=None,
-                    max_blocks=None,
-                    min_size=1,
-                    include_match=True):
+                    before: int = 0,
+                    min_after: Optional[int] = None,
+                    min_blocks: Optional[int] = None,
+                    max_blocks: Optional[int] = None,
+                    min_size: int = 1,
+                    include_match: bool = True):
     '''Partition a list of lines based on some condition
 
     Parameters
@@ -265,7 +266,7 @@ def partition_lines(lines,
     return all_blocks
 
 
-def read_n_floats(lines, n_numbers, convert=False, split=r'\s+'):
+def read_n_floats(lines, n_numbers: int, convert: bool = False, split: str = r'\s+'):
     '''Reads in a number of space-separated floating-point numbers
 
     These numbers may span multiple lines.
@@ -304,7 +305,7 @@ def read_n_floats(lines, n_numbers, convert=False, split=r'\s+'):
     return found_numbers, lines
 
 
-def read_all_floats(lines, convert=False, split=r'\s+'):
+def read_all_floats(lines, convert: bool = False, split: str = r'\s+'):
     '''Reads in all floats on all lines
 
     This function takes a block of numbers and splits them all, for all lines in the block.
@@ -330,7 +331,7 @@ def read_all_floats(lines, convert=False, split=r'\s+'):
     return found_numbers
 
 
-def read_n_integers(lines, n_ints, convert=False, split=r'\s+'):
+def read_n_integers(lines, n_ints: int, convert: bool = False, split: str = r'\s+'):
     '''Reads in a number of space-separated integers
 
     These numbers may span multiple lines.
@@ -363,7 +364,7 @@ def read_n_integers(lines, n_ints, convert=False, split=r'\s+'):
     return found_numbers, lines
 
 
-def parse_fixed_matrix(lines, rows, cols, split=r'\s+'):
+def parse_fixed_matrix(lines, rows: int, cols: int, split: str = r'\s+'):
     '''Parses a simple matrix of numbers with a predefined number of rows/columns
 
     This will read in a matrix of the given number of rows and columns, even if the
@@ -380,7 +381,7 @@ def parse_fixed_matrix(lines, rows, cols, split=r'\s+'):
     return mat, lines
 
 
-def parse_matrix(lines, rows=None, cols=None, split=r'\s+'):
+def parse_matrix(lines, rows=None, cols: Optional[int] = None, split: str = r'\s+'):
     '''Parses a simple matrix of numbers
 
     The lines parameter must specify a list of strings containing the entire matrix.
@@ -424,7 +425,7 @@ def parse_matrix(lines, rows=None, cols=None, split=r'\s+'):
     return mat
 
 
-def parse_primitive_matrix(lines, nprim=None, ngen=None, split=r'\s+'):
+def parse_primitive_matrix(lines, nprim=None, ngen=None, split: str = r'\s+'):
     '''Parses a matrix/table of exponents and coefficients
 
     The first column of the matrix contains exponents, and the remaining
@@ -491,7 +492,7 @@ def parse_primitive_matrix(lines, nprim=None, ngen=None, split=r'\s+'):
     return exponents, coefficients
 
 
-def parse_ecp_table(lines, order=['r_exp', 'g_exp', 'coeff'], split=r'\s+'):
+def parse_ecp_table(lines, order=['r_exp', 'g_exp', 'coeff'], split: str = r'\s+'):
     ecp_data = {'r_exp': [], 'g_exp': [], 'coeff': []}
 
     for l in lines:
@@ -527,7 +528,7 @@ def parse_ecp_table(lines, order=['r_exp', 'g_exp', 'coeff'], split=r'\s+'):
     return ecp_data
 
 
-def prune_lines(lines, skipchars='', prune_blank=True, strip_end_blanks=True):
+def prune_lines(lines, skipchars: str = '', prune_blank: bool = True, strip_end_blanks: bool = True):
     '''Remove comment and blank lines
 
     Also strips all lines of beginning/ending whitespace.
@@ -571,7 +572,7 @@ def prune_lines(lines, skipchars='', prune_blank=True, strip_end_blanks=True):
     return lines
 
 
-def remove_block(lines, start_re, end_re):
+def remove_block(lines, start_re: str, end_re: str):
     '''Removes a block of data from the lines of text
     
        For example, there may be an optional block of options (like in molcas)

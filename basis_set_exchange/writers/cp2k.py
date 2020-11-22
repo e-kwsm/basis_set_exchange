@@ -35,7 +35,7 @@ Conversion of basis sets to cp2k format
 from .. import lut, sort, misc, printing
 
 
-def write_cp2k(basis):
+def write_cp2k(basis) -> str:
     '''Converts a basis set to cp2k format
     '''
 

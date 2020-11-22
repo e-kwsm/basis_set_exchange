@@ -131,7 +131,7 @@ def sort_basis_dict(bs):
     return bs_sorted
 
 
-def sort_shell(shell, use_copy=True):
+def sort_shell(shell, use_copy: bool = True):
     """
     Sort a basis set shell into a standard order
 
@@ -165,7 +165,7 @@ def sort_shell(shell, use_copy=True):
     return shell
 
 
-def sort_shells(shells, use_copy=True):
+def sort_shells(shells, use_copy: bool = True):
     """
     Sort a list of basis set shells into a standard order
 
@@ -198,7 +198,7 @@ def sort_shells(shells, use_copy=True):
     return [x[0] for x in tmp_sorted]
 
 
-def sort_potentials(potentials, use_copy=True):
+def sort_potentials(potentials, use_copy: bool = True):
     """
     Sort a list of ECP potentials into a standard order
 
@@ -219,7 +219,7 @@ def sort_potentials(potentials, use_copy=True):
     return potentials
 
 
-def sort_basis(basis, use_copy=True):
+def sort_basis(basis, use_copy: bool = True):
     """
     Sorts all the information in a basis set into a standard order
 

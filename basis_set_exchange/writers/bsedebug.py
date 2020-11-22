@@ -35,7 +35,7 @@ Conversion of basis sets to the BSE debug/dump format
 from ..printing import element_data_str
 
 
-def write_bsedebug(basis):
+def write_bsedebug(basis) -> str:
     '''Converts a basis set to BSE Debug format
     '''
 

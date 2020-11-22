@@ -35,7 +35,7 @@ Conversion of basis sets to BDF format
 from .. import lut, manip, printing, sort, misc
 
 
-def write_bdf(basis):
+def write_bdf(basis) -> str:
     '''Converts a basis set to BDF format
     '''
 

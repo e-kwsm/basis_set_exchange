@@ -34,10 +34,11 @@ Validators for command line options
 
 import os
 import copy
+from typing import Optional
 from .. import api, misc, readers
 
 
-def _cli_check_data_dir(data_dir):
+def _cli_check_data_dir(data_dir: Optional[str]) -> Optional[str]:
     '''Checks that the data dir exists and contains METADATA.json'''
 
     if data_dir is None:
@@ -53,7 +54,7 @@ def _cli_check_data_dir(data_dir):
     return data_dir
 
 
-def _cli_check_format(fmt):
+def _cli_check_format(fmt: Optional[str]) -> Optional[str]:
     '''Checks that a basis set format exists and if not, raises a helpful exception'''
 
     if fmt is None:
@@ -68,7 +69,7 @@ def _cli_check_format(fmt):
     return fmt
 
 
-def _cli_check_ref_format(fmt):
+def _cli_check_ref_format(fmt: Optional[str]) -> Optional[str]:
     '''Checks that a reference format exists and if not, raises a helpful exception'''
 
     if fmt is None:
@@ -83,7 +84,7 @@ def _cli_check_ref_format(fmt):
     return fmt
 
 
-def _cli_check_role(role):
+def _cli_check_role(role: Optional[str]) -> Optional[str]:
     '''Checks that a basis set role exists and if not, raises a helpful exception'''
 
     if role is None:
@@ -98,7 +99,7 @@ def _cli_check_role(role):
     return role
 
 
-def _cli_check_basis(name, data_dir):
+def _cli_check_basis(name: Optional[str], data_dir: Optional[str]) -> Optional[str]:
     '''Checks that a basis set exists and if not, raises a helpful exception'''
 
     if name is None:
@@ -114,7 +115,7 @@ def _cli_check_basis(name, data_dir):
     return name
 
 
-def _cli_check_family(family, data_dir):
+def _cli_check_family(family: Optional[str], data_dir: Optional[str]) -> Optional[str]:
     '''Checks that a basis set family exists and if not, raises a helpful exception'''
 
     if family is None:
@@ -129,7 +130,7 @@ def _cli_check_family(family, data_dir):
     return family
 
 
-def _cli_check_readfmt(readfmt):
+def _cli_check_readfmt(readfmt: Optional[str]) -> Optional[str]:
     '''Checks that a file type exists and if not, raises a helpful exception'''
 
     if readfmt is None:

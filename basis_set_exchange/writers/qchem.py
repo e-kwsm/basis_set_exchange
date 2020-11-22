@@ -35,7 +35,7 @@ Conversion of basis sets to Q-Chem format
 from .. import lut, manip, sort, printing
 
 
-def _determine_pure(basis):
+def _determine_pure(basis) -> str:
     # starts at d shells
     pure = {}
     for eldata in basis['elements'].values():
@@ -57,7 +57,7 @@ def _determine_pure(basis):
     return ''.join(x[1] for x in pure_list)
 
 
-def write_qchem(basis):
+def write_qchem(basis) -> str:
     '''Converts a basis set to Q-Chem
 
     Q-Chem is basically gaussian format, wrapped in $basis/$end

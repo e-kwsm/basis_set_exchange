@@ -37,7 +37,7 @@ Conversion of basis sets to FHI-aims format
 from .. import lut, manip, sort, printing
 
 
-def write_fhiaims(basis):
+def write_fhiaims(basis) -> str:
     '''Converts a basis set to FHI-aims format
     '''
 

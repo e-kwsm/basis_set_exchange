@@ -34,6 +34,7 @@ Converts basis set data to a specified output format
 
 import textwrap
 import json
+from typing import Optional
 
 from .. import sort, misc
 from .common import get_library_citation
@@ -78,7 +79,7 @@ _converter_map = {
 }
 
 
-def convert_references(ref_data, fmt):
+def convert_references(ref_data, fmt: str) -> str:
     '''
     Returns the basis set references as a string representing
     the data in the specified output format
@@ -163,7 +164,7 @@ def get_reference_formats():
     return {k: v['display'] for k, v in _converter_map.items()}
 
 
-def get_format_extension(fmt):
+def get_format_extension(fmt: Optional[str]) -> str:
     '''
     Returns the recommended extension for a given format
     '''

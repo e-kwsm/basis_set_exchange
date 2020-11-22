@@ -43,7 +43,12 @@ from . import compose
 from math import gamma, pi, exp, log
 
 
-def create_element_data(bs_data, element_Z, key, key_exist_ok=False, element_exist_ok=True, create=list):
+def create_element_data(bs_data,
+                        element_Z,
+                        key,
+                        key_exist_ok: bool = False,
+                        element_exist_ok: bool = True,
+                        create=list):
     '''Creates an element and a subkey of the element in bs_data
 
     Note that bs_data is modified!
@@ -62,7 +67,7 @@ def create_element_data(bs_data, element_Z, key, key_exist_ok=False, element_exi
     return bs_data[element_Z]
 
 
-def merge_element_data(dest, sources, use_copy=True):
+def merge_element_data(dest, sources, use_copy: bool = True):
     """
     Merges the basis set data for an element from multiple sources
     into dest.
@@ -103,7 +108,7 @@ def merge_element_data(dest, sources, use_copy=True):
     return ret
 
 
-def prune_shell(shell, use_copy=True):
+def prune_shell(shell, use_copy: bool = True):
     """
     Removes exact duplicates of primitives, and condenses duplicate exponents
     into general contractions
@@ -174,7 +179,7 @@ def prune_shell(shell, use_copy=True):
     return shell
 
 
-def prune_basis(basis, use_copy=True):
+def prune_basis(basis, use_copy: bool = True):
     """
     Removes primitives that have a zero coefficient, and
     removes duplicate primitives and shells
@@ -205,7 +210,7 @@ def prune_basis(basis, use_copy=True):
     return basis
 
 
-def uncontract_spdf(basis, max_am=0, use_copy=True):
+def uncontract_spdf(basis, max_am: int = 0, use_copy: bool = True):
     """
     Removes sp, spd, spdf, etc, contractions from a basis set
 
@@ -263,7 +268,7 @@ def uncontract_spdf(basis, max_am=0, use_copy=True):
     return basis
 
 
-def uncontract_general(basis, use_copy=True):
+def uncontract_general(basis, use_copy: bool = True):
     """
     Removes the general contractions from a basis set
 
@@ -304,7 +309,7 @@ def uncontract_general(basis, use_copy=True):
     return prune_basis(basis, False)
 
 
-def uncontract_segmented(basis, use_copy=True):
+def uncontract_segmented(basis, use_copy: bool = True):
     """
     Removes the segmented contractions from a basis set
 
@@ -347,7 +352,7 @@ def uncontract_segmented(basis, use_copy=True):
     return basis
 
 
-def make_general(basis, skip_spdf=False, use_copy=True):
+def make_general(basis, skip_spdf: bool = False, use_copy: bool = True):
     """
     Makes one large general contraction for each angular momentum
 
@@ -441,7 +446,7 @@ def make_general(basis, skip_spdf=False, use_copy=True):
     return basis
 
 
-def _is_single_column(col):
+def _is_single_column(col) -> bool:
     return sum(float(x) != 0.0 for x in col) == 1
 
 
@@ -462,7 +467,7 @@ def _free_primitives(coeffs):
     return free_prims
 
 
-def remove_free_primitives(basis, use_copy=True):
+def remove_free_primitives(basis, use_copy: bool = True):
     """
     Removes any free primitives from a basis set as a way to generate a minimal basis
 
@@ -497,7 +502,7 @@ def remove_free_primitives(basis, use_copy=True):
     return prune_basis(basis, False)
 
 
-def optimize_general(basis, use_copy=True):
+def optimize_general(basis, use_copy: bool = True):
     """
     Optimizes the general contraction using the method of Hashimoto et al
 
@@ -563,7 +568,7 @@ def optimize_general(basis, use_copy=True):
     return basis
 
 
-def geometric_augmentation(basis, nadd, use_copy=True, as_component=False, steep=False):
+def geometric_augmentation(basis, nadd: int, use_copy: bool = True, as_component: bool = False, steep: bool = False):
     '''Extends a basis set by adding extrapolated diffuse or steep functions.
 
     For augmented Dunning sets (aug), the diffuse augmentation
@@ -690,7 +695,7 @@ def geometric_augmentation(basis, nadd, use_copy=True, as_component=False, steep
     return basis
 
 
-def remove_primitive(electron_shell, idx_to_remove):
+def remove_primitive(electron_shell, idx_to_remove: int) -> None:
     '''Removes a primitive (by index) of a electron_shell
 
     The electron_shell passed in is modified
@@ -707,7 +712,7 @@ def remove_primitive(electron_shell, idx_to_remove):
     ]
 
 
-def _element_remove_diffuse(eldata, nremove):
+def _element_remove_diffuse(eldata, nremove) -> None:
     if 'electron_shells' not in eldata:
         pass
 
@@ -739,7 +744,7 @@ def _element_remove_diffuse(eldata, nremove):
         remove_primitive(shell, diffuse_idx)
 
 
-def truhlar_calendarize(basis, month, use_copy=True):
+def truhlar_calendarize(basis, month: str, use_copy: bool = True):
     '''Create the truhlar "month" basis sets from the corresponding aug basis set
 
     In Papajak 2011, removal of diffuse function stopped before removal of s and p functions.
@@ -999,7 +1004,7 @@ more accurate) auxiliary sets.
     return auxbasis_bs
 
 
-def autoabs_basis(basis, lmaxinc=1, fsam=1.5):
+def autoabs_basis(basis, lmaxinc: int = 1, fsam: float = 1.5):
     '''Create a Coulomb fitting basis set for the given orbital basis set.
 
     .. seealso :: | R. Yang, A. P. Rendell, and M. J. Frisch

@@ -47,7 +47,7 @@ am_line_re = re.compile(r'^([A-Za-z]+)\s+(\d+)((?:\s+{})+)$'.format(helpers.floa
 explicit_am_line_re = re.compile(r'^\s*L=(\d+)\s+(\d+)((?:\s+{})+)$'.format(helpers.floating_re_str))
 
 
-def _parse_electron_lines(basis_lines, bs_data):
+def _parse_electron_lines(basis_lines, bs_data) -> None:
     '''Parses lines representing all the electron shells for a single element
 
     Resulting information is stored in bs_data
@@ -146,7 +146,7 @@ def _parse_electron_lines(basis_lines, bs_data):
         element_data['electron_shells'].append(shell)
 
 
-def _parse_ecp_lines(basis_lines, bs_data):
+def _parse_ecp_lines(basis_lines, bs_data) -> None:
     '''Parses lines representing all the ECP potentials for a single element
 
     Resulting information is stored in bs_data

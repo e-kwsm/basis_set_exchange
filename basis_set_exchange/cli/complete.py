@@ -45,7 +45,7 @@ def _fix_datadir(data_dir):
     return data_dir
 
 
-def cli_case_insensitive_validator(s1, s2):
+def cli_case_insensitive_validator(s1: str, s2: str) -> bool:
     s1 = s1.lower()
     s2 = s2.lower()
     return s1.startswith(s2)

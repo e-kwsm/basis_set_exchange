@@ -33,10 +33,11 @@ Miscellaneous helper functions
 '''
 
 import re
+from typing import Optional
 from . import lut
 
 
-def _Z_from_str(s):
+def _Z_from_str(s: str):
     if s.isdecimal():
         return int(s)
     else:
@@ -55,7 +56,7 @@ def max_am(shells):
     return max(all_am)
 
 
-def contraction_string(element):
+def contraction_string(element) -> str:
     """
     Forms a string specifying the contractions for an element
 
@@ -97,7 +98,7 @@ def contraction_string(element):
     return "({}) -> [{}]".format(primstr, contstr)
 
 
-def compact_elements(elements):
+def compact_elements(elements) -> Optional[str]:
     """
     Create a string (with ranges) given a list of element numbers
 
@@ -105,7 +106,7 @@ def compact_elements(elements):
    """
 
     if not elements:
-        return
+        return None
 
     # We have to convert to integers for this function
     elements = [int(el) for el in elements]
@@ -149,7 +150,7 @@ def compact_elements(elements):
     return ",".join(range_strs)
 
 
-def expand_elements(compact_el, as_str=False):
+def expand_elements(compact_el, as_str: bool = False):
     """
     Create a list of integers given a string or list of compacted elements
 
@@ -232,7 +233,7 @@ def expand_elements(compact_el, as_str=False):
         return el_list
 
 
-def transform_basis_name(name):
+def transform_basis_name(name: str) -> str:
     """
     Transforms the name of a basis set to an internal representation
 
@@ -246,7 +247,7 @@ def transform_basis_name(name):
     return name
 
 
-def basis_name_to_filename(name):
+def basis_name_to_filename(name: str) -> str:
     '''
     Given a basis set name, transform it into a valid filename
 
@@ -256,7 +257,7 @@ def basis_name_to_filename(name):
     return transform_basis_name(name)
 
 
-def basis_name_from_filename(filename):
+def basis_name_from_filename(filename: str) -> str:
     '''
     Given a basis set name that was part of a filename, determine the basis set name
 

@@ -39,7 +39,7 @@ from ..fileio import get_all_filelist, read_json_basis, _write_plain_json
 from ..misc import transform_basis_name
 
 
-def create_metadata_file(output_path, data_dir):
+def create_metadata_file(output_path: str, data_dir: str) -> None:
     '''Creates a METADATA.json file from a data directory
 
     The file is written to output_path

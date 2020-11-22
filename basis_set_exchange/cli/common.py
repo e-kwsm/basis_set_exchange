@@ -33,7 +33,7 @@ Some common formatting functions, etc
 '''
 
 
-def format_columns(lines, prefix=''):
+def format_columns(lines, prefix: str = '') -> str:
     '''
     Create a simple column output
 

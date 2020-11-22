@@ -36,17 +36,17 @@ import math
 from .. import lut, manip, sort, printing
 
 
-def _cfour_exp(e):
+def _cfour_exp(e: str) -> str:
     '''Formats an exponent for CFour'''
     return e.replace('E', 'D') + ' '
 
 
-def _cfour_coef(c):
+def _cfour_coef(c: str) -> str:
     '''Formats a coefficient for CFour'''
     return c.replace('E', 'D') + ' '
 
 
-def _aces_exp(e):
+def _aces_exp(e) -> str:
     '''Formats an exponent for AcesII'''
 
     e = float(e)
@@ -73,20 +73,20 @@ def _aces_exp(e):
     return s
 
 
-def _aces_coef(c):
+def _aces_coef(c) -> str:
     '''Formats a coefficient for AcesII'''
     c = float(c)
     return '{:10.7f} '.format(c)
 
 
-def _print_columns(data, ncol):
+def _print_columns(data, ncol: int) -> str:
     s = ''
     for i in range(0, len(data), ncol):
         s += ''.join(data[i:i + ncol]) + '\n'
     return s
 
 
-def _write_genbas_internal(basis, exp_formatter, coef_formatter):
+def _write_genbas_internal(basis, exp_formatter, coef_formatter) -> str:
     # Uncontract all, then make general
     basis = manip.make_general(basis, False, True)
     basis = sort.sort_basis(basis, False)
@@ -175,7 +175,7 @@ def _write_genbas_internal(basis, exp_formatter, coef_formatter):
     return s
 
 
-def write_cfour(basis):
+def write_cfour(basis) -> str:
     '''Converts a basis set to cfour
     '''
 
@@ -185,7 +185,7 @@ def write_cfour(basis):
     return _write_genbas_internal(basis, _cfour_exp, _cfour_coef)
 
 
-def write_aces2(basis):
+def write_aces2(basis) -> str:
     '''Converts a basis set to cfour
     '''
 

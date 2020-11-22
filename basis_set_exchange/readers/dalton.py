@@ -60,7 +60,7 @@ element_begin_re = re.compile(r'^!\s+([a-z]+)\s+\(.*\)\s*->\s*\[.*\]$')
 # The second is also split by elements, but the element name
 # is in a comment...
 #############################################################################
-def _line_begins_element(line):
+def _line_begins_element(line: str) -> bool:
     if not line:
         return False
 
@@ -79,7 +79,7 @@ def _line_begins_element(line):
     return False
 
 
-def _parse_electron_lines(basis_lines, bs_data):
+def _parse_electron_lines(basis_lines, bs_data) -> None:
     '''Parses lines representing all the electron shells for all elements
 
     Resulting information is stored in bs_data

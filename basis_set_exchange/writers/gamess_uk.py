@@ -35,7 +35,7 @@ Conversion of basis sets to GAMESS-UK format
 from .. import lut, manip, sort, printing
 
 
-def write_gamess_uk(basis):
+def write_gamess_uk(basis) -> str:
     '''Converts a basis set to GAMESS-UK
     '''
 

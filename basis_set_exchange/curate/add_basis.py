@@ -34,6 +34,7 @@ Add a basis set to the library
 
 import os
 import datetime
+from typing import Optional
 from ..fileio import read_json_basis, write_json_basis
 from ..misc import expand_elements
 from ..validator import validate_data
@@ -42,8 +43,8 @@ from ..readers import read_formatted_basis_file
 from .metadata import create_metadata_file
 
 
-def add_from_components(component_files, data_dir, subdir, file_base, name, family, role, description, version,
-                        revision_description):
+def add_from_components(component_files, data_dir: str, subdir: str, file_base: str, name: str, family: str, role: str,
+                        description: str, version: str, revision_description: str) -> None:
     '''
     Add a basis set to this library that is a combination of component files
 
@@ -54,7 +55,7 @@ def add_from_components(component_files, data_dir, subdir, file_base, name, fami
 
     Parameters
     ----------
-    component_files : str
+    component_files : list of str
         Path to component json files (in BSE format already)
     data_dir : str
         Path to the data directory to add the data to
@@ -174,17 +175,17 @@ def add_from_components(component_files, data_dir, subdir, file_base, name, fami
 
 
 def add_basis_from_dict(bs_data,
-                        data_dir,
-                        subdir,
-                        file_base,
-                        name,
-                        family,
-                        role,
-                        description,
-                        version,
-                        revision_description,
-                        data_source,
-                        refs=None):
+                        data_dir: str,
+                        subdir: str,
+                        file_base: str,
+                        name: str,
+                        family: str,
+                        role: str,
+                        description: str,
+                        version: str,
+                        revision_description: str,
+                        data_source: str,
+                        refs=None) -> None:
     '''Add a basis set to this library
 
     This takes in a basis set dictionary, and create the component,
@@ -316,19 +317,19 @@ def add_basis_from_dict(bs_data,
                         revision_description)
 
 
-def add_basis(bs_file,
-              data_dir,
-              subdir,
-              file_base,
-              name,
-              family,
-              role,
-              description,
-              version,
-              revision_description,
-              data_source,
+def add_basis(bs_file: str,
+              data_dir: str,
+              subdir: str,
+              file_base: str,
+              name: str,
+              family: str,
+              role: str,
+              description: str,
+              version: str,
+              revision_description: str,
+              data_source: str,
               refs=None,
-              file_fmt=None):
+              file_fmt: Optional[str] = None) -> None:
     '''
     Add a basis set to this library
 

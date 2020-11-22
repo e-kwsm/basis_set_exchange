@@ -35,7 +35,7 @@ Conversion of basis sets to Turbomole format
 from .. import lut, manip, sort, printing
 
 
-def write_turbomole(basis):
+def write_turbomole(basis) -> str:
     '''Converts a basis set to Gaussian format
     '''
 

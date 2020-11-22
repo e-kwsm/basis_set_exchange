@@ -35,7 +35,7 @@ Conversion of basis sets to deMon2K format
 from .. import lut, manip, sort, misc, printing
 
 
-def write_demon2k(basis):
+def write_demon2k(basis) -> str:
     '''Converts a basis set to deMon2K format
     '''
 

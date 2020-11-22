@@ -35,7 +35,7 @@ Conversion of basis sets to Molcas format
 from .. import lut, manip, printing, misc, sort
 
 
-def write_molcas(basis):
+def write_molcas(basis) -> str:
     '''Converts a basis set to Molcas format
     '''
 

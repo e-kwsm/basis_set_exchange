@@ -41,7 +41,7 @@ element_block_re = re.compile(r'^([a-zA-Z]{1,3}):(.*)$')
 ecp_block_re = re.compile(r'ncore\s*=\s*(\d+)\s+lmax\s*=\s*(\d+)\s*$', flags=re.IGNORECASE)
 
 
-def _parse_electron_lines(basis_lines, bs_data):
+def _parse_electron_lines(basis_lines, bs_data) -> None:
     # Line 0: element, basis name
     # Line 1: comment
     # Line 2: blank
@@ -106,7 +106,7 @@ def _parse_electron_lines(basis_lines, bs_data):
         raise RuntimeError("Found extra lines after element block: " + str(basis_lines))
 
 
-def _parse_ecp_lines(basis_lines, bs_data):
+def _parse_ecp_lines(basis_lines, bs_data) -> None:
     # Line 0: element, basis name
     # Line 1: comment, but starts with #, so it was removed
     # Line 2: *

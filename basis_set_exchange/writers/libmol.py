@@ -39,7 +39,7 @@ from .. import lut, manip, misc, sort
 from .common import find_range, reshape
 
 
-def write_libmol(basis):
+def write_libmol(basis) -> str:
     '''Converts a basis set to Molpro system library format
     '''
 

@@ -82,7 +82,7 @@ def compact_references(basis_dict, ref_data):
     return element_refs
 
 
-def reference_text(key, ref):
+def reference_text(key: str, ref) -> str:
     '''Convert a single reference to plain text format
 
     Parameters

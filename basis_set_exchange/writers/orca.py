@@ -36,7 +36,7 @@ from .. import lut, printing
 from .gamess_us import write_gamess_us_common
 
 
-def write_orca_ecp_basis(basis, ecp_elements):
+def write_orca_ecp_basis(basis, ecp_elements) -> str:
     s = ''
     for z in ecp_elements:
         s += '\n\n'
@@ -76,7 +76,7 @@ def write_orca_ecp_basis(basis, ecp_elements):
     return s
 
 
-def write_orca(basis):
+def write_orca(basis) -> str:
     '''Converts a basis set to ORCA
     '''
 

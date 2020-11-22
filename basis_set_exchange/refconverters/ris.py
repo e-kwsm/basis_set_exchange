@@ -33,7 +33,7 @@ Conversion of references to RIS format
 '''
 
 
-def write_ris(key, ref):
+def write_ris(key: str, ref) -> str:
     '''Convert a single reference to ris format
     '''
     s = ''

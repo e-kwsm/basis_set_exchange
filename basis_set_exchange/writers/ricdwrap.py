@@ -35,7 +35,7 @@ This is a wrapper for generating acCD basis sets with OpenMolcas
 from .. import lut, manip, printing, misc, sort
 
 
-def write_ricdwrap(basis):
+def write_ricdwrap(basis) -> str:
     '''Generates an input file for OpenMolcas that generates the acCD basis
     '''
 

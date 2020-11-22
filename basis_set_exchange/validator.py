@@ -64,12 +64,12 @@ def _list_has_nonpositives(lst):
     return nonpos
 
 
-def _validate_extra_references(bs_data):
+def _validate_extra_references(bs_data) -> None:
     '''Extra checks for references files'''
     pass
 
 
-def _validate_extra_metadata(bs_data):
+def _validate_extra_metadata(bs_data) -> None:
     '''Extra checks for metadata files'''
 
     # Check that family is lowercase
@@ -78,7 +78,7 @@ def _validate_extra_metadata(bs_data):
         raise RuntimeError("Family '{}' is not lowercase".format(fam))
 
 
-def _validate_electron_shells(shells, element_z):
+def _validate_electron_shells(shells, element_z) -> None:
     '''Validate a list of electron shells'''
 
     for idx, s in enumerate(shells):
@@ -267,7 +267,7 @@ _validate_map = {
 }
 
 
-def _get_schema(file_type):
+def _get_schema(file_type: str):
     '''Get a schema that can validate BSE JSON files or dictionaries
 
        The schema_type represents the type of BSE JSON file to be validated,
@@ -288,7 +288,7 @@ def _get_schema(file_type):
     return schema, resolver
 
 
-def validate_data(file_type, bs_data):
+def validate_data(file_type: str, bs_data) -> None:
     """
     Validates json basis set data against a schema
 
@@ -317,7 +317,7 @@ def validate_data(file_type, bs_data):
     _validate_map[file_type](bs_data)
 
 
-def validate_file(file_type, file_path):
+def validate_file(file_type: str, file_path: str) -> None:
     """
     Validates a file against a schema
 
@@ -342,7 +342,7 @@ def validate_file(file_type, file_path):
     validate_data(file_type, file_data)
 
 
-def validate_data_dir(data_dir):
+def validate_data_dir(data_dir: str) -> None:
     """
     Validates all files in a data_dir
     """

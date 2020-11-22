@@ -35,7 +35,7 @@ Conversion of basis sets to JSON format
 import json
 
 
-def write_json(basis):
+def write_json(basis) -> str:
     '''Converts a basis set to JSON
     '''
 

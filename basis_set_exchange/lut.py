@@ -132,7 +132,7 @@ def element_data_from_Z(Z):
     return _element_Z_map[Z]
 
 
-def element_data_from_sym(sym):
+def element_data_from_sym(sym: str):
     '''Obtain elemental data given an elemental symbol
 
     The given symbol is not case sensitive
@@ -146,7 +146,7 @@ def element_data_from_sym(sym):
     return _element_sym_map[sym_lower]
 
 
-def element_data_from_name(name):
+def element_data_from_name(name: str):
     '''Obtain elemental data given an elemental name
 
     The given name is not case sensitive
@@ -160,7 +160,7 @@ def element_data_from_name(name):
     return _element_name_map[name_lower]
 
 
-def element_name_from_Z(Z, normalize=False):
+def element_name_from_Z(Z, normalize: bool = False):
     '''Obtain an element's name from its Z number
 
     An exception is thrown if the Z number is not found
@@ -175,7 +175,7 @@ def element_name_from_Z(Z, normalize=False):
         return r
 
 
-def element_Z_from_name(name, as_str=False):
+def element_Z_from_name(name: str, as_str: bool = False):
     '''Obtain an element's Z number given its name
 
     If as_str is True, then a string is returned (ie, '1' for Hydrogen)
@@ -189,7 +189,7 @@ def element_Z_from_name(name, as_str=False):
     return Z
 
 
-def element_sym_from_Z(Z, normalize=False):
+def element_sym_from_Z(Z, normalize: bool = False):
     '''Obtain an element's symbol from its Z number
 
     An exception is thrown if the Z number is not found
@@ -204,7 +204,7 @@ def element_sym_from_Z(Z, normalize=False):
         return r
 
 
-def element_Z_from_sym(sym, as_str=False):
+def element_Z_from_sym(sym: str, as_str: bool = False):
     '''Obtain an element's Z-number given its symbol
 
     If as_str is True, then a string is returned (ie, '1' for Hydrogen)
@@ -218,7 +218,7 @@ def element_Z_from_sym(sym, as_str=False):
     return Z
 
 
-def amint_to_char(am, hij=False, use_L=False):
+def amint_to_char(am, hij: bool = False, use_L: bool = False) -> str:
     '''Convert an angular momentum integer to a character
 
     The input is a list (to handle sp, spd, ... orbitals). The return
@@ -251,7 +251,7 @@ def amint_to_char(am, hij=False, use_L=False):
     return ''.join(amchar)
 
 
-def amchar_to_int(amchar, hij=False):
+def amchar_to_int(amchar: str, hij: bool = False):
     '''Convert an angular momentum integer to a character
 
     The return value is a list of integers (to handle sp, spd, ... orbitals)
@@ -280,7 +280,7 @@ def amchar_to_int(amchar, hij=False):
     return amint
 
 
-def electron_shells_start(nelectrons, max_am=20):
+def electron_shells_start(nelectrons: int, max_am: int = 20):
     '''Return the starting principle quantum numbers of electron shells
 
     For example, an ECP covering 10 electrons will covers 1s, 2s, 2p shells. The
@@ -364,7 +364,7 @@ def electron_shells_start(nelectrons, max_am=20):
     return start
 
 
-def function_type_from_am(shell_am, base_type, spherical_type):
+def function_type_from_am(shell_am, base_type: str, spherical_type: str) -> str:
     if max(shell_am) <= 1:
         return base_type
     else:

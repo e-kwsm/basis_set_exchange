@@ -35,7 +35,7 @@ Conversion of basis sets to GAMESS-US
 from .. import lut, manip, sort, printing
 
 
-def write_gamess_us_electron_basis(basis, electron_elements):
+def write_gamess_us_electron_basis(basis, electron_elements) -> str:
     # electronic part starts with $DATA
     s = '$DATA\n'
 
@@ -66,7 +66,7 @@ def write_gamess_us_electron_basis(basis, electron_elements):
     return s
 
 
-def write_gamess_us_ecp_basis(basis, ecp_elements, ecp_block=True):
+def write_gamess_us_ecp_basis(basis, ecp_elements, ecp_block: bool = True) -> str:
     s = ""
 
     if ecp_block:
@@ -107,7 +107,7 @@ def write_gamess_us_ecp_basis(basis, ecp_elements, ecp_block=True):
     return s
 
 
-def write_gamess_us_common(basis, ecp_func):
+def write_gamess_us_common(basis, ecp_func) -> str:
     '''Converts the electronic basis to GAMESS-US, using a
        different function for ECP
     '''
@@ -136,7 +136,7 @@ def write_gamess_us_common(basis, ecp_func):
     return s
 
 
-def write_gamess_us(basis):
+def write_gamess_us(basis) -> str:
     '''Converts a basis set to GAMESS-US
     '''
 

@@ -35,6 +35,7 @@ Class/decorator for memoizing BSE functionality
 import functools
 import pickle
 import inspect
+from typing import Optional
 
 # If set to True, memoization of some internal functions
 # will be used. Generally safe to leave enabled - it
@@ -42,7 +43,7 @@ import inspect
 memoize_enabled = True
 
 
-def _make_key(args_spec, *args, **kwargs):
+def _make_key(args_spec, *args, **kwargs) -> Optional[bytes]:
     left_args = args_spec.args[len(args):]
     num_defaults = len(args_spec.defaults or ())
     defaults_names = args_spec.args[-num_defaults:]

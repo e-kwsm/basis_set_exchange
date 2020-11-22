@@ -33,6 +33,7 @@ Driver for converting basis set data to a specified output format
 '''
 
 import bz2
+from typing import Optional
 from .bsejson import write_json
 from .nwchem import write_nwchem
 from .g94 import write_g94, write_g94lib, write_xtron, write_psi4
@@ -242,7 +243,7 @@ _writer_map = {
 }
 
 
-def write_formatted_basis_str(basis_dict, fmt, header=None):
+def write_formatted_basis_str(basis_dict, fmt: str, header: Optional[str] = None) -> str:
     '''
     Returns the basis set data as a string representing
     the data in the specified output format
@@ -280,7 +281,10 @@ def write_formatted_basis_str(basis_dict, fmt, header=None):
     return ret_str
 
 
-def write_formatted_basis_file(basis_dict, outfile_path, basis_fmt=None, header=None):
+def write_formatted_basis_file(basis_dict,
+                               outfile_path: str,
+                               basis_fmt: Optional[str] = None,
+                               header: Optional[str] = None) -> None:
     if basis_fmt is None:
         for k, v in _writer_map.items():
             ext = v['extension']
@@ -330,7 +334,7 @@ def get_writer_formats(function_types=None):
     return ret
 
 
-def get_format_extension(fmt):
+def get_format_extension(fmt: str) -> str:
     '''
     Returns the recommended extension for a given format
     '''

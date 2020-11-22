@@ -50,7 +50,7 @@ shell_start_re = re.compile('^\s*(\d+)\s+(\d+)\s+(\d+)\s*$')
 array_data_re = re.compile(r'^\s*(?:\s({}))+\s*$'.format(helpers.floating_re_str))
 
 
-def _parse_basis(basis_lines, bs_data):
+def _parse_basis(basis_lines, bs_data) -> None:
     # Parse symbol
     element_symbol, basis_name, basis_type = helpers.parse_line_regex(basis_head_re, basis_lines[0],
                                                                       'Symbol.Basis....a(c)CD-aux-basis.')

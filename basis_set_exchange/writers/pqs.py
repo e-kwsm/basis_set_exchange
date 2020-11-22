@@ -36,7 +36,7 @@ from .. import lut, manip, sort, printing
 from .gamess_us import write_gamess_us_ecp_basis
 
 
-def write_pqs_electron_basis(basis, electron_elements):
+def write_pqs_electron_basis(basis, electron_elements) -> str:
     s = ''
 
     for z in electron_elements:
@@ -63,7 +63,7 @@ def write_pqs_electron_basis(basis, electron_elements):
     return s
 
 
-def write_pqs(basis):
+def write_pqs(basis) -> str:
     '''Converts the basis set to PQS
     '''
 

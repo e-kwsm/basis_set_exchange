@@ -36,7 +36,7 @@ import json
 from .. import manip, sort, lut
 
 
-def write_qcschema(basis):
+def write_qcschema(basis) -> str:
     '''Converts a basis set to QCSchema JSON
 
     Note that the output is a string

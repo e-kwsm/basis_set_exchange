@@ -35,7 +35,7 @@ Conversion of basis sets to Gaussian format
 from .. import lut, manip, sort, printing
 
 
-def _write_g94_common(basis, add_harm_type, psi4_am, system_library):
+def _write_g94_common(basis, add_harm_type: bool, psi4_am: bool, system_library: bool) -> str:
     '''Converts a basis set to Gaussian format
     '''
 
@@ -120,19 +120,19 @@ def _write_g94_common(basis, add_harm_type, psi4_am, system_library):
     return s
 
 
-def write_g94(basis):
+def write_g94(basis) -> str:
     '''Converts a basis set to Gaussian format
     '''
     return _write_g94_common(basis, False, False, False)
 
 
-def write_g94lib(basis):
+def write_g94lib(basis) -> str:
     '''Converts a basis set to Gaussian system library format
     '''
     return _write_g94_common(basis, False, False, True)
 
 
-def write_xtron(basis):
+def write_xtron(basis) -> str:
     '''Converts a basis set to xTron format
 
     xTron uses a modified gaussian format that puts 'c' on the same
@@ -141,7 +141,7 @@ def write_xtron(basis):
     return _write_g94_common(basis, True, False, False)
 
 
-def write_psi4(basis):
+def write_psi4(basis) -> str:
     '''Converts a basis set to Psi4 format
 
     Psi4 uses the same output as gaussian94, except

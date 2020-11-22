@@ -33,7 +33,7 @@ Conversion of references to BibTeX format
 '''
 
 
-def write_bib(key, ref):
+def write_bib(key: str, ref) -> str:
     '''Convert a single reference to bibtex format
     '''
     s = ''

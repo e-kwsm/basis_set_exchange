@@ -40,7 +40,7 @@ am_line_re = re.compile(r'^([A-Za-z]+)\s+([A-Za-z]+)$')
 nelec_re = re.compile(r'^([a-z]+)\s+nelec\s+(\d+)$', flags=re.IGNORECASE)
 
 
-def _parse_electron_lines(basis_lines, bs_data):
+def _parse_electron_lines(basis_lines, bs_data) -> None:
     ''' Parses lines representing all the electron shells for all elements
 
     Resulting information is stored in bs_data
@@ -86,7 +86,7 @@ def _parse_electron_lines(basis_lines, bs_data):
         element_data['electron_shells'].append(shell)
 
 
-def _parse_ecp_lines(basis_lines, bs_data):
+def _parse_ecp_lines(basis_lines, bs_data) -> None:
     ''' Parses lines representing all the ECP potentials for all elements
 
     Resulting information is stored in bs_data

@@ -85,7 +85,7 @@ _skeletons = {
 }
 
 
-def create_skel(role):
+def create_skel(role: str):
     '''
     Create the skeleton of a dictionary or JSON file
 

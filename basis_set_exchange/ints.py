@@ -139,7 +139,7 @@ def _normalize_contraction(contr, ovl):
     return norm_contr
 
 
-def _gto_overlap(exps, l):
+def _gto_overlap(exps, l: int):
     '''Computes the primitive overlap matrix for the given exponents,
     assuming the basis functions are of the spherical form r^l exp(-z
     r^2).
@@ -161,7 +161,7 @@ def _gto_overlap(exps, l):
     return overlaps
 
 
-def gto_overlap_contr(exps0, contr0, l):
+def gto_overlap_contr(exps0, contr0, l: int):
     '''Computes the overlap matrix in the contracted basis, assuming the
     basis functions are of the spherical form r^l \sum_i c_i exp(-z_i
     r^2).
@@ -176,7 +176,7 @@ def gto_overlap_contr(exps0, contr0, l):
     return _transform(contr, ovl)
 
 
-def _gto_R(exps, l):
+def _gto_R(exps, l: int):
     '''Computes the <r> matrix for the given exponents, assuming the basis
     functions are of the normalized spherical form r^l exp(-z r^2).
 
@@ -198,7 +198,7 @@ def _gto_R(exps, l):
     return rmat
 
 
-def gto_R_contr(exps0, contr0, l):
+def gto_R_contr(exps0, contr0, l: int):
     '''Computes the r matrix in the contracted basis, assuming the basis
     functions are of the spherical form r^l \sum_i c_i exp(-z_i r^2).
     The function also takes care of proper normalization.
@@ -219,7 +219,7 @@ def gto_R_contr(exps0, contr0, l):
     return _transform(contr, rmat)
 
 
-def _gto_Rsq(exps, l):
+def _gto_Rsq(exps, l: int):
     '''Computes the r^2 matrix for the given exponents, assuming the basis
     functions are of the normalized spherical form r^l exp(-z r^2).
 
@@ -241,7 +241,7 @@ def _gto_Rsq(exps, l):
     return rsqs
 
 
-def gto_Rsq_contr(exps0, contr0, l):
+def gto_Rsq_contr(exps0, contr0, l: int):
     '''Computes the r^2 matrix in the contracted basis, assuming the basis
     functions are of the spherical form r^l \sum_i c_i exp(-z_i r^2).
     The function also takes care of proper normalization.

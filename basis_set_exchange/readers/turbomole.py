@@ -43,7 +43,7 @@ ecp_info_re = re.compile(r'^ncore\s*=\s*(\d+)\s+lmax\s*=\s*(\d+)$', flags=re.IGN
 ecp_pot_am_re = re.compile(r'^([a-z])(-[a-z])?$')
 
 
-def _parse_electron_lines(basis_lines, bs_data):
+def _parse_electron_lines(basis_lines, bs_data) -> None:
     # Strip all lines beginning with $
     basis_lines = helpers.prune_lines(basis_lines, '$')
 
@@ -99,7 +99,7 @@ def _parse_electron_lines(basis_lines, bs_data):
             element_data['electron_shells'].append(shell)
 
 
-def _parse_ecp_potential_lines(element_lines, bs_data):
+def _parse_ecp_potential_lines(element_lines, bs_data) -> None:
     #########################################################
     # This is split out because the turbomole ECP format is
     # almost identical to the genbas ECP format
@@ -154,7 +154,7 @@ def _parse_ecp_potential_lines(element_lines, bs_data):
         element_data['ecp_potentials'].append(ecp_pot)
 
 
-def _parse_ecp_lines(basis_lines, bs_data):
+def _parse_ecp_lines(basis_lines, bs_data) -> None:
     # Strip all lines beginning with $
     basis_lines = helpers.prune_lines(basis_lines, '$')
 

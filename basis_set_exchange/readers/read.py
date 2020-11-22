@@ -34,6 +34,7 @@ Read a basis set file in a given format
 
 import os
 import bz2
+from typing import Optional
 from ..skel import create_skel
 from ..validator import validate_data
 from ..compose import _whole_basis_types
@@ -145,7 +146,7 @@ def _fix_uncontracted(basis):
     return basis
 
 
-def read_formatted_basis_str(basis_str, basis_fmt, validate=False, as_component=False):
+def read_formatted_basis_str(basis_str, basis_fmt: str, validate: bool = False, as_component: bool = False):
     basis_lines = [x.strip() for x in basis_str.splitlines()]
 
     element_data = _reader_map[basis_fmt]['reader'](basis_lines)
@@ -178,7 +179,11 @@ def read_formatted_basis_str(basis_str, basis_fmt, validate=False, as_component=
     return data
 
 
-def read_formatted_basis_file(file_path, basis_fmt=None, encoding='utf-8-sig', validate=False, as_component=False):
+def read_formatted_basis_file(file_path: str,
+                              basis_fmt: Optional[str] = None,
+                              encoding: str = 'utf-8-sig',
+                              validate: bool = False,
+                              as_component: bool = False):
     # Note that the default is utf-8-sig, which handles the optional byte order mark
 
     if not os.path.isfile(file_path):

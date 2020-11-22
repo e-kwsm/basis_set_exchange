@@ -35,7 +35,7 @@ Conversion of basis sets to Dalton format
 from .. import lut, manip, sort, misc, printing
 
 
-def write_dalton(basis):
+def write_dalton(basis) -> str:
     '''Converts a basis set to Dalton format
     '''
 

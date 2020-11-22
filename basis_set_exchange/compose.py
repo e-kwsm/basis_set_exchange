@@ -56,7 +56,7 @@ def _whole_basis_types(basis):
     return sorted(all_types)
 
 
-def compose_elemental_basis(file_relpath, data_dir):
+def compose_elemental_basis(file_relpath: str, data_dir: str):
     """
     Creates an 'elemental' basis from an elemental json file
 
@@ -107,7 +107,7 @@ def compose_elemental_basis(file_relpath, data_dir):
 
 
 @memo.BSEMemoize
-def compose_table_basis(file_relpath, data_dir):
+def compose_table_basis(file_relpath: str, data_dir: str):
     """
     Creates a 'table' basis from an table json file
 

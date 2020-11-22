@@ -47,7 +47,7 @@ def find_range(coeffs):
     return first, last
 
 
-def reshape(data, block_size):
+def reshape(data, block_size: int):
     '''
     Reshape the input array as a matrix
     '''

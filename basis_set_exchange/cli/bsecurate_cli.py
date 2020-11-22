@@ -40,7 +40,7 @@ from basis_set_exchange.cli.check import cli_check_normalize_args
 from basis_set_exchange.cli.complete import cli_case_insensitive_validator, cli_bsname_completer, cli_readerfmt_completer
 
 
-def run_bsecurate_cli():
+def run_bsecurate_cli() -> int:
     ################################################################################################
     # NOTE: I am deliberately not using the 'choices' argument in add_argument. I could use it
     # for formats, etc, however I wouldn't want to use it for basis set names. Therefore, I handle

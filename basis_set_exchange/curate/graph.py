@@ -35,6 +35,7 @@ Generates dependency graphs of the basis set data
 
 import os
 import tempfile
+from typing import Optional
 from .. import api, fileio
 from ..misc import compact_elements
 
@@ -45,7 +46,7 @@ except ImportError:
     graphviz_avail = False
 
 
-def _make_graph(bsname, version=None, data_dir=None):
+def _make_graph(bsname: str, version=None, data_dir: Optional[str] = None) -> graphviz.Digraph:
     '''
     Create a DOT graph file of the files included in a basis set
     '''
@@ -108,14 +109,18 @@ def _make_graph(bsname, version=None, data_dir=None):
     return gr
 
 
-def view_graph(bsname, version=None, data_dir=None):
+def view_graph(bsname: str, version=None, data_dir: Optional[str] = None) -> None:
     gr = _make_graph(bsname, version, data_dir)
 
     outdir = tempfile.mkdtemp()
     gr.render(directory=outdir, format='png', view=True)
 
 
-def make_graph_file(bsname, outfile, render=False, version=None, data_dir=None):
+def make_graph_file(bsname: str,
+                    outfile: str,
+                    render: bool = False,
+                    version=None,
+                    data_dir: Optional[str] = None) -> None:
     gr = _make_graph(bsname, version, data_dir)
 
     if render:

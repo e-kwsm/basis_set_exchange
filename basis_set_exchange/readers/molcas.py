@@ -47,7 +47,7 @@ ecp_info_re = re.compile(r'^[Pp]{2}\s*,\s*([a-zA-Z]+)\s*,\s*(\d+)\s*,\s*(\d+)\s*
 ecp_pot_begin_re = re.compile(r'^(\d+)\s*;.*$')  # Sometime comments are after the semicolon
 
 
-def _parse_electron_lines(basis_lines, bs_data, element_Z):
+def _parse_electron_lines(basis_lines, bs_data, element_Z) -> None:
     element_data = manip.create_element_data(bs_data, element_Z, 'electron_shells')
 
     # Handle the options block
@@ -147,7 +147,7 @@ def _parse_electron_lines(basis_lines, bs_data, element_Z):
         shell_am += 1
 
 
-def _parse_ecp_lines(basis_lines, bs_data, element_Z):
+def _parse_ecp_lines(basis_lines, bs_data, element_Z) -> None:
     # Remove "Spectral" Stuff
     _, basis_lines = helpers.remove_block(basis_lines, r'^Spectral.*', r'^End\s*Of\s*Spectral.*')
 

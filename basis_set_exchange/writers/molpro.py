@@ -36,7 +36,7 @@ from .. import lut, manip, misc, sort
 from .common import find_range
 
 
-def write_molpro(basis):
+def write_molpro(basis) -> str:
     '''Converts a basis set to Molpro format
     '''
 

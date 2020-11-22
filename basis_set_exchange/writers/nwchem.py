@@ -35,7 +35,7 @@ Conversion of basis sets to NWChem format
 from .. import lut, manip, printing, misc, sort
 
 
-def write_nwchem(basis):
+def write_nwchem(basis) -> str:
     '''Converts a basis set to NWChem format
     '''
 
