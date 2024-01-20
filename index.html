@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basis Set Exchange - Library &mdash; Basis Set Exchange  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quickstart and Basic Usage" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Basis Set Exchange
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Quickstart and Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bse_cli.html">The bse command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversion.html">Converting basis sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimal_sets.html">Truncation into minimal basis sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="augmentation.html">Augmenting basis sets by extra functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calendarization.html">Papajak/Truhlar ‘Calendarization’</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bundling.html">Creating Basis Set Bundles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_api.html">Main User API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bsecurate_cli.html">The bsecurate command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web_api.html">REST API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Basis Set Exchange</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Basis Set Exchange - Library</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="basis-set-exchange-library">
+<h1>Basis Set Exchange - Library<a class="headerlink" href="#basis-set-exchange-library" title="Link to this heading"></a></h1>
+<p>This project is the data repository for basis sets found in quantum
+chemistry, plus a library for reading and manipulating the basis sets.</p>
+<p>With this library, you can obtain basis sets in various formats,
+manipulate them (contract, uncontract), as well as convert
+basis set files between formats. Reference information can also be queried.</p>
+<p>The library also contains a command line interface. See <a class="reference internal" href="bse_cli.html#bse-cli"><span class="std std-ref">The bse command line interface</span></a>.</p>
+<p>This library is a core part of the Basis Set Exchange
+(<a class="reference external" href="https://www.basissetexchange.org">https://www.basissetexchange.org</a>) and is a collaboration between the
+Molecular Sciences Software Institute (<a class="reference external" href="https://molssi.org">https://molssi.org</a>) and the
+Environmental Molecular Sciences Laboratory (<a class="reference external" href="https://www.emsl.pnl.gov">https://www.emsl.pnl.gov</a>)</p>
+<p>The code for this project is located on GitHub at
+<a class="reference external" href="https://github.com/MolSSI-BSE/basis_set_exchange">https://github.com/MolSSI-BSE/basis_set_exchange</a></p>
+</section>
+<section id="citation">
+<h1>Citation<a class="headerlink" href="#citation" title="Link to this heading"></a></h1>
+<p>When publishing results obtained from use of the Basis Set Exchange software, please cite:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>A New Basis Set Exchange: An Open, Up-to-date Resource for the Molecular Sciences Community</em> Benjamin P. Pritchard, Doaa Altarawy, Brett Didier, Tara D. Gibson, and Theresa L. Windus <em>J. Chem. Inf. Model.</em> <strong>2019</strong>, 59(11), 4814-4820, doi:10.1021/acs.jcim.9b00725</p></li>
+</ul>
+</div></blockquote>
+<p>For citing the previous EMSL/PNNL Basis Set Exchange, please cite the following references:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>The Role of Databases in Support of Computational Chemistry Calculations,</em> Feller, D., <em>J. Comp. Chem.</em> <strong>1996</strong>, 17(13), 1571-1586</p></li>
+<li><p><em>Basis Set Exchange: A Community Database for Computational Sciences Schuchardt,</em> K.L., Didier, B.T., Elsethagen, T., Sun, L., Gurumoorthi, V., Chase, J., Li, J., and Windus, T.L. <em>J. Chem. Inf. Model.</em> <strong>2007</strong>, 47(3), 1045-1052, doi:10.1021/ci600510j</p></li>
+</ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Quickstart and Basic Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#importing">Importing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#determining-the-library-version">Determining the library version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#getting-a-basis-set-from-the-library">Getting a basis set from the library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#getting-references">Getting references</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#versioning">Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#listing-basis-sets-and-getting-basis-set-metadata">Listing Basis Sets and Getting Basis Set Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#lookup-a-basis-by-role">Lookup a basis by Role</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#filtering-basis-sets">Filtering basis sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#basis-set-and-family-notes">Basis set and family notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#memoization">Memoization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bse_cli.html">The bse command line interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bse_cli.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bse_cli.html#tab-completion">TAB completion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bse_cli.html#general-usage">General usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bse_cli.html#subcommands">Subcommands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conversion.html">Converting basis sets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="conversion.html#about-conversion">About conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conversion.html#conversion-via-python">Conversion via python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conversion.html#conversion-via-the-command-line">Conversion via the command line</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="minimal_sets.html">Truncation into minimal basis sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="augmentation.html">Augmenting basis sets by extra functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calendarization.html">Papajak/Truhlar ‘Calendarization’</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bundling.html">Creating Basis Set Bundles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bundling.html#about-bundles">About Bundles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bundling.html#creating-via-python">Creating via python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bundling.html#creating-via-the-command-line">Creating via the command line</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_api.html">Main User API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.convert_formatted_basis_file"><code class="docutils literal notranslate"><span class="pre">convert_formatted_basis_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.convert_formatted_basis_str"><code class="docutils literal notranslate"><span class="pre">convert_formatted_basis_str()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.create_bundle"><code class="docutils literal notranslate"><span class="pre">create_bundle()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.filter_basis_sets"><code class="docutils literal notranslate"><span class="pre">filter_basis_sets()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.get_all_basis_names"><code class="docutils literal notranslate"><span class="pre">get_all_basis_names()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.get_archive_types"><code class="docutils literal notranslate"><span class="pre">get_archive_types()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.get_basis"><code class="docutils literal notranslate"><span class="pre">get_basis()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.get_basis_family"><code class="docutils literal notranslate"><span class="pre">get_basis_family()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.get_data_dir"><code class="docutils literal notranslate"><span class="pre">get_data_dir()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.get_formats"><code class="docutils literal notranslate"><span class="pre">get_formats()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.get_reader_formats"><code class="docutils literal notranslate"><span class="pre">get_reader_formats()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.get_reference_formats"><code class="docutils literal notranslate"><span class="pre">get_reference_formats()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.get_references"><code class="docutils literal notranslate"><span class="pre">get_references()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.get_roles"><code class="docutils literal notranslate"><span class="pre">get_roles()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.get_writer_formats"><code class="docutils literal notranslate"><span class="pre">get_writer_formats()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.lookup_basis_by_role"><code class="docutils literal notranslate"><span class="pre">lookup_basis_by_role()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.validate_data"><code class="docutils literal notranslate"><span class="pre">validate_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.validate_file"><code class="docutils literal notranslate"><span class="pre">validate_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.version"><code class="docutils literal notranslate"><span class="pre">version()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_api.html#basis_set_exchange.write_formatted_basis_str"><code class="docutils literal notranslate"><span class="pre">write_formatted_basis_str()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="developer_faq.html">Developer FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_api.html">Developer API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_writers.html">Output converters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_readers.html">Basis set readers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_refconverters.html">Basis set reference writers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_curate.html">Developer Curation API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bsecurate_cli.html">The bsecurate command line interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bsecurate_cli.html#installation-and-tab-completion">Installation and TAB completion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bsecurate_cli.html#general-usage">General usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bsecurate_cli.html#subcommands">Subcommands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="web_api.html">REST API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="web_api.html#note-about-headers">Note about headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_api.html#specifying-elements">Specifying Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_api.html#api-metadata"><code class="docutils literal notranslate"><span class="pre">/api/metadata</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_api.html#api-formats"><code class="docutils literal notranslate"><span class="pre">/api/formats</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_api.html#api-reference-formats"><code class="docutils literal notranslate"><span class="pre">/api/reference_formats</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_api.html#api-basis-basis-name-format-fmt"><code class="docutils literal notranslate"><span class="pre">/api/basis/&lt;basis_name&gt;/format/&lt;fmt&gt;</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_api.html#api-references-basis-name-format-fmt"><code class="docutils literal notranslate"><span class="pre">/api/references/&lt;basis_name&gt;/format/&lt;fmt&gt;</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_api.html#api-notes-basis-name"><code class="docutils literal notranslate"><span class="pre">/api/notes/&lt;basis_name&gt;</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_api.html#api-family-notes-family"><code class="docutils literal notranslate"><span class="pre">/api/family_notes/&lt;family&gt;</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="license">
+<h1>License<a class="headerlink" href="#license" title="Link to this heading"></a></h1>
+<p>The code is released under the BSD 3-Clause license. See the <a class="reference external" href="https://github.com/MolSSI-BSE/basis_set_exchange/blob/master/LICENSE">LICENSE</a> file for details.</p>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage.html" class="btn btn-neutral float-right" title="Quickstart and Basic Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Benjamin Pritchard and Susi Lehtola.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
