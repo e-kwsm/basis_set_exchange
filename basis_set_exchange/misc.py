@@ -34,9 +34,10 @@ Miscellaneous helper functions
 
 import re
 from . import lut
+from typing import Any, Iterable, List, Union
 
 
-def _Z_from_str(s):
+def _Z_from_str(s: str) -> int:
     if s.isdecimal():
         return int(s)
     else:
@@ -101,7 +102,7 @@ def contraction_string(element, compact=False):
     return "({}) -> [{}]".format(primstr, contstr)
 
 
-def compact_elements(elements):
+def compact_elements(elements: Iterable[int]) -> str:
     """
     Create a string (with ranges) given a list of element numbers
 
@@ -236,7 +237,7 @@ def expand_elements(compact_el, as_str=False):
         return el_list
 
 
-def transform_basis_name(name):
+def transform_basis_name(name: str) -> str:
     """
     Transforms the name of a basis set to an internal representation
 
@@ -250,7 +251,7 @@ def transform_basis_name(name):
     return name
 
 
-def basis_name_to_filename(name):
+def basis_name_to_filename(name: str) -> str:
     '''
     Given a basis set name, transform it into a valid filename
 
@@ -260,7 +261,7 @@ def basis_name_to_filename(name):
     return transform_basis_name(name)
 
 
-def basis_name_from_filename(filename):
+def basis_name_from_filename(filename: str) -> str:
     '''
     Given a basis set name that was part of a filename, determine the basis set name
 
