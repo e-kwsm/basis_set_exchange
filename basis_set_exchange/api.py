@@ -40,6 +40,7 @@ functionality of the library.
 import os
 import textwrap
 
+from typing import Any, Dict, List, Optional
 from . import compose
 from . import writers
 from . import fileio
@@ -67,7 +68,7 @@ _default_data_dir = os.path.join(_my_dir, 'data')
 _main_url = 'https://www.basissetexchange.org'
 
 
-def _get_basis_metadata(name, data_dir):
+def _get_basis_metadata(name: str, data_dir: str) -> Dict[str, Any]:
     '''Get metadata for a single basis set
 
     If the basis doesn't exist, an exception is raised
@@ -108,7 +109,7 @@ def _header_string(basis_dict):
     return header
 
 
-def fix_data_dir(data_dir):
+def fix_data_dir(data_dir: Optional[str]) -> str:
     '''
     If data_dir is None, returns the default data_dir. Otherwise,
     returns the data_dir parameter unmodified
@@ -117,21 +118,21 @@ def fix_data_dir(data_dir):
     return _default_data_dir if data_dir is None else data_dir
 
 
-def get_basis(name,
+def get_basis(name: str,
               elements=None,
               version=None,
               fmt=None,
-              uncontract_general=False,
-              uncontract_spdf=False,
-              uncontract_segmented=False,
-              remove_free_primitives=False,
-              make_general=False,
-              optimize_general=False,
-              augment_diffuse=0,
-              augment_steep=0,
-              get_aux=0,
+              uncontract_general: bool = False,
+              uncontract_spdf: bool = False,
+              uncontract_segmented: bool = False,
+              remove_free_primitives: bool = False,
+              make_general: bool = False,
+              optimize_general: bool = False,
+              augment_diffuse: int = 0,
+              augment_steep: int = 0,
+              get_aux: int = 0,
               data_dir=None,
-              header=True):
+              header: bool = True) -> Dict[str, Any]:
     '''Obtain a basis set
 
     This is the main function for getting basis set information.
@@ -379,7 +380,7 @@ def lookup_basis_by_role(primary_basis, role, data_dir=None):
 
 
 @memo.BSEMemoize
-def get_metadata(data_dir=None):
+def get_metadata(data_dir: Optional[str] = None) -> Dict[str, Any]:
     '''Obtain the metadata for all basis sets
 
     The metadata includes information such as the display name of the basis set,
@@ -492,7 +493,7 @@ def get_basis_family(basis_name, data_dir=None):
 
 
 @memo.BSEMemoize
-def get_families(data_dir=None):
+def get_families(data_dir=None) -> List[str]:
     '''Return a list of all basis set families'''
     data_dir = fix_data_dir(data_dir)
     metadata = get_metadata(data_dir)
@@ -677,7 +678,7 @@ def get_reference_formats():
     return refconverters.get_reference_formats()
 
 
-def get_roles():
+def get_roles() -> Dict[str, str]:
     '''Return information about the available basis set roles available
 
     The returned data is a map of role to display name. The format
