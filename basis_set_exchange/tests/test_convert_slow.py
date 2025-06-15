@@ -37,7 +37,7 @@ import os
 import pytest
 
 from basis_set_exchange import convert
-from .common_testvars import bs_read_formats, bs_write_formats, bs_names_sample
+from common_testvars import bs_read_formats, bs_write_formats, bs_names_sample
 
 # We only want formats that we can actually write out and read from
 my_write_formats = [x for x in bs_write_formats if x is not None]
