@@ -154,3 +154,4 @@ def test_curatecli_compare_files(filename1, filename2, expected):
         assert b"No difference found" in output
     else:
         assert b"DIFFERENCES FOUND" in output
+pytest.main([__file__])

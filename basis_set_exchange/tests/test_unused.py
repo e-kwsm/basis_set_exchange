@@ -135,3 +135,4 @@ def test_unused_notes():
 
     if found_unused:
         raise RuntimeError("Found unused notes files")
+pytest.main([__file__])

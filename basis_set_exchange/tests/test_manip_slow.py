@@ -56,3 +56,4 @@ def test_manip_roundtrip_slow(basis):
     bse_dict_gen2 = manip.make_general(bse_dict_unc)
     bse_dict_gen2 = manip.prune_basis(bse_dict_gen2)
     assert curate.compare_basis(bse_dict_gen, bse_dict_gen2, rel_tol=0.0)
+pytest.main([__file__])

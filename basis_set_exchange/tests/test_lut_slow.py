@@ -65,3 +65,4 @@ def test_stored_nelec_start_slow(basis_name):
             nelec_sum += (2 * am + 1) * 2 * covered
 
         assert nelec_sum == ecp_electrons
+pytest.main([__file__])

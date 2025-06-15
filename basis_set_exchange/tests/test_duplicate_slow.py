@@ -59,3 +59,4 @@ def test_duplicate_slow(bs_name, bs_ver, unc_gen, unc_seg, unc_spdf, opt_gen, ma
                             optimize_general=opt_gen)
 
     _test_duplicates(bs_dict, False)
+pytest.main([__file__])

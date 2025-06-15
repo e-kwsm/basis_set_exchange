@@ -147,3 +147,4 @@ def test_manip_remove_free(testdir):
     new_data = manip.remove_free_primitives(base_data)
     new_data = manip.make_general(new_data)
     assert curate.compare_basis(new_data, ref_data)
+pytest.main([__file__])

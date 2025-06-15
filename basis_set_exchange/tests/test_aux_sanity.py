@@ -89,3 +89,4 @@ def test_aux_reverse(basis_name):
                     found = True
 
     assert found
+pytest.main([__file__])

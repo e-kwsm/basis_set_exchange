@@ -107,3 +107,4 @@ def test_basis_name_to_filename(name, expected):
     assert fname == expected
     name2 = misc.basis_name_from_filename(fname)
     assert name2 == name.lower()
+pytest.main([__file__])

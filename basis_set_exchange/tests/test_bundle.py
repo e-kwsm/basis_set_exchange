@@ -121,3 +121,4 @@ def _run_test_bundles(tmp_path, fmt, reffmt, ext, data_dir):
 # yapf: enable
 def test_bundles_fast(tmp_path, fmt, reffmt, ext):
     _run_test_bundles(tmp_path, fmt, reffmt, ext, fake_data_dir)
+pytest.main([__file__])

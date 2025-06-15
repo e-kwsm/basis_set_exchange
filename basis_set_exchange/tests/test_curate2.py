@@ -97,3 +97,4 @@ def test_add_basis(tmp_path):
 
     # Validate the new data dir
     validator.validate_data_dir(tmp_path)
+pytest.main([__file__])

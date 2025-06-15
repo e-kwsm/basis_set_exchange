@@ -82,3 +82,4 @@ def test_reader_equivalent():
     data2 = readers.read_formatted_basis_file(file2)
 
     assert data1 == data2
+pytest.main([__file__])

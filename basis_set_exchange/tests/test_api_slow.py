@@ -77,3 +77,4 @@ def test_slow_get_basis_1(basis_name, fmt, unc_gen, unc_seg, unc_spdf, make_gen,
                             header=False)
 
         assert bs1 == bs2
+pytest.main([__file__])

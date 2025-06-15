@@ -46,3 +46,4 @@ from .test_bundle import _run_test_bundles, _bundle_exts
 # yapf: enable
 def test_bundles_slow(tmp_path, fmt, reffmt, ext):
     _run_test_bundles(tmp_path, fmt, reffmt, ext, None)
+pytest.main([__file__])

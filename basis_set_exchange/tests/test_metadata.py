@@ -97,3 +97,4 @@ def test_basis_metadata_duplicate(bs1, bs2):
 
     assert n1 != n2
     assert bsdata1 == bsdata2
+pytest.main([__file__])

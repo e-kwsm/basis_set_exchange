@@ -44,3 +44,4 @@ def test_roles(basis_name):
 
     bs_role = bs_metadata[basis_name]['role']
     assert bs_role in all_roles
+pytest.main([__file__])

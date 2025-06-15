@@ -48,3 +48,4 @@ def test_bibtex(tmp_path, basis_name):
     tmp_path = str(tmp_path)  # Needed for python 3.5
     bib_str = api.get_references(basis_name, fmt='bib')
     check_bibtex.validate_bibtex(tmp_path, bib_str)
+pytest.main([__file__])

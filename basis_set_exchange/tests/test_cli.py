@@ -85,3 +85,4 @@ def test_cli_createbundle_datadir(tmp_path):
     output = _test_cli_cmd('-d ' + fake_data_dir + ' create-bundle gaussian94 bib ' + bfile_path)
     assert os.path.isfile(bfile_path)
     assert output.startswith(b'Created ')
+pytest.main([__file__])

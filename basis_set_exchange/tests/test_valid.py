@@ -72,3 +72,4 @@ def test_valid_complete(bs_name, bs_ver):
     '''Test that all basis set data is valid when obtained through get_basis'''
     data = api.get_basis(bs_name, version=bs_ver)
     validator.validate_data('complete', data)
+pytest.main([__file__])

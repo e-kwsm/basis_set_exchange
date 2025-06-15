@@ -113,3 +113,4 @@ def test_filter_fail(substr, family, role):
 
     with pytest.raises(RuntimeError, match=r'(Family|Role).*not a valid (family|role)'):
         md = bse.filter_basis_sets(substr, family, role)
+pytest.main([__file__])

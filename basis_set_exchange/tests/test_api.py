@@ -218,3 +218,4 @@ def test_get_formats(fmts):
 def test_get_reader_formats():
     '''Test the get_reader_formats function'''
     bse.get_reference_formats()
+pytest.main([__file__])

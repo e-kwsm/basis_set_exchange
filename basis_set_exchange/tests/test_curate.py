@@ -180,3 +180,4 @@ def test_g94_scaling(tmp_path):
     bs2 = readers.read_formatted_basis_file(file2)
 
     assert curate.compare_basis(bs1, bs2, rel_tol=1.0e-14)
+pytest.main([__file__])

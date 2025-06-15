@@ -79,3 +79,4 @@ def test_valid_qcschema_slow(basis_name):
     }
 
     qcschema.validate(dummy_inp, 'input')
+pytest.main([__file__])

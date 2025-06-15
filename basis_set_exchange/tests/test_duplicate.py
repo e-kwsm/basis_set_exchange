@@ -83,3 +83,4 @@ def test_duplicate_fail(filename):
     filepath = os.path.join(curate_test_data_dir, filename)
     filedata = readers.read_formatted_basis_file(filepath, 'nwchem')
     _test_duplicates(filedata, True)
+pytest.main([__file__])

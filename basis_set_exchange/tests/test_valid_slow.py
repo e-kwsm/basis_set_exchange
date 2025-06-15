@@ -38,3 +38,4 @@ from .common_testvars import data_dir
 
 def test_valid_data_dir():
     validator.validate_data_dir(data_dir)
+pytest.main([__file__])

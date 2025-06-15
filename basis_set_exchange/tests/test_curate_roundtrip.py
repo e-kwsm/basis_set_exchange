@@ -80,3 +80,4 @@ def test_curate_roundtrip(tmp_path, basis, fmt):
 
     # Compare, ignoring metadata (not stored in most formats)
     assert curate.compare_basis(bse_dict, test_dict, rel_tol=0.0)
+pytest.main([__file__])

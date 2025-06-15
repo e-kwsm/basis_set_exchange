@@ -101,3 +101,4 @@ def test_write_basis_file_noecp(bs_name, bs_fmt, as_bz2, tmp_path):
 
     outfile_path = os.path.join(tmp_path, out_file)
     bse.writers.write_formatted_basis_file(bs_data, outfile_path, bs_fmt)
+pytest.main([__file__])

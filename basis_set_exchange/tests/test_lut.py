@@ -123,3 +123,4 @@ def test_electron_shells_start_fail(nelectrons):
         lut.electron_shells_start(-nelectrons)
     with pytest.raises(NotImplementedError, match=r'Too many electrons'):
         lut.electron_shells_start(nelectrons + 120)
+pytest.main([__file__])

@@ -63,3 +63,4 @@ def test_valid_qcschema(basis_name):
     assert len(qcs_json['atom_map']) == len(el_list)
 
     qcschema.validate(qcs_json, 'basis', version='dev')
+pytest.main([__file__])
