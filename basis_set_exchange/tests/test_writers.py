@@ -36,7 +36,7 @@ import basis_set_exchange as bse
 import pytest
 import os
 
-from .common_testvars import bs_write_formats_ecp, bs_write_formats_noecp, ref_formats, bs_names_sample_noecp, bs_names_sample
+from common_testvars import bs_write_formats_ecp, bs_write_formats_noecp, ref_formats, bs_names_sample_noecp, bs_names_sample
 
 my_formats_ecp = [x for x in bs_write_formats_ecp if x is not None]
 my_formats_noecp = [x for x in bs_write_formats_noecp if x is not None]
@@ -101,4 +101,6 @@ def test_write_basis_file_noecp(bs_name, bs_fmt, as_bz2, tmp_path):
 
     outfile_path = os.path.join(tmp_path, out_file)
     bse.writers.write_formatted_basis_file(bs_data, outfile_path, bs_fmt)
+
+
 pytest.main([__file__])
