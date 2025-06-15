@@ -38,7 +38,7 @@ import json
 import pytest
 
 from basis_set_exchange import validator
-from .common_testvars import validator_test_data_dir
+from common_testvars import validator_test_data_dir
 
 test_files = os.listdir(validator_test_data_dir)
 test_files = [x for x in test_files if x.endswith('.bz2')]
@@ -66,3 +66,6 @@ def test_validator(file_rel_path):
     else:
         json_data = json.loads(file_data)
         validator.validate_data(file_type, json_data)
+
+
+pytest.main([__file__])
