@@ -37,7 +37,7 @@ import copy
 import pytest
 
 from basis_set_exchange import api, curate, manip, readers, sort
-from .common_testvars import bs_names_sample, diffuse_augmentation_test_data_dir, steep_augmentation_test_data_dir, truhlar_test_data_dir, rmfree_test_data_dir
+from common_testvars import bs_names_sample, diffuse_augmentation_test_data_dir, steep_augmentation_test_data_dir, truhlar_test_data_dir, rmfree_test_data_dir
 
 
 def _list_subdirs(path):
@@ -147,4 +147,6 @@ def test_manip_remove_free(testdir):
     new_data = manip.remove_free_primitives(base_data)
     new_data = manip.make_general(new_data)
     assert curate.compare_basis(new_data, ref_data)
+
+
 pytest.main([__file__])
