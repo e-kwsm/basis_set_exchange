@@ -114,18 +114,7 @@ def _write_plain_json(file_path: str, js: Dict[str, Any]):
             json.dump(js, f, indent=2, ensure_ascii=False)
 
 
-def read_json_basis(
-    file_path: str,
-) -> Dict[
-    str,
-    Union[
-        str,
-        Dict[str, str],
-        Dict[str, Dict[str, List[str]]],
-        Dict[str, Dict[str, Union[int, List[str], List[Dict[str, Union[str, List[int], List[str], List[List[str]]]]]]]],
-        Dict[str, Dict[str, List[Union[str, Dict[str, Union[str, List[int], List[str], List[List[str]]]]]]]],
-    ],
-]:
+def read_json_basis(file_path: str) -> Dict[str, Any]:
     """
     Reads generic basis set information from a JSON file
 
@@ -169,12 +158,7 @@ def read_references(file_path: str) -> Dict[str, Dict[str, Union[str, List[str]]
     return _read_plain_json(file_path, True)
 
 
-def read_metadata(
-    file_path: str,
-) -> Dict[
-    str,
-    Dict[str, Union[str, List[str], Dict[str, Dict[str, Union[str, List[str]]]], Dict[str, str], Dict[str, List[str]]]],
-]:
+def read_metadata(file_path: str) -> Dict[str, Any]:
     """
     Reads a file containing the metadata for all the basis sets
 
