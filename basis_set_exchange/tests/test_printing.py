@@ -36,7 +36,7 @@ import os
 import pytest
 
 from basis_set_exchange import printing, fileio, api
-from .common_testvars import data_dir
+from common_testvars import data_dir
 
 
 # yapf: disable
@@ -63,4 +63,6 @@ def test_print_component_basis(file_path):
     full_path = os.path.join(data_dir, file_path)
     comp = fileio.read_json_basis(full_path)
     printing.component_basis_str(comp)
+
+
 pytest.main([__file__])
