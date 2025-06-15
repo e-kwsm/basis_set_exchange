@@ -35,6 +35,8 @@ Functions related to validating JSON files (including against schema)
 import os
 import jsonschema
 import datetime
+from jsonschema.validators import _RefResolver
+from typing import Any, Dict, List, Tuple, Union
 
 from . import fileio, misc
 
@@ -42,7 +44,8 @@ _my_dir = os.path.dirname(os.path.abspath(__file__))
 _default_schema_dir = os.path.join(_my_dir, 'schema')
 
 
-def _list_has_duplicates(lst):
+def _list_has_duplicates(
+        lst: List[Union[float, int, List[float]]]) -> List[Union[float, Any]]:
     '''Check if a list has only unique elements
        Returns a list of duplicated elements'''
 
@@ -53,7 +56,7 @@ def _list_has_duplicates(lst):
     return dupe
 
 
-def _list_has_nonpositives(lst):
+def _list_has_nonpositives(lst: List[float]) -> List[Any]:
     '''Check if a list of floats has nonpositive elements
        Returns a list of nonpositive elements'''
 
@@ -78,48 +81,61 @@ def _validate_extra_metadata(bs_data):
         raise RuntimeError("Family '{}' is not lowercase".format(fam))
 
 
-def _validate_electron_shells(shells, element_z):
+def _validate_electron_shells(shells: List[Dict[str, Union[str, List[int],
+                                                           List[str],
+                                                           List[List[str]]]]],
+                              element_z: str):
     '''Validate a list of electron shells'''
 
     for idx, s in enumerate(shells):
         nprim = len(s['exponents'])
         if nprim <= 0:
-            raise RuntimeError("Element {} Shell {}: Invalid number of primitives: {}".format(element_z, idx, nprim))
+            raise RuntimeError(
+                "Element {} Shell {}: Invalid number of primitives: {}".format(
+                    element_z, idx, nprim))
 
         # If max(am) > 1, gto types must specify spherical or cartesian
         if max(s['angular_momentum']) > 1:
             if s['function_type'] not in ['gto_spherical', 'gto_cartesian']:
                 raise RuntimeError(
-                    "Element {} Shell {}: Shell with max am > p, but spherical/cartesian not specified".format(
-                        element_z, idx))
+                    "Element {} Shell {}: Shell with max am > p, but spherical/cartesian not specified"
+                    .format(element_z, idx))
         else:
             # If max(am) < 2, spherical/cartesian not allowed
-            if 'spherical' in s['function_type'] or 'cartesian' in s['function_type']:
-                raise RuntimeError("Element {} Shell {}: AM = {} marked as spherical or cartesian: {}".format(
-                    element_z, idx, str(s['angular_momentum']), s['function_type']))
+            if 'spherical' in s['function_type'] or 'cartesian' in s[
+                    'function_type']:
+                raise RuntimeError(
+                    "Element {} Shell {}: AM = {} marked as spherical or cartesian: {}"
+                    .format(element_z, idx, str(s['angular_momentum']),
+                            s['function_type']))
 
         # Duplicate exponents (when converted to float)?
         exponents_f = [float(x) for x in s['exponents']]
         dupe_ex = _list_has_duplicates(exponents_f)
         if dupe_ex:
-            raise RuntimeError("Element {} Shell {}: Has duplicate exponents: {}".format(element_z, idx, dupe_ex))
+            raise RuntimeError(
+                "Element {} Shell {}: Has duplicate exponents: {}".format(
+                    element_z, idx, dupe_ex))
 
         # Nonpositive exponents?
         nonpos_ex = _list_has_nonpositives(exponents_f)
         if nonpos_ex:
-            raise RuntimeError("Element {} Shell {}: Has negative exponents: {}".format(element_z, idx, nonpos_ex))
+            raise RuntimeError(
+                "Element {} Shell {}: Has negative exponents: {}".format(
+                    element_z, idx, nonpos_ex))
 
         for g in s['coefficients']:
             if nprim != len(g):
                 raise RuntimeError(
-                    "Element {} Shell {}: Number of coefficients doesn't match number of primitives ({} vs {})".format(
-                        element_z, idx, len(g), nprim))
+                    "Element {} Shell {}: Number of coefficients doesn't match number of primitives ({} vs {})"
+                    .format(element_z, idx, len(g), nprim))
 
             # Column of zero coefficients?
             coefficients_f = [float(x) for x in g]
             if all(x == 0.0 for x in coefficients_f):
-                raise RuntimeError("Element {} Shell {}: Has column of coefficients with all = 0.0".format(
-                    element_z, idx))
+                raise RuntimeError(
+                    "Element {} Shell {}: Has column of coefficients with all = 0.0"
+                    .format(element_z, idx))
 
         # Duplicate columns of coefficients?
         # Only test this is not a fused shell (which can have duplicates)
@@ -127,15 +143,17 @@ def _validate_electron_shells(shells, element_z):
         if len(s['angular_momentum']) == 1:
             dupe_coef_col = _list_has_duplicates(all_coefficients_f)
             if dupe_coef_col:
-                raise RuntimeError("Element {} Shell {}: Duplicate columns of coefficients: {}".format(
-                    element_z, idx, dupe_coef_col))
+                raise RuntimeError(
+                    "Element {} Shell {}: Duplicate columns of coefficients: {}"
+                    .format(element_z, idx, dupe_coef_col))
 
         # Does a primitive have all zeroes in the coefficients?
         coeff_t = misc.transpose_matrix(all_coefficients_f)
         for pidx, row in enumerate(coeff_t):
             if all(x == 0.0 for x in row):
-                raise RuntimeError("Element {} Shell {} Primitive {}: Primitive is unused (all coeffs = 0.0)".format(
-                    element_z, idx, pidx))
+                raise RuntimeError(
+                    "Element {} Shell {} Primitive {}: Primitive is unused (all coeffs = 0.0)"
+                    .format(element_z, idx, pidx))
 
         # If more than one AM is given, that should be the number of
         # general contractions
@@ -144,21 +162,29 @@ def _validate_electron_shells(shells, element_z):
             ngen = len(s['coefficients'])
             if ngen != nam:
                 raise RuntimeError(
-                    "Element {} Shell {}: Number of general contractions doesn't match combined AM ({} vs {})".format(
-                        element_z, idx, ngen, nam))
+                    "Element {} Shell {}: Number of general contractions doesn't match combined AM ({} vs {})"
+                    .format(element_z, idx, ngen, nam))
 
 
-def _validate_ecp_potentials(potentials, ecp_electrons, element_z):
+def _validate_ecp_potentials(potentials: List[Dict[str,
+                                                   Union[str, List[int],
+                                                         List[str],
+                                                         List[List[str]]]]],
+                             ecp_electrons: int, element_z: str):
     # Check for duplicate AM and 'fused' AM
     all_am = [x['angular_momentum'] for x in potentials]
     for am in all_am:
         if len(am) > 1:
-            raise RuntimeError("Element {} ECP: Fused AM in potentials (not supported)".format(element_z))
+            raise RuntimeError(
+                "Element {} ECP: Fused AM in potentials (not supported)".
+                format(element_z))
 
     all_am = [x[0] for x in all_am]
     dupe_am = _list_has_duplicates(all_am)
     if dupe_am:
-        raise RuntimeError("Element {} ECP: Duplicated angular momentum: {}".format(element_z, dupe_am))
+        raise RuntimeError(
+            "Element {} ECP: Duplicated angular momentum: {}".format(
+                element_z, dupe_am))
 
     # Need this for later
     max_am = max(pot['angular_momentum'] for pot in potentials)
@@ -166,29 +192,33 @@ def _validate_ecp_potentials(potentials, ecp_electrons, element_z):
     for idx, pot in enumerate(potentials):
         nexp = len(pot['r_exponents'])
         if len(pot['gaussian_exponents']) != nexp:
-            raise RuntimeError("Element {} ECP Potential {}: len(r_exponents) != len(gaussian_exponents)".format(
-                element_z, idx))
+            raise RuntimeError(
+                "Element {} ECP Potential {}: len(r_exponents) != len(gaussian_exponents)"
+                .format(element_z, idx))
 
         for g in pot['coefficients']:
             if nexp != len(g):
                 raise RuntimeError(
-                    "Element {} ECP Potential {}: Number of coefficients doesn't match number of exponents ({} vs {})".
-                    format(element_z, idx, len(g), nexp))
+                    "Element {} ECP Potential {}: Number of coefficients doesn't match number of exponents ({} vs {})"
+                    .format(element_z, idx, len(g), nexp))
 
             # Column of zero coefficients?
             # Sometimes there is a potential with one exponent and a zero coefficient, but that should be the highest AM
             if nexp > 1 or pot['angular_momentum'] != max_am:
                 coefficients_f = [float(x) for x in g]
                 if all(x == 0.0 for x in coefficients_f):
-                    raise RuntimeError("Element {} ECP Potential {}: Has column of coefficients with all = 0.0".format(
-                        element_z, idx))
+                    raise RuntimeError(
+                        "Element {} ECP Potential {}: Has column of coefficients with all = 0.0"
+                        .format(element_z, idx))
 
         # Duplicated columns of coefficients?
-        all_coefficients_f = [[float(x) for x in g] for g in pot['coefficients']]
+        all_coefficients_f = [[float(x) for x in g]
+                              for g in pot['coefficients']]
         dupe_coef_col = _list_has_duplicates(all_coefficients_f)
         if dupe_coef_col:
-            raise RuntimeError("Element {} ECP Potential {}: Duplicate columns of coefficients: {}".format(
-                element_z, idx, dupe_coef_col))
+            raise RuntimeError(
+                "Element {} ECP Potential {}: Duplicate columns of coefficients: {}"
+                .format(element_z, idx, dupe_coef_col))
 
         # Check for rows with 0.0 in the coefficients, except for max_am with nexp == 1
         if nexp > 1 or pot['angular_momentum'] != max_am:
@@ -196,18 +226,30 @@ def _validate_ecp_potentials(potentials, ecp_electrons, element_z):
             for pidx, row in enumerate(coeff_t):
                 if all(x == 0.0 for x in row):
                     raise RuntimeError(
-                        "Element {} Shell {} Primitive {}: Primitive is unused (all coeffs = 0.0)".format(
-                            element_z, idx, pidx))
+                        "Element {} Shell {} Primitive {}: Primitive is unused (all coeffs = 0.0)"
+                        .format(element_z, idx, pidx))
 
 
-def _validate_element(el_data, element_z):
+def _validate_element(
+        el_data: Dict[str,
+                      Union[List[Dict[str, Union[str, List[int], List[str],
+                                                 List[List[str]]]]],
+                            List[Dict[str, Union[str, List[str]]]], int,
+                            List[Union[Dict[str,
+                                            Union[str, List[int], List[str],
+                                                  List[List[str]]]],
+                                       Dict[str, Union[str, List[str]]]]]]],
+        element_z: str):
     if 'electron_shells' in el_data:
         _validate_electron_shells(el_data['electron_shells'], element_z)
 
     if 'ecp_potentials' in el_data:
         if 'ecp_electrons' not in el_data:
-            raise RuntimeError("ecp_electrons doesn't exist for element {}, but ecp_potentials does".format(element_z))
-        _validate_ecp_potentials(el_data['ecp_potentials'], el_data['ecp_electrons'], element_z)
+            raise RuntimeError(
+                "ecp_electrons doesn't exist for element {}, but ecp_potentials does"
+                .format(element_z))
+        _validate_ecp_potentials(el_data['ecp_potentials'],
+                                 el_data['ecp_electrons'], element_z)
 
 
 def _validate_extra_component(bs_data):
@@ -234,14 +276,33 @@ def _validate_extra_table(bs_data):
     datetime.datetime.strptime(bs_data['revision_date'], "%Y-%m-%d")
 
 
-def _validate_extra_complete(bs_data):
+def _validate_extra_complete(
+    bs_data: Dict[str,
+                  Union[Dict[str, str], str,
+                        Dict[str,
+                             Dict[str,
+                                  Union[List[Dict[str,
+                                                  Union[str, List[int],
+                                                        List[str],
+                                                        List[List[str]]]]],
+                                        List[Dict[str, Union[str, List[str]]]],
+                                        int]]], List[str],
+                        Dict[str,
+                             Dict[str,
+                                  List[Union[Dict[str, Union[str, List[int],
+                                                             List[str],
+                                                             List[List[str]]]],
+                                             Dict[str,
+                                                  Union[str,
+                                                        List[str]]]]]]]]]):
     '''Extra checks for complete basis set data'''
 
     assert len(bs_data['elements']) > 0
 
     # Make sure 'name' exists in the list of 'names'
     if not bs_data['name'] in bs_data['names']:
-        raise RuntimeError("Name {} not part of names: {}".format(bs_data['name'], bs_data['names']))
+        raise RuntimeError("Name {} not part of names: {}".format(
+            bs_data['name'], bs_data['names']))
 
     for element_z, el_data in bs_data['elements'].items():
         _validate_element(el_data, element_z)
@@ -267,7 +328,14 @@ _validate_map = {
 }
 
 
-def _get_schema(file_type):
+def _get_schema(
+    file_type: str
+) -> Tuple[Dict[str, Union[str, bool, List[str], Dict[str, Union[
+        Dict[str, Union[str, bool, List[str], Dict[str, Union[Dict[str, Union[
+            str, List[str]]], Dict[str, str]]]]], Dict[str, str],
+        Dict[str, Union[str, int, bool, Dict[str, str]]], Dict[str, Union[
+            str, bool, Dict[str, Dict[str, Union[str, List[str], bool, Dict[
+                str, Dict[str, str]]]]]]]]]]], _RefResolver]:
     '''Get a schema that can validate BSE JSON files or dictionaries
 
        The schema_type represents the type of BSE JSON file to be validated,
@@ -288,7 +356,26 @@ def _get_schema(file_type):
     return schema, resolver
 
 
-def validate_data(file_type, bs_data):
+def validate_data(
+    file_type: str,
+    bs_data: Dict[str,
+                  Union[Dict[str, str], str,
+                        Dict[str,
+                             Dict[str,
+                                  Union[List[Dict[str,
+                                                  Union[str, List[int],
+                                                        List[str],
+                                                        List[List[str]]]]],
+                                        List[Dict[str, Union[str, List[str]]]],
+                                        int]]], List[str],
+                        Dict[str,
+                             Dict[str,
+                                  List[Union[Dict[str, Union[str, List[int],
+                                                             List[str],
+                                                             List[List[str]]]],
+                                             Dict[str,
+                                                  Union[str,
+                                                        List[str]]]]]]]]]):
     """
     Validates json basis set data against a schema
 
@@ -347,7 +434,8 @@ def validate_data_dir(data_dir):
     Validates all files in a data_dir
     """
 
-    all_meta, all_table, all_element, all_component = fileio.get_all_filelist(data_dir)
+    all_meta, all_table, all_element, all_component = fileio.get_all_filelist(
+        data_dir)
 
     for f in all_meta:
         full_path = os.path.join(data_dir, f)
