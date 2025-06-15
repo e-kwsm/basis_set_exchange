@@ -64,3 +64,5 @@ def test_convert_slow(basis_name, fmt_from, fmt_to, tmp_path):
     out_file_path = in_file_path + '.{}{}'.format(fmt_to, bse.writers.get_format_extension(fmt_to))
 
     convert.convert_formatted_basis_file(in_file_path, out_file_path, fmt_from, fmt_to)
+
+pytest.main([__file__])
