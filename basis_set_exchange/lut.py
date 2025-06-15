@@ -36,6 +36,7 @@ This module has functions for looking up element information by
 symbol, name, or number. It also has functions for converting
 angular momentum between integers (0, 1, 2) and letters (s, p, d).
 '''
+from typing import List
 
 # Contains the symbols, names, and Z numbers for all known elements
 # NOTE: Some Z number have multiple entries. This is to allow for querying
@@ -112,7 +113,7 @@ _amchar_map_hik = 'spdfghiklmnoqrtuvwxyzabce'
 _amchar_map_hij = 'spdfghijklmnoqrtuvwxyzabce'
 
 
-def all_element_names():
+def all_element_names() -> List[str]:
     '''Obtain a list of the names of all the elements'''
     return list(_element_name_map.keys())
 
