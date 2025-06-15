@@ -36,7 +36,7 @@ This module has functions for looking up element information by
 symbol, name, or number. It also has functions for converting
 angular momentum between integers (0, 1, 2) and letters (s, p, d).
 '''
-from typing import List
+from typing import List, Tuple, Union
 
 # Contains the symbols, names, and Z numbers for all known elements
 # NOTE: Some Z number have multiple entries. This is to allow for querying
@@ -144,7 +144,7 @@ def all_element_blocks():
             num_filled = 0
     return blocks
 
-def element_data_from_Z(Z):
+def element_data_from_Z(Z: int) -> Tuple[str, int, str]:
     '''Obtain elemental data given a Z number
 
     An exception is thrown if the Z number is not found
@@ -159,7 +159,7 @@ def element_data_from_Z(Z):
     return _element_Z_map[Z]
 
 
-def element_data_from_sym(sym):
+def element_data_from_sym(sym: str) -> Tuple[str, int, str]:
     '''Obtain elemental data given an elemental symbol
 
     The given symbol is not case sensitive
@@ -216,7 +216,7 @@ def element_Z_from_name(name, as_str=False):
     return Z
 
 
-def element_sym_from_Z(Z, normalize=False):
+def element_sym_from_Z(Z: int, normalize: bool = False) -> str:
     '''Obtain an element's symbol from its Z number
 
     An exception is thrown if the Z number is not found
@@ -231,7 +231,7 @@ def element_sym_from_Z(Z, normalize=False):
         return r
 
 
-def element_Z_from_sym(sym, as_str=False):
+def element_Z_from_sym(sym: str, as_str: bool = False) -> Union[int, str]:
     '''Obtain an element's Z-number given its symbol
 
     If as_str is True, then a string is returned (ie, '1' for Hydrogen)
