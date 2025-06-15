@@ -37,6 +37,7 @@ import json
 import bz2
 import os
 
+from typing import Any, Dict, List, Tuple, Union
 from .sort import sort_basis_dict, sort_references_dict
 
 # The encoding to use for reading/writing files.
@@ -44,7 +45,7 @@ from .sort import sort_basis_dict, sort_references_dict
 _default_encoding = 'utf-8'
 
 
-def _read_plain_json(file_path, check_bse):
+def _read_plain_json(file_path: str, check_bse: bool) -> Dict[str, Any]:
     """
     Reads a JSON file
 
@@ -88,7 +89,7 @@ def _read_plain_json(file_path, check_bse):
     return js
 
 
-def _write_plain_json(file_path, js):
+def _write_plain_json(file_path: str, js: Dict[str, Any]):
     """
     Write information to a JSON file
 
@@ -113,7 +114,18 @@ def _write_plain_json(file_path, js):
             json.dump(js, f, indent=2, ensure_ascii=False)
 
 
-def read_json_basis(file_path):
+def read_json_basis(
+    file_path: str,
+) -> Dict[
+    str,
+    Union[
+        str,
+        Dict[str, str],
+        Dict[str, Dict[str, List[str]]],
+        Dict[str, Dict[str, Union[int, List[str], List[Dict[str, Union[str, List[int], List[str], List[List[str]]]]]]]],
+        Dict[str, Dict[str, List[Union[str, Dict[str, Union[str, List[int], List[str], List[List[str]]]]]]]],
+    ],
+]:
     """
     Reads generic basis set information from a JSON file
 
@@ -144,7 +156,7 @@ def read_schema(file_path):
     return _read_plain_json(file_path, False)
 
 
-def read_references(file_path):
+def read_references(file_path: str) -> Dict[str, Dict[str, Union[str, List[str]]]]:
     """
     Read a JSON file containing info for all references
 
@@ -157,7 +169,12 @@ def read_references(file_path):
     return _read_plain_json(file_path, True)
 
 
-def read_metadata(file_path):
+def read_metadata(
+    file_path: str,
+) -> Dict[
+    str,
+    Dict[str, Union[str, List[str], Dict[str, Dict[str, Union[str, List[str]]]], Dict[str, str], Dict[str, List[str]]]],
+]:
     """
     Reads a file containing the metadata for all the basis sets
 
@@ -170,7 +187,22 @@ def read_metadata(file_path):
     return _read_plain_json(file_path, False)
 
 
-def write_json_basis(file_path, bs):
+def write_json_basis(
+    file_path: str,
+    bs: Dict[
+        str,
+        Union[
+            str,
+            Dict[str, str],
+            Dict[str, Dict[str, List[str]]],
+            Dict[
+                str,
+                Dict[str, Union[List[str], int, List[Dict[str, Union[str, List[int], List[str], List[List[str]]]]]]],
+            ],
+            Dict[str, Dict[str, List[Union[str, Dict[str, Union[str, List[int], List[str], List[List[str]]]]]]]],
+        ],
+    ],
+):
     """
     Write basis set information to a JSON file
 
@@ -187,7 +219,7 @@ def write_json_basis(file_path, bs):
     _write_plain_json(file_path, sort_basis_dict(bs))
 
 
-def write_references(file_path, refs):
+def write_references(file_path: str, refs: Dict[str, Dict[str, Union[str, List[str]]]]):
     """
     Write a dict containing info for all references to a JSON file
 
@@ -217,7 +249,7 @@ def write_metadata(file_path, metadata):
     _write_plain_json(file_path, sort_basis_dict(metadata))
 
 
-def get_all_filelist(data_dir):
+def get_all_filelist(data_dir: str) -> Tuple[List[str], List[str], List[str], List[str]]:
     """
     Returns a tuple containing the following (as lists)
 
