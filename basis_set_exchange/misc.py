@@ -154,7 +154,10 @@ def compact_elements(elements: Iterable[int]) -> str:
     return ",".join(range_strs)
 
 
-def expand_elements(compact_el, as_str=False):
+def expand_elements(
+    compact_el: Union[int, str, List[str], List[Union[int, str]]],
+    as_str: bool = False
+) -> List[Any]:
     """
     Create a list of integers given a string or list of compacted elements
 
