@@ -39,7 +39,7 @@ import os
 import pytest
 
 from basis_set_exchange import fileio
-from .common_testvars import data_dir
+from common_testvars import data_dir
 
 
 # yapf: disable
@@ -70,4 +70,6 @@ def test_read_write_references(file_path):
     data = fileio.read_references(full_path)
     fileio.write_references(full_path_new, data)
     os.remove(full_path_new)
+
+
 pytest.main([__file__])
