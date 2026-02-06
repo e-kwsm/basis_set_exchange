@@ -28481,6 +28481,45 @@
       }
     }
   },
+  "dyall-aae5z": {
+    "display_name": "dyall-aae5z",
+    "other_names": [],
+    "description": "Dyall's augmented all-electron 5-zeta primitive basis set",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "dyall-aae5z",
+    "relpath": "",
+    "family": "dyall",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "dyall-aae5z.1.table.json",
+        "revdesc": "Data from author/Zenodo",
+        "revdate": "2026-02-06",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "11",
+          "12",
+          "19",
+          "20",
+          "37",
+          "38",
+          "55",
+          "56",
+          "87",
+          "88"
+        ]
+      }
+    }
+  },
   "dyall-acv2z": {
     "display_name": "dyall-acv2z",
     "other_names": [],
@@ -28816,6 +28855,45 @@
           "116",
           "117",
           "118"
+        ]
+      }
+    }
+  },
+  "dyall-acv5z": {
+    "display_name": "dyall-acv5z",
+    "other_names": [],
+    "description": "Dyall's augmented core-valence 5-zeta primitive basis set",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "dyall-acv5z",
+    "relpath": "",
+    "family": "dyall",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "dyall-acv5z.1.table.json",
+        "revdesc": "Data from author/Zenodo",
+        "revdate": "2026-02-06",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "11",
+          "12",
+          "19",
+          "20",
+          "37",
+          "38",
+          "55",
+          "56",
+          "87",
+          "88"
         ]
       }
     }
@@ -29249,6 +29327,45 @@
       }
     }
   },
+  "dyall-ae5z": {
+    "display_name": "dyall-ae5z",
+    "other_names": [],
+    "description": "Dyall's all-electron 5-zeta primitive basis set",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "dyall-ae5z",
+    "relpath": "",
+    "family": "dyall",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "dyall-ae5z.1.table.json",
+        "revdesc": "Data from author/Zenodo",
+        "revdate": "2026-02-06",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "11",
+          "12",
+          "19",
+          "20",
+          "37",
+          "38",
+          "55",
+          "56",
+          "87",
+          "88"
+        ]
+      }
+    }
+  },
   "dyall-av2z": {
     "display_name": "dyall-av2z",
     "other_names": [],
@@ -29584,6 +29701,45 @@
           "116",
           "117",
           "118"
+        ]
+      }
+    }
+  },
+  "dyall-av5z": {
+    "display_name": "dyall-av5z",
+    "other_names": [],
+    "description": "Dyall's augmented valence 5-zeta primitive basis set",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "dyall-av5z",
+    "relpath": "",
+    "family": "dyall",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "dyall-av5z.1.table.json",
+        "revdesc": "Data from author/Zenodo",
+        "revdate": "2026-02-06",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "11",
+          "12",
+          "19",
+          "20",
+          "37",
+          "38",
+          "55",
+          "56",
+          "87",
+          "88"
         ]
       }
     }
@@ -30017,6 +30173,45 @@
       }
     }
   },
+  "dyall-cv5z": {
+    "display_name": "dyall-cv5z",
+    "other_names": [],
+    "description": "Dyall's core-valence 5-zeta primitive basis set",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "dyall-cv5z",
+    "relpath": "",
+    "family": "dyall",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "dyall-cv5z.1.table.json",
+        "revdesc": "Data from author/Zenodo",
+        "revdate": "2026-02-06",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "11",
+          "12",
+          "19",
+          "20",
+          "37",
+          "38",
+          "55",
+          "56",
+          "87",
+          "88"
+        ]
+      }
+    }
+  },
   "dyall-v2z": {
     "display_name": "dyall-v2z",
     "other_names": [],
@@ -30442,6 +30637,45 @@
           "116",
           "117",
           "118"
+        ]
+      }
+    }
+  },
+  "dyall-v5z": {
+    "display_name": "dyall-v5z",
+    "other_names": [],
+    "description": "Dyall's valence 5-zeta primitive basis set",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "dyall-v5z",
+    "relpath": "",
+    "family": "dyall",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "dyall-v5z.1.table.json",
+        "revdesc": "Data from author/Zenodo",
+        "revdate": "2026-02-06",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "11",
+          "12",
+          "19",
+          "20",
+          "37",
+          "38",
+          "55",
+          "56",
+          "87",
+          "88"
         ]
       }
     }

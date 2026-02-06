@@ -1,0 +1,14 @@
+{
+  "molssi_bse_schema": {
+    "schema_type": "metadata",
+    "schema_version": "0.1"
+  },
+  "names": [
+    "dyall-acv5z"
+  ],
+  "tags": [],
+  "family": "dyall",
+  "description": "Dyall's augmented core-valence 5-zeta primitive basis set",
+  "role": "orbital",
+  "auxiliaries": {}
+}
