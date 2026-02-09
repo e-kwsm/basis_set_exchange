@@ -1,0 +1,25 @@
+{
+  "molssi_bse_schema": {
+    "schema_type": "table",
+    "schema_version": "0.1"
+  },
+  "revision_description": "Data from authors",
+  "revision_date": "2026-02-09",
+  "elements": {
+    "57": "lcecp/lcecp_1_QZVPP.1.element.json",
+    "58": "lcecp/lcecp_1_QZVPP.1.element.json",
+    "59": "lcecp/lcecp_1_QZVPP.1.element.json",
+    "60": "lcecp/lcecp_1_QZVPP.1.element.json",
+    "61": "lcecp/lcecp_1_QZVPP.1.element.json",
+    "62": "lcecp/lcecp_1_QZVPP.1.element.json",
+    "63": "lcecp/lcecp_1_QZVPP.1.element.json",
+    "64": "lcecp/lcecp_1_QZVPP.1.element.json",
+    "65": "lcecp/lcecp_1_QZVPP.1.element.json",
+    "66": "lcecp/lcecp_1_QZVPP.1.element.json",
+    "67": "lcecp/lcecp_1_QZVPP.1.element.json",
+    "68": "lcecp/lcecp_1_QZVPP.1.element.json",
+    "69": "lcecp/lcecp_1_QZVPP.1.element.json",
+    "70": "lcecp/lcecp_1_QZVPP.1.element.json",
+    "71": "lcecp/lcecp_1_QZVPP.1.element.json"
+  }
+}

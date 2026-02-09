@@ -1,0 +1,40 @@
+{
+  "molssi_bse_schema": {
+    "schema_type": "element",
+    "schema_version": "0.1"
+  },
+  "name": "lcecp-2-QZVP-basis",
+  "description": "lcecp-2-QZVP-basis",
+  "elements": {
+    "58": {
+      "components": [
+        "lcecp/lcecp_2_QZVP.1.json",
+        "lcecp/lcecp_2_ecp.1.json"
+      ]
+    },
+    "59": {
+      "components": [
+        "lcecp/lcecp_2_QZVP.1.json",
+        "lcecp/lcecp_2_ecp.1.json"
+      ]
+    },
+    "60": {
+      "components": [
+        "lcecp/lcecp_2_QZVP.1.json",
+        "lcecp/lcecp_2_ecp.1.json"
+      ]
+    },
+    "65": {
+      "components": [
+        "lcecp/lcecp_2_QZVP.1.json",
+        "lcecp/lcecp_2_ecp.1.json"
+      ]
+    },
+    "66": {
+      "components": [
+        "lcecp/lcecp_2_QZVP.1.json",
+        "lcecp/lcecp_2_ecp.1.json"
+      ]
+    }
+  }
+}
