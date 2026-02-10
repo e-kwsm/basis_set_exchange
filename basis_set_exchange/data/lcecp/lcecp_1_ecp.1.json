@@ -8,7 +8,8 @@
   "elements": {
     "57": {
       "references": [
-        "lukanowski2026a"
+        "dolg1989a",
+        "dolg1993b"
       ],
       "ecp_electrons": 46,
       "ecp_potentials": [
@@ -110,7 +111,8 @@
     },
     "58": {
       "references": [
-        "lukanowski2026a"
+        "dolg1989a",
+        "dolg1993b"
       ],
       "ecp_electrons": 47,
       "ecp_potentials": [
@@ -212,7 +214,8 @@
     },
     "59": {
       "references": [
-        "lukanowski2026a"
+        "dolg1989a",
+        "dolg1993b"
       ],
       "ecp_electrons": 48,
       "ecp_potentials": [
@@ -314,7 +317,8 @@
     },
     "60": {
       "references": [
-        "lukanowski2026a"
+        "dolg1989a",
+        "dolg1993b"
       ],
       "ecp_electrons": 49,
       "ecp_potentials": [
@@ -416,7 +420,8 @@
     },
     "61": {
       "references": [
-        "lukanowski2026a"
+        "dolg1989a",
+        "dolg1993b"
       ],
       "ecp_electrons": 50,
       "ecp_potentials": [
@@ -518,7 +523,8 @@
     },
     "62": {
       "references": [
-        "lukanowski2026a"
+        "dolg1989a",
+        "dolg1993b"
       ],
       "ecp_electrons": 51,
       "ecp_potentials": [
@@ -620,7 +626,8 @@
     },
     "63": {
       "references": [
-        "lukanowski2026a"
+        "dolg1989a",
+        "dolg1993b"
       ],
       "ecp_electrons": 52,
       "ecp_potentials": [
@@ -722,7 +729,8 @@
     },
     "64": {
       "references": [
-        "lukanowski2026a"
+        "dolg1989a",
+        "dolg1993b"
       ],
       "ecp_electrons": 53,
       "ecp_potentials": [
@@ -824,7 +832,8 @@
     },
     "65": {
       "references": [
-        "lukanowski2026a"
+        "dolg1989a",
+        "dolg1993b"
       ],
       "ecp_electrons": 54,
       "ecp_potentials": [
@@ -926,7 +935,8 @@
     },
     "66": {
       "references": [
-        "lukanowski2026a"
+        "dolg1989a",
+        "dolg1993b"
       ],
       "ecp_electrons": 55,
       "ecp_potentials": [
@@ -1028,7 +1038,8 @@
     },
     "67": {
       "references": [
-        "lukanowski2026a"
+        "dolg1989a",
+        "dolg1993b"
       ],
       "ecp_electrons": 56,
       "ecp_potentials": [
@@ -1130,7 +1141,8 @@
     },
     "68": {
       "references": [
-        "lukanowski2026a"
+        "dolg1989a",
+        "dolg1993b"
       ],
       "ecp_electrons": 57,
       "ecp_potentials": [
@@ -1232,7 +1244,8 @@
     },
     "69": {
       "references": [
-        "lukanowski2026a"
+        "dolg1989a",
+        "dolg1993b"
       ],
       "ecp_electrons": 58,
       "ecp_potentials": [
@@ -1334,7 +1347,8 @@
     },
     "70": {
       "references": [
-        "lukanowski2026a"
+        "dolg1989a",
+        "dolg1993b"
       ],
       "ecp_electrons": 59,
       "ecp_potentials": [
@@ -1436,7 +1450,8 @@
     },
     "71": {
       "references": [
-        "lukanowski2026a"
+        "dolg1989a",
+        "dolg1993b"
       ],
       "ecp_electrons": 60,
       "ecp_potentials": [

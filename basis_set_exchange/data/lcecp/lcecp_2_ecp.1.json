@@ -8,7 +8,7 @@
   "elements": {
     "58": {
       "references": [
-        "lukanowski2026a"
+        "hulsen2009a"
       ],
       "ecp_electrons": 46,
       "ecp_potentials": [
@@ -110,7 +110,7 @@
     },
     "59": {
       "references": [
-        "lukanowski2026a"
+        "hulsen2009a"
       ],
       "ecp_electrons": 47,
       "ecp_potentials": [
@@ -215,7 +215,7 @@
     },
     "60": {
       "references": [
-        "lukanowski2026a"
+        "hulsen2009a"
       ],
       "ecp_electrons": 48,
       "ecp_potentials": [
@@ -320,7 +320,7 @@
     },
     "65": {
       "references": [
-        "lukanowski2026a"
+        "hulsen2009a"
       ],
       "ecp_electrons": 53,
       "ecp_potentials": [
@@ -425,7 +425,7 @@
     },
     "66": {
       "references": [
-        "lukanowski2026a"
+        "hulsen2009a"
       ],
       "ecp_electrons": 54,
       "ecp_potentials": [
