@@ -1,0 +1,94 @@
+{
+  "molssi_bse_schema": {
+    "schema_type": "element",
+    "schema_version": "0.1"
+  },
+  "name": "lcecp-0-QZVPP-basis",
+  "description": "lcecp-0-QZVPP-basis",
+  "elements": {
+    "57": {
+      "components": [
+        "lcecp/lcecp_0_QZVPP.1.json",
+        "lcecp/lcecp_0_ecp.1.json"
+      ]
+    },
+    "58": {
+      "components": [
+        "lcecp/lcecp_0_QZVPP.1.json",
+        "lcecp/lcecp_0_ecp.1.json"
+      ]
+    },
+    "59": {
+      "components": [
+        "lcecp/lcecp_0_QZVPP.1.json",
+        "lcecp/lcecp_0_ecp.1.json"
+      ]
+    },
+    "60": {
+      "components": [
+        "lcecp/lcecp_0_QZVPP.1.json",
+        "lcecp/lcecp_0_ecp.1.json"
+      ]
+    },
+    "61": {
+      "components": [
+        "lcecp/lcecp_0_QZVPP.1.json",
+        "lcecp/lcecp_0_ecp.1.json"
+      ]
+    },
+    "62": {
+      "components": [
+        "lcecp/lcecp_0_QZVPP.1.json",
+        "lcecp/lcecp_0_ecp.1.json"
+      ]
+    },
+    "63": {
+      "components": [
+        "lcecp/lcecp_0_QZVPP.1.json",
+        "lcecp/lcecp_0_ecp.1.json"
+      ]
+    },
+    "64": {
+      "components": [
+        "lcecp/lcecp_0_QZVPP.1.json",
+        "lcecp/lcecp_0_ecp.1.json"
+      ]
+    },
+    "65": {
+      "components": [
+        "lcecp/lcecp_0_QZVPP.1.json",
+        "lcecp/lcecp_0_ecp.1.json"
+      ]
+    },
+    "66": {
+      "components": [
+        "lcecp/lcecp_0_QZVPP.1.json",
+        "lcecp/lcecp_0_ecp.1.json"
+      ]
+    },
+    "67": {
+      "components": [
+        "lcecp/lcecp_0_QZVPP.1.json",
+        "lcecp/lcecp_0_ecp.1.json"
+      ]
+    },
+    "68": {
+      "components": [
+        "lcecp/lcecp_0_QZVPP.1.json",
+        "lcecp/lcecp_0_ecp.1.json"
+      ]
+    },
+    "69": {
+      "components": [
+        "lcecp/lcecp_0_QZVPP.1.json",
+        "lcecp/lcecp_0_ecp.1.json"
+      ]
+    },
+    "70": {
+      "components": [
+        "lcecp/lcecp_0_QZVPP.1.json",
+        "lcecp/lcecp_0_ecp.1.json"
+      ]
+    }
+  }
+}

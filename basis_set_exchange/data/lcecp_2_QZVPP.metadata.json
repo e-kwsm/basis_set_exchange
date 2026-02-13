@@ -1,0 +1,14 @@
+{
+  "molssi_bse_schema": {
+    "schema_type": "metadata",
+    "schema_version": "0.1"
+  },
+  "names": [
+    "lcecp-2-QZVPP"
+  ],
+  "tags": [],
+  "family": "ahlrichs",
+  "description": "lcecp-2-QZVPP",
+  "role": "orbital",
+  "auxiliaries": {}
+}

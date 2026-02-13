@@ -1,0 +1,15 @@
+{
+  "molssi_bse_schema": {
+    "schema_type": "table",
+    "schema_version": "0.1"
+  },
+  "revision_description": "Data from authors",
+  "revision_date": "2026-02-09",
+  "elements": {
+    "58": "lcecp/lcecp_2_QZVP.1.element.json",
+    "59": "lcecp/lcecp_2_QZVP.1.element.json",
+    "60": "lcecp/lcecp_2_QZVP.1.element.json",
+    "65": "lcecp/lcecp_2_QZVP.1.element.json",
+    "66": "lcecp/lcecp_2_QZVP.1.element.json"
+  }
+}

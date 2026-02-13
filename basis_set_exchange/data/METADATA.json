@@ -36821,6 +36821,702 @@
       }
     }
   },
+  "lcecp-0-qzvp": {
+    "display_name": "lcecp-0-QZVP",
+    "other_names": [],
+    "description": "lcecp-0-QZVP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_0_QZVP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_0_QZVP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "57",
+          "58",
+          "59",
+          "60",
+          "61",
+          "62",
+          "63",
+          "64",
+          "65",
+          "66",
+          "67",
+          "68",
+          "69",
+          "70"
+        ]
+      }
+    }
+  },
+  "lcecp-0-qzvpp": {
+    "display_name": "lcecp-0-QZVPP",
+    "other_names": [],
+    "description": "lcecp-0-QZVPP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_0_QZVPP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_0_QZVPP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "57",
+          "58",
+          "59",
+          "60",
+          "61",
+          "62",
+          "63",
+          "64",
+          "65",
+          "66",
+          "67",
+          "68",
+          "69",
+          "70"
+        ]
+      }
+    }
+  },
+  "lcecp-0-sv(p)": {
+    "display_name": "lcecp-0-SV(P)",
+    "other_names": [
+      "lcecp-0-SVP"
+    ],
+    "description": "lcecp-0-SVP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_0_SVP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_0_SVP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "57",
+          "58",
+          "59",
+          "60",
+          "61",
+          "62",
+          "63",
+          "64",
+          "65",
+          "66",
+          "67",
+          "68",
+          "69",
+          "70"
+        ]
+      }
+    }
+  },
+  "lcecp-0-svp": {
+    "display_name": "lcecp-0-SVP",
+    "other_names": [
+      "lcecp-0-SV(P)"
+    ],
+    "description": "lcecp-0-SVP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_0_SVP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_0_SVP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "57",
+          "58",
+          "59",
+          "60",
+          "61",
+          "62",
+          "63",
+          "64",
+          "65",
+          "66",
+          "67",
+          "68",
+          "69",
+          "70"
+        ]
+      }
+    }
+  },
+  "lcecp-0-tzvp": {
+    "display_name": "lcecp-0-TZVP",
+    "other_names": [
+      "lcecp-0-TZVPP"
+    ],
+    "description": "lcecp-0-TZVP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_0_TZVP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_0_TZVP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "57",
+          "58",
+          "59",
+          "60",
+          "61",
+          "62",
+          "63",
+          "64",
+          "65",
+          "66",
+          "67",
+          "68",
+          "69",
+          "70"
+        ]
+      }
+    }
+  },
+  "lcecp-0-tzvpp": {
+    "display_name": "lcecp-0-TZVPP",
+    "other_names": [
+      "lcecp-0-TZVP"
+    ],
+    "description": "lcecp-0-TZVP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_0_TZVP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_0_TZVP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "57",
+          "58",
+          "59",
+          "60",
+          "61",
+          "62",
+          "63",
+          "64",
+          "65",
+          "66",
+          "67",
+          "68",
+          "69",
+          "70"
+        ]
+      }
+    }
+  },
+  "lcecp-1-qzvp": {
+    "display_name": "lcecp-1-QZVP",
+    "other_names": [],
+    "description": "lcecp-1-QZVP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_1_QZVP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_1_QZVP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "57",
+          "58",
+          "59",
+          "60",
+          "61",
+          "62",
+          "63",
+          "64",
+          "65",
+          "66",
+          "67",
+          "68",
+          "69",
+          "70",
+          "71"
+        ]
+      }
+    }
+  },
+  "lcecp-1-qzvpp": {
+    "display_name": "lcecp-1-QZVPP",
+    "other_names": [],
+    "description": "lcecp-1-QZVPP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_1_QZVPP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_1_QZVPP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "57",
+          "58",
+          "59",
+          "60",
+          "61",
+          "62",
+          "63",
+          "64",
+          "65",
+          "66",
+          "67",
+          "68",
+          "69",
+          "70",
+          "71"
+        ]
+      }
+    }
+  },
+  "lcecp-1-sv(p)": {
+    "display_name": "lcecp-1-SV(P)",
+    "other_names": [
+      "lcecp-1-SVP"
+    ],
+    "description": "lcecp-1-SVP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_1_SVP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_1_SVP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "57",
+          "58",
+          "59",
+          "60",
+          "61",
+          "62",
+          "63",
+          "64",
+          "65",
+          "66",
+          "67",
+          "68",
+          "69",
+          "70",
+          "71"
+        ]
+      }
+    }
+  },
+  "lcecp-1-svp": {
+    "display_name": "lcecp-1-SVP",
+    "other_names": [
+      "lcecp-1-SV(P)"
+    ],
+    "description": "lcecp-1-SVP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_1_SVP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_1_SVP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "57",
+          "58",
+          "59",
+          "60",
+          "61",
+          "62",
+          "63",
+          "64",
+          "65",
+          "66",
+          "67",
+          "68",
+          "69",
+          "70",
+          "71"
+        ]
+      }
+    }
+  },
+  "lcecp-1-tzvp": {
+    "display_name": "lcecp-1-TZVP",
+    "other_names": [
+      "lcecp-1-TZVPP"
+    ],
+    "description": "lcecp-1-TZVP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_1_TZVP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_1_TZVP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "57",
+          "58",
+          "59",
+          "60",
+          "61",
+          "62",
+          "63",
+          "64",
+          "65",
+          "66",
+          "67",
+          "68",
+          "69",
+          "70",
+          "71"
+        ]
+      }
+    }
+  },
+  "lcecp-1-tzvpp": {
+    "display_name": "lcecp-1-TZVPP",
+    "other_names": [
+      "lcecp-1-TZVP"
+    ],
+    "description": "lcecp-1-TZVP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_1_TZVP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_1_TZVP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "57",
+          "58",
+          "59",
+          "60",
+          "61",
+          "62",
+          "63",
+          "64",
+          "65",
+          "66",
+          "67",
+          "68",
+          "69",
+          "70",
+          "71"
+        ]
+      }
+    }
+  },
+  "lcecp-2-qzvp": {
+    "display_name": "lcecp-2-QZVP",
+    "other_names": [],
+    "description": "lcecp-2-QZVP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_2_QZVP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_2_QZVP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "58",
+          "59",
+          "60",
+          "65",
+          "66"
+        ]
+      }
+    }
+  },
+  "lcecp-2-qzvpp": {
+    "display_name": "lcecp-2-QZVPP",
+    "other_names": [],
+    "description": "lcecp-2-QZVPP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_2_QZVPP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_2_QZVPP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "58",
+          "59",
+          "60",
+          "65",
+          "66"
+        ]
+      }
+    }
+  },
+  "lcecp-2-sv(p)": {
+    "display_name": "lcecp-2-SV(P)",
+    "other_names": [
+      "lcecp-2-SVP"
+    ],
+    "description": "lcecp-2-SVP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_2_SVP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_2_SVP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "58",
+          "59",
+          "60",
+          "65",
+          "66"
+        ]
+      }
+    }
+  },
+  "lcecp-2-svp": {
+    "display_name": "lcecp-2-SVP",
+    "other_names": [
+      "lcecp-2-SV(P)"
+    ],
+    "description": "lcecp-2-SVP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_2_SVP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_2_SVP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "58",
+          "59",
+          "60",
+          "65",
+          "66"
+        ]
+      }
+    }
+  },
+  "lcecp-2-tzvp": {
+    "display_name": "lcecp-2-TZVP",
+    "other_names": [
+      "lcecp-2-TZVPP"
+    ],
+    "description": "lcecp-2-TZVP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_2_TZVP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_2_TZVP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "58",
+          "59",
+          "60",
+          "65",
+          "66"
+        ]
+      }
+    }
+  },
+  "lcecp-2-tzvpp": {
+    "display_name": "lcecp-2-TZVPP",
+    "other_names": [
+      "lcecp-2-TZVP"
+    ],
+    "description": "lcecp-2-TZVP",
+    "latest_version": "1",
+    "tags": [],
+    "basename": "lcecp_2_TZVP",
+    "relpath": "",
+    "family": "ahlrichs",
+    "role": "orbital",
+    "function_types": [
+      "gto",
+      "gto_spherical",
+      "scalar_ecp"
+    ],
+    "auxiliaries": {},
+    "versions": {
+      "1": {
+        "file_relpath": "lcecp_2_TZVP.1.table.json",
+        "revdesc": "Data from authors",
+        "revdate": "2026-02-09",
+        "elements": [
+          "58",
+          "59",
+          "60",
+          "65",
+          "66"
+        ]
+      }
+    }
+  },
   "m6-31g": {
     "display_name": "m6-31G",
     "other_names": [],

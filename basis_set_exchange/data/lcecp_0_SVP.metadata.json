@@ -1,0 +1,15 @@
+{
+  "molssi_bse_schema": {
+    "schema_type": "metadata",
+    "schema_version": "0.1"
+  },
+  "names": [
+    "lcecp-0-SVP",
+    "lcecp-0-SV(P)"
+  ],
+  "tags": [],
+  "family": "ahlrichs",
+  "description": "lcecp-0-SVP",
+  "role": "orbital",
+  "auxiliaries": {}
+}
