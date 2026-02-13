@@ -1,0 +1,260 @@
+{
+  "molssi_bse_schema": {
+    "schema_type": "element",
+    "schema_version": "0.1"
+  },
+  "name": "dyall-av5z",
+  "description": "Dyall's augmented valence 5-zeta primitive basis set",
+  "elements": {
+    "1": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "2": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "3": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "4": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "5": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "6": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "7": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "8": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "9": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "10": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "11": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "12": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "13": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "14": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "15": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "16": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "17": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "18": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "19": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "20": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "31": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "32": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "33": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "34": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "35": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "36": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "37": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "38": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "49": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "50": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "51": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "52": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "53": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "54": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "55": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "56": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "81": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "82": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "83": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "84": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "85": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "86": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "87": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "88": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "113": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "114": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "115": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "116": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "117": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    },
+    "118": {
+      "components": [
+        "dyall/dyall-av5z.1.json"
+      ]
+    }
+  }
+}

@@ -1426,6 +1426,18 @@
     "year" : "2023",
     "doi" : "10.5281/zenodo.7574629"
   },
+  "dyall2026a": {
+    "_entry_type": "dataset",
+    "authors": [
+      "Dyall, K. G.",
+      "Reitsma, M. L.",
+      "Borschevsky, A."
+    ],
+    "title": "Dyall relativistic 5z basis sets for the p-block elements",
+    "publisher" : "Zenodo",
+    "year" : "2026",
+    "doi" : "10.5281/zenodo.18351835"
+  },
   "dyallXXXXa": {
     "_entry_type": "misc",
     "authors": [
@@ -4649,6 +4661,22 @@
     "pages": "976-984",
     "year": "2001",
     "doi": "10.1002/jcc.1058.abs"
+  },
+  "reitsma2025a": {
+    "_entry_type": "article",
+    "authors": [
+      "Reitsma, Marten L.",
+      "Prinsen, Eifion H.",
+      "Polet, Johan D.",
+      "Borschevsky, Anastasia",
+      "Dyall, Kenneth G."
+    ],
+    "title": "Relativistic quintuple-zeta basis sets for the s block",
+    "journal": "J. Chem. Phys.",
+    "volume": "163",
+    "pages": "144116",
+    "year": "2025",
+    "doi": "10.1063/5.0297009"
   },
   "ricca2001a": {
     "_entry_type": "article",
