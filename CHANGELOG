@@ -1,3 +1,17 @@
+v0.12
+--------------------
+  * Fix CRYSTAL ECP input and output
+  * Added JSON reader
+  * Fixed Veloxchem writer changing the basis set
+  * Fixed Pm basis set for cc-pVQZ-DK3
+  * Added/updated basis sets:
+    * Updated sigmaNZ with new elements
+    * jorge-{Q,5,6}ZP-ZORA, A6ZP
+    * Updated jorge A{D,T,Q,5}ZP
+    * Dyall 5z basis sets for s & p blocks
+    * lcecp basis sets from Lukanowski & Weigend
+
+
 v0.11
 --------------------
   * Python 3.13 compatibility
